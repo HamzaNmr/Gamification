@@ -54,6 +54,13 @@ import { makeStyles } from "@material-ui/core/styles";
         borderRadius: 15,
         color: '#eee',
       }
+    },
+    
+    coin:{
+      display: 'flex', alignItems:'center', fontSize:'1.2rem', fontWeight:700, gap: '12px', marginInline: '30px',
+      [theme.breakpoints.down('sm')]: {
+        display:'none',
+      },
     }
      
  }));
