@@ -6,6 +6,8 @@ import MenuIcon from '../MenuIcon/MenuIcon';
 import { VscAccount, VscBell } from "react-icons/vsc";
 import Coin from '../../images/dollar.png';
 
+import Notfication from '../Notfication/Notification';
+
 
 import {useNavigate} from "react-router-dom";
 
@@ -28,19 +30,12 @@ const Navbar = () => {
           
           <div className={classes.rightPart}>
 
-            <div style={{
-              display: 'flex',
-              alignItems:'center',
-              fontSize:'1.2rem',
-              fontWeight:700,
-              gap: '12px',
-              marginInline: '14px'
-            }}>
+            <div className={classes.coin}>
             <img src={Coin} alt="" style={{width: '30px',}}/>
             <span>5.2</span>
             </div>
 
-            <VscBell className={classes.icons}/>
+            <Notfication/>
             <VscAccount className={classes.icons}/>
             <MenuIcon />
           </div>

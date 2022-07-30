@@ -5,7 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
     display: 'none',
     cursor: 'pointer',
     [theme.breakpoints.down('sm')]: {
-        display:'block',
+        display:'flex',
+        alignItems: 'center',
+        marginLeft: '10px',
+
       },
    }
      

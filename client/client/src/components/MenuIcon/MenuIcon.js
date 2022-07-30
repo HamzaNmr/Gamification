@@ -5,7 +5,7 @@ import { Box } from '@material-ui/core';
 
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
-
+import { VscMenu } from 'react-icons/vsc';
 
 
 import Drawer from '@mui/material/Drawer';
@@ -117,7 +117,7 @@ const MenuIcon = () => {
 
   return (
     <div className={classes.displayed}>
-        <p onClick={toggleDrawer('bottom', true)}>MENU</p>
+        <VscMenu onClick={toggleDrawer('bottom', true)} style={{fontSize: '2rem'}}/>
         <Drawer
             anchor={'bottom'}
             open={state['bottom']}
