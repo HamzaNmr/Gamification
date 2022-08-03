@@ -29,7 +29,7 @@ const DailyCard = () => {
 
        {
         daily.map((task) => (
-          <Paper style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between',padding: '20px 30px', backgroundColor: '#E9E8EA', borderRadius: 15, marginBottom: '20px'}}>
+          <Paper style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between',padding: '20px 30px', backgroundColor: '#E9E8EA', borderRadius: 15, marginBottom: '20px', }}>
           <div>
           <Typography variant='h6' >
                {task.Title}

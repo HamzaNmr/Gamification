@@ -25,7 +25,7 @@ import { makeStyles } from "@material-ui/core/styles";
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 7,
-        color: '#eee',
+        color: 'white',
         fontSize: '1.3rem',
         fontWeight: 700,
     }

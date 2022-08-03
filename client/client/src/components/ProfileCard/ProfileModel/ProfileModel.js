@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
-import { Paper, Typography, Grow, Avatar, LinearProgress,  Divider} from '@material-ui/core';
+import { Paper, Typography, Grow, Avatar, LinearProgress,  Divider, Tooltip} from '@material-ui/core';
 
 
 import useStyles from './styles';
@@ -21,6 +21,7 @@ import TopBadge from '../../../images/award.png';
 import CompleteBadge from '../../../images/loading.png';
 import Coin from '../../../images/dollar.png';
 
+import RewardsPart from './RewardsPart';
 
 
 import { styled } from '@mui/material/styles';
@@ -186,7 +187,7 @@ const ProfileModel = () => {
              <Typography variant='h6' style={{fontWeight:'700', color: '#4E4A57',}}>Badges</Typography>
              <Divider style={{marginBlock: '10px',}}/>
              <div>
-                <img alt='' src={SpeedBadge} className={classes.img}/>
+              <Tooltip title='speed badge because you gained speedly 150 points.'><img alt='' src={SpeedBadge} className={classes.img}/></Tooltip>
                 <img alt='' src={OrganizeBadge} className={classes.img}/>
                 <img alt='' src={CommunityBadge} className={classes.img}/>
                 <img alt='' src={WinnerBadge} className={classes.img}/>
@@ -197,8 +198,10 @@ const ProfileModel = () => {
 
             </div>
 
-            <div  id='rewardsPart' style={{padding: '30px 50px',display: 'none',}}>
-                hamza
+            <div  id='rewardsPart' style={{padding: '0 0 0 50px',display: 'none', }}>
+                
+                  <RewardsPart/>
+                
             </div>
           </Box>
         </Fade>

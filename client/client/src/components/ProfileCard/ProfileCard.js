@@ -11,7 +11,8 @@ import Star from '../../images/favourites.png';
 
 
 import ProfileModel from './ProfileModel/ProfileModel';
-import TimeLine from '../TimeLine/TimeLine';
+import ThreeDEarth from '../ThreeDEarth/ThreeDEarth';
+
 
 import { styled } from '@mui/material/styles';
 import { linearProgressClasses } from '@mui/material/LinearProgress';
@@ -70,7 +71,7 @@ const ProfileCard = () => {
 
                </div>
 
-               {/* <TimeLine /> */}
+              <ThreeDEarth/>
       
             </Paper>
         </div>

@@ -8,6 +8,7 @@ import LeaderCard from '../LeaderCard/LeaderCard';
 import DailyCard from '../DailyCrad/DailyCard';
 import ThreeDCard from '../ThreeDCard/ThreeDCard';
 
+
 const Home = () => {
   return (
   
