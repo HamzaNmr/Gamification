@@ -25,4 +25,18 @@ import { makeStyles } from "@material-ui/core/styles";
           display:'none',
         },
       },
+ 
+  card: {
+    width: '7rem',
+    borderRadius: '15px',
+    height: '7rem',
+    position: 'relative',
+    margin: '10px',
+    textAlign: 'center',
+    padding: '10px 20px',
+  },
+  description: {
+    color: "#333",
+  },
+  
  }));
