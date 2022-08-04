@@ -86,9 +86,11 @@ const ProfileModel = () => {
 
   return (
     <div>
-        <Typography variant='subtitle1' style={{fontWeight: 700, cursor: 'pointer',}}  onClick={handleOpen} >
+       <Tooltip title="Profile">
+       <Typography variant='subtitle1' style={{fontWeight: 700, cursor: 'pointer',}}  onClick={handleOpen} >
                     Hamza Nemer
         </Typography>
+       </Tooltip>
 
         <Modal
         aria-labelledby="spring-modal-title"

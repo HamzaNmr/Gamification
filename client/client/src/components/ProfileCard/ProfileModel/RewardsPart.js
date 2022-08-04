@@ -26,7 +26,7 @@ const RewardsPart = () => {
     <div style={{display: 'flex', width: '100%', height: 270, flexWrap: 'wrap', overflow: 'auto',}}>
         {
             rewards.map((reward) => (
-                <Card className="card" >
+                <Card className="card" style={{borderRadius: 10,}}>
 
                 <div className='card-header'>
                    <img alt='' src={reward.image} style={{width: 50, height: 50, marginTop: '7px'}}/>

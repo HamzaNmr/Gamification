@@ -1,7 +1,7 @@
 import React from 'react';
 
 import useStyles from './styles';
-import { Paper, Typography, Grow, Avatar, LinearProgress} from '@material-ui/core';
+import { Paper, Typography, Grow, Avatar, LinearProgress, Tooltip} from '@material-ui/core';
 
 
 import HdrStrongIcon from '@mui/icons-material/HdrStrong';
@@ -62,9 +62,14 @@ const ProfileCard = () => {
                 
 
                 <div style={{display:'flex', alignItems:'center', justifyContent: 'center', gap: '10px', marginTop: '20px',}} >
-                  <img alt='Experience' src={Star} style={{width: 20, height: 20,}} />
+                <Tooltip title="Experience">
+                 <img alt='Experience' src={Star} style={{width: 20, height: 20,}} />
+                </Tooltip>
+
                   <BorderLinearProgress variant="determinate" value={expereience * 2}/>
+                  
                   <Typography variant='body2' style={{color:'#CBC8FF'}}>{expereience}/50</Typography>
+                 
                 </div>
 
                 </div>

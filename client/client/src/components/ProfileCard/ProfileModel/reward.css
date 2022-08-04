@@ -1,9 +1,10 @@
 .card {
-    width: 7rem;
+    width: 7.7rem;
     border-radius: 10px;
     margin: 10px;
     background: #eee;
     overflow: hidden;
+    border-radius: 15px;
   }
   .card-header {
     height: 70px;
