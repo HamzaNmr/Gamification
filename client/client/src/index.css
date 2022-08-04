@@ -8,3 +8,19 @@ body {
   /* background-color: #C5E4E7; */
 }
 
+::-webkit-scrollbar{
+  width: 0rem;
+}
+
+::-webkit-scrollbar-track{
+  background-color: #EBEAEC;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: #432874;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color: #2e303b;
+}
