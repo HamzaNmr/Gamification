@@ -9,7 +9,7 @@ body {
 }
 
 ::-webkit-scrollbar{
-  width: 0rem;
+  width: .3rem;
 }
 
 ::-webkit-scrollbar-track{
@@ -22,5 +22,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover{
-  background-color: #2e303b;
+  background-color: #333;
 }
