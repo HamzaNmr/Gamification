@@ -5,8 +5,11 @@ import Leaderboard from './components/Leaderboard/Leaderboard';
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Rewards from './components/Rewards/Rewards';
+import RewardsPage from './components/Rewards/RewardsPage';
+
 import Community from './components/Community/Community';
 import Tasks from './components/Tasks/Tasks';
+
 
 import './App.css';
 
@@ -20,9 +23,10 @@ function App() {
                 <Route path="/" exact element={<Navigate to="/home"/>} />
                 <Route path="/home" exact element={<Home/>} />
                 <Route path="/leaderboard" exact element={<Leaderboard/>} />
-                <Route path="/rewards" exact element={<Rewards/>} />
+                <Route path="/rewards" exact element={<RewardsPage/>} 
                 <Route path="/tasks" exact element={<Tasks/>} />
                 <Route path="/tasks/task-detail" exact element={<Tasks/>} />
+
                 <Route path="/community" exact element={<Community/>} />
               </Routes>
         </Container>
