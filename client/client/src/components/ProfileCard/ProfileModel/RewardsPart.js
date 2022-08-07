@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography, Box, ButtonBase } from "@material-ui/core";
 import './reward.css';
-import RewardImage from '../../../images/reward.png';
+import RewardImage from '../../../images/reward1.png';
 
 import useStyles from './styles';
 

@@ -8,6 +8,9 @@ import QuestionImage from '../../../images/light-bulb.png';
 import DescriptionImage from '../../../images/job-seeking.png';
 import VideoImage from '../../../images/video.png';
 
+
+import ScrollAnimation from "react-animate-on-scroll";
+
 const arr = [{question: '?', description: 'x'}, {description: 'x', videoUrl: 'v'}, {question: '?', description: 'x',videoUrl: 'v'}, {}, {},{}, {},{},{},{}]
 const Task = () => {
 
@@ -20,6 +23,8 @@ const Task = () => {
 
   return (
    arr.map((task) => (
+
+    <ScrollAnimation animateIn="animate__bounceInLeft" >
     
     <Card raised elevation={6} className={classes.card} sx={{ borderRadius: 5}}>
     <CardMedia
@@ -79,6 +84,7 @@ const Task = () => {
     </ButtonBase>
   
 </Card>
+</ScrollAnimation>
    ))
   )
 }
