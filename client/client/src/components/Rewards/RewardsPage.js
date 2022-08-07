@@ -75,7 +75,7 @@ const RewardsPage = () => {
     {
       rewardID: '5',
       rewardName: 'Workshop',
-      rewardIcon: require('../../images/reward.png'),
+      rewardIcon: require('../../images/reward5.png'),
       rewardDetails: 'Finish One month tasks effeciently before deadlines',
       rewardCost: 200
     },
@@ -117,7 +117,7 @@ const RewardsPage = () => {
     {
       rewardID: '11',
       rewardName: 'Workshop',
-      rewardIcon: require('../../images/star.png'),
+      rewardIcon: require('../../images/star1.png'),
       rewardDetails: 'Finish One month tasks effeciently before deadlines',
       rewardCost: 230
     }

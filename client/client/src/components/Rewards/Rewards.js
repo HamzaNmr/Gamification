@@ -40,6 +40,7 @@ const Rewards = ({ reward }) => {
     setExpanded(!expanded);
   };
 
+
   return (
 
     <>
@@ -123,7 +124,7 @@ const Rewards = ({ reward }) => {
       </Grid>
     </>
 
-  )
-}
+  );
+};
 
 export default Rewards;

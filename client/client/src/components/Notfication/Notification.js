@@ -83,7 +83,7 @@ const Notfication = () => {
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '10px 30px' }}>
          <Typography variant='subtitle1' style={{fontWeight: 'bold'}}>Notification</Typography>
-         <Typography variant='subtitle2' style={{color: 'GRAY'}}>Dimiss all</Typography>
+         <Typography variant='subtitle2' style={{color: 'GRAY', cursor: 'pointer',}}>Dimiss all</Typography>
         </div>
 
         <Divider sx={{ my: 0.5 }} />

@@ -61,6 +61,14 @@ import { makeStyles } from "@material-ui/core/styles";
       [theme.breakpoints.down('sm')]: {
         display:'none',
       },
+    },
+
+    logo:{
+      display:'none',
+      [theme.breakpoints.down('sm')]: {
+        display:'flex',
+      },
     }
+
      
  }));

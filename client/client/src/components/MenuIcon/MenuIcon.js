@@ -5,21 +5,20 @@ import { Box } from '@material-ui/core';
 
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
-import { VscMenu } from 'react-icons/vsc';
-
-
 import Drawer from '@mui/material/Drawer';
-
 import List from '@mui/material/List';
-
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-
 import ListItemText from '@mui/material/ListItemText';
-import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
-import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+
+import { VscMenu } from 'react-icons/vsc';
+import OtherHousesOutlinedIcon from '@mui/icons-material/OtherHousesOutlined';
+import LeaderboardOutlinedIcon from '@mui/icons-material/LeaderboardOutlined';
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import MeetingRoomOutlinedIcon from '@mui/icons-material/MeetingRoomOutlined';
+
+
 
 
 
@@ -68,7 +67,7 @@ const MenuIcon = () => {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                  <GroupsOutlinedIcon />
+                  <OtherHousesOutlinedIcon />
                   </ListItemIcon>
                   <ListItemText>Home</ListItemText>
                 </ListItemButton>
@@ -77,7 +76,7 @@ const MenuIcon = () => {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                   <LightModeOutlinedIcon />
+                   <LeaderboardOutlinedIcon />
                   </ListItemIcon>
                   <ListItemText>LeaderBoard</ListItemText>
                 </ListItemButton>
@@ -86,7 +85,7 @@ const MenuIcon = () => {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                   <LightModeOutlinedIcon />
+                   <EmojiEventsOutlinedIcon />
                   </ListItemIcon>
                   <ListItemText>Rewards</ListItemText>
                 </ListItemButton>
@@ -95,7 +94,7 @@ const MenuIcon = () => {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                   <SettingsApplicationsIcon />
+                   <SettingsOutlinedIcon />
                   </ListItemIcon>
                   <ListItemText>Setting</ListItemText>
                 </ListItemButton>
@@ -104,7 +103,7 @@ const MenuIcon = () => {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                   <ExitToAppIcon sx={{color:'red'}} />
+                   <MeetingRoomOutlinedIcon sx={{color:'red'}} />
                   </ListItemIcon>
                   <ListItemText>Logout</ListItemText>
                 </ListItemButton>
