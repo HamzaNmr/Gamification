@@ -23,8 +23,8 @@ const LeaderCard = () => {
     <Grow in>
     <Paper style={{borderRadius: 15, backgroundColor: '#EDECEE',padding: '20px',}}>
        {
-        leaders.map((user) => (
-          <Paper className={classes.bar}>
+        leaders.map((user, i) => (
+          <Paper className={classes.bar} key={i}>
           <div style={{display: 'flex', alignItems:'center',gap: '30px'}}>
               <div className={classes.number} style={{backgroundColor: `${user.color}`}}>{user.rank}</div>
               <div style={{color: '#333'}} className={classes.centered}>

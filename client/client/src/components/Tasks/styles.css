@@ -1,0 +1,23 @@
+.adviceText{
+    position: relative;
+    width: max-content;
+    font-weight: lighter;
+}
+
+
+  .adviceText::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #432874;
+    animation: typer 7s steps(50) forwards;
+}
+
+@keyframes typer {
+    to{
+        left: 100%;
+    }
+}
