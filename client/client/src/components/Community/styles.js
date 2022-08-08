@@ -44,5 +44,14 @@ export default makeStyles((theme) => ({
     borderRadius: '15px',
     color: '#eee',
     padding: '10px 20px',
-  }
+  },
+
+  styleCommentReply: {
+    display:'flex',
+    alignItems:'start',
+    gap: '1rem',
+    marginBottom: '1rem',
+    width:' 90%',
+   padding: '20px 0px 20px 10%',
+    },
 }));
