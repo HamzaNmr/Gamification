@@ -55,8 +55,9 @@ export default makeStyles((theme) => ({
   cardTop: {
     display: 'flex', justifyContent: 'space-around', alignItems: 'center', backgroundColor: '#ECEBED', borderRadius: 15,padding: '30px 50px',
     boxShadow: "0px 0px 64px -38px rgba(0,0,0,0.75)",
-    width: '50%',
-    marginBottom: '30px'
+    width: '350px',
+    marginBottom: '30px',
+    border: '3px solid #36205D'
   },
   myFirstCard: {
     color: "#36205D",
@@ -71,7 +72,8 @@ export default makeStyles((theme) => ({
     backgroundColor: "#36205D",
     boxShadow: "0px 0px 64px -38px rgba(0,0,0,0.75)",
     gap: "14px",
-    width: '50%',
+    marginBottom: '30px',
+    width: '357px',
    
   },
   mySecondCard: {
