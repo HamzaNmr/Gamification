@@ -22,11 +22,11 @@ const Task = () => {
     }
 
   return (
-   arr.map((task) => (
+   arr.map((task,i) => (
 
-    <ScrollAnimation animateIn="animate__bounceInLeft" >
+    <ScrollAnimation animateIn="animate__bounceInRight" key={i}>
     
-    <Card raised elevation={6} className={classes.card} sx={{ borderRadius: 5}}>
+    <Card raised elevation={6} className={classes.card} sx={{ borderRadius: 5}} key={i}>
     <CardMedia
     component="img"
     sx={{ width: 151 }}
