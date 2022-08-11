@@ -17,6 +17,7 @@ import { styled } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import ScrollAnimation from "react-animate-on-scroll";
 
 export default function profiles({ MYLeaderboard }) {
   return (
@@ -61,6 +62,7 @@ function Item(data) {
       }}>
 
         {/* card top */}
+        <ScrollAnimation animateIn="animate__bounceInLeft" >
         <div className={classes.cardTop}>
           {/* <Grid container className={classes.cardTop}>
             <Grid item xs={6}>
@@ -89,8 +91,10 @@ function Item(data) {
           </div>
 
         </div>
-
+        
+      </ScrollAnimation>
       {/* card bottom */}
+      <ScrollAnimation animateIn="animate__bounceInLeft" >
         <div className={classes.cardBottom}>
     
               <Typography variant="h5" className={classes.mySecondCard}>
@@ -116,8 +120,7 @@ function Item(data) {
             </div>
          
         </div>
-
-
+        </ScrollAnimation>
 
       </Grid>
 
@@ -128,13 +131,13 @@ function Item(data) {
         
          
 
-            <Grow in>
+            <ScrollAnimation animateIn="animate__bounceInRight" >
               <Paper
                 style={{
                   borderRadius: 15,
                   backgroundColor: "#36205D",
                   padding: "20px",
-                  width: '70%'
+                  width: '500px'
                 }}
               >
                 {data.map((user, index) => (
@@ -250,7 +253,7 @@ function Item(data) {
                   </Paper>
                 ))}
               </Paper>
-            </Grow>
+              </ScrollAnimation>
           </Grid>
        
 
