@@ -4,6 +4,11 @@ import { Paper, Typography, Avatar ,Grow} from '@material-ui/core';
 import Fire from '../../images/fire.png';
 import Clapping from '../../images/clapping.png';
 import Cool from '../../images/cool.png';
+import Emogi1 from "../../images/emogi1.png";
+import Emogi2 from "../../images/emogi2.png";
+import Emogi3 from "../../images/emogi3.png";
+import Emogi4 from "../../images/emogi4.png";
+import Emogi5 from "../../images/emogi5.png";
 import useStyles from './styles';
 
 
