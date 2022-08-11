@@ -6,6 +6,8 @@ import OnlineUser from '../OnlineUser/OnlineUser';
 
 import CommentsImage from '../../images/comments.png';
 
+import ScrollAnimation from "react-animate-on-scroll";
+
 const comments = [
   {name: 'Hamza Nemr', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'
 , reply:{name: 'Ali Mansour', description: "yes this completly right. amazing"}},
@@ -29,6 +31,7 @@ const Community = () => {
          <div className={classes.commentsInnerContainer}>
          {
             comments.map((comment, i) => (
+              
               <div key={i}>
                 <div className={classes.styleComment} key={i}>
               <Avatar  alt='' src='https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' style={{ width: '40px', height: '40px', border: '3px solid #333'}}>
@@ -69,6 +72,7 @@ const Community = () => {
                
               : null} */}
               </div>
+             
             ))
           }
          </div>

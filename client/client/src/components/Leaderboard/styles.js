@@ -53,13 +53,10 @@ export default makeStyles((theme) => ({
     // justifyContent: "center",
   },
   cardTop: {
-    borderRadius: 7,
-    height: "120px",
+    display: 'flex', justifyContent: 'space-around', alignItems: 'center', backgroundColor: '#ECEBED', borderRadius: 15,padding: '30px 50px',
     boxShadow: "0px 0px 64px -38px rgba(0,0,0,0.75)",
-    padding: "20px",
-    width: "180px",
-    backgroundColor:"#eee",
-    marginLeft:"50px"
+    width: '50%',
+    marginBottom: '30px'
   },
   myFirstCard: {
     color: "#36205D",
@@ -70,14 +67,12 @@ export default makeStyles((theme) => ({
     fontWeight: 600,
   },
   cardBottom: {
-    borderRadius: 7,
-    height: "250px",
-    width: "180px",
+    display: 'flex', flexDirection: 'column', alignItems: 'center',borderRadius: 15, padding: '30px 50px',
     backgroundColor: "#36205D",
-    padding: "20px",
-    marginTop: "25px",
     boxShadow: "0px 0px 64px -38px rgba(0,0,0,0.75)",
-    marginLeft:"50px"
+    gap: "14px",
+    width: '50%',
+   
   },
   mySecondCard: {
     color: "#fbfbfb",
@@ -91,7 +86,7 @@ export default makeStyles((theme) => ({
     // marginLeft:"50px"
   },
   leftGrid: {
-    paddingRight: "70px",
+   
   },
   rightGrid: {
     marginLeft:"20px",

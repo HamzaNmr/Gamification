@@ -56,17 +56,19 @@ function Item(data) {
 
   return (
     <Grid container alignItems='stretch'>
-      <Grid item lg={5} xs={4} className={classes.leftGrid}  style={{
-        backgroundColor:"red",
+      <Grid item lg={6} sm={12} className={classes.leftGrid}  style={{
+        display: 'flex', flexDirection: 'column', alignItems: "end", paddingInline: '20px' 
       }}>
-        <Container maxWidth="sm">
-          <Grid container className={classes.cardTop}>
+
+        {/* card top */}
+        <div className={classes.cardTop}>
+          {/* <Grid container className={classes.cardTop}>
             <Grid item xs={6}>
               <Typography className={classes.myFirstCard}>My rank</Typography>
             </Grid>
             <Grid item xs={6}>
               <Typography className={classes.myFirstCard}>My score</Typography>
-            </Grid>
+            </Grid> 
             <Grid item xs={6}>
               <Typography className={classes.myFirstCard}>
                 <h2>3RD PLACE</h2>
@@ -75,49 +77,56 @@ function Item(data) {
             <Grid item xs={6}>
               <h2 className={classes.myFirstCard}>120</h2>
             </Grid>
-          </Grid>
-        </Container>
-        <Container maxWidth="sm">
-          <Grid container className={classes.cardBottom}>
-            <Grid item xs={12}>
-              <Typography className={classes.mySecondCard}>
-                <h3>Top Leader Last Week</h3>
+          </Grid> */}
+          <div>
+          <Typography variant="subtitle1">My rank</Typography>
+          <Typography variant="h4"> 3rd place</Typography>
+          </div>
+
+          <div>
+          <Typography variant="subtitle1">Level</Typography>
+          <Typography variant="h4">120</Typography>
+          </div>
+
+        </div>
+
+      {/* card bottom */}
+        <div className={classes.cardBottom}>
+    
+              <Typography variant="h5" className={classes.mySecondCard}>
+               Top Leader in IT MAX
               </Typography>
-            </Grid>
-            {/* <Grid item xs={12}> */}
-            <Grid item xs={4}></Grid>
-            <Grid item xs={8}>
               <Avatar
                 alt=""
                 src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360"
                 style={{
                   width: 100,
                   height: 100,
-                  // float: "right",
-                  // marginRight: "110px",
+                 
                 }}
               />
-            </Grid>
-            <Grid item xs={1}></Grid>
-            {/* </Grid> */}
-            <Grid item xs={12}>
-              <Typography className={classes.mySecondCard}>
-                <h3>HAMZA NEMER</h3>
+            <div>
+              <Typography variant="h5" className={classes.mySecondCard}>
+                HAMZA NEMER
               </Typography>
-            </Grid>
-            <Grid className={classes.myCard} item xs={12}>
-              <h4>Hamza Nemer</h4>
-            </Grid>
-          </Grid>
-        </Container>
+            
+            <Typography className={classes.myCard}>
+              @Hamza_Nemer
+            </Typography>
+            </div>
+         
+        </div>
+
+
+
       </Grid>
-    <Grid item xs={7} lg={7} className={classes.rightGrid} style={{
-      backgroundColor: "yellow"
-    }}>
-        {/* //test */}
-        <Container maxWidth="sm">
-          <Grid container className={classes.cardTopRight}>
-            {/* //test */}
+
+{/* /////////////////////////////////////////////////////////////////////// */}
+
+    <Grid item sm={12} lg={6} className={classes.rightGrid}>
+      
+        
+         
 
             <Grow in>
               <Paper
@@ -125,8 +134,7 @@ function Item(data) {
                   borderRadius: 15,
                   backgroundColor: "#36205D",
                   padding: "20px",
-                  // width: "800px",
-                  // float: "right",
+                  width: '70%'
                 }}
               >
                 {data.map((user, index) => (
@@ -177,23 +185,11 @@ function Item(data) {
 
                       {/* //test start */}
 
-                      <Grid item xs={2}>
+                      <Grid item xs={12}>
                         <div>
-                          <Button
-                            aria-describedby={id}
-                            variant="contained"
-                            className={classes.name}
-                            style={{
-                              backgroundColor: `${user.nameColor}`,
-                              width: "120px",
-                              height: "50px",
-                              paddingTop: "20px",
-                              paddingBottom: "20px",
-                            }}
-                            onClick={handleClick}
-                          >
+                          <Typography variant="subtitle1">
                             {user.name}
-                          </Button>
+                          </Typography>
                           <Popover
                             id={id}
                             open={open}
@@ -256,8 +252,9 @@ function Item(data) {
               </Paper>
             </Grow>
           </Grid>
-        </Container>
-      </Grid>
+       
+
+     
     </Grid>
   );
 }
