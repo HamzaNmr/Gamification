@@ -30,9 +30,10 @@ const LeaderCard = () => {
        {
         leaders.map((user, i) => (
           <Paper className={classes.bar} key={i}>
-          <div style={{display: 'flex', alignItems:'center',gap: '30px'}}>
-              <div className={classes.number} style={{backgroundColor: `${user.color}`}}>{user.rank}</div>
+          <div style={{display: 'flex', alignItems:'center', justifyContent: 'space-between',}}>
+              
               <div style={{color: '#333'}} className={classes.centered}>
+               <div className={classes.number} style={{backgroundColor: `${user.color || '#333'}`}}>{user.rank}</div>
                 <Avatar alt="" src='https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' style={{width: 50, height: 50, border: '1px solid #36205D'}}>
                 </Avatar>
                 <div>
@@ -45,7 +46,7 @@ const LeaderCard = () => {
                 </div>
               </div>
               <div className={classes.centered}>
-                  <span style={{color:`${user.color}`, fontWeight: '900'}}>{user.level}</span>
+                  <span style={{color:`${user.color || '#333'}`, fontWeight: '900'}}>{user.level}</span>
                   <img alt='' src={user.emoji} style={{width:'20px', height: '20px'}}/>
               </div>
           </div>

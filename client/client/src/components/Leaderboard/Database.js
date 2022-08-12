@@ -61,10 +61,7 @@ export const MYLeaderboard = [
     date: "2022-08-4",
     username: "ADELLA_WUNSCH",
     level: 90,
-    bgcolor: "#fbfbfb",
-    color: "#333",
-    levelColor:"#333",
-    nameColor:"#36205D",
+   
     rank: 4,
     emoji: `${Emogi3}`,
   },
@@ -76,10 +73,8 @@ export const MYLeaderboard = [
     date: "2022-06-22",
     username: "CLAIR_CONNELL",
     level: 88,
-    bgcolor: "#fbfbfb",
-    color: "#333",
-    levelColor:"#333",
-    nameColor:"#36205D",
+ 
+  
     rank: 5,
     emoji: `${Emogi1}`,
   },
@@ -91,10 +86,8 @@ export const MYLeaderboard = [
     date: "2022-08-3",
     username: "KAMERON_PROSACCO",
     level: 80,
-    bgcolor: "#fbfbfb",
-    color: "#333",
-    levelColor:"#333",
-    nameColor:"#36205D",
+  
+  
     rank: 6,
     emoji: `${Emogi2}`,
   },
@@ -106,10 +99,8 @@ export const MYLeaderboard = [
     date: "2022-07-29",
     username: "DANIEL_RICCIARDO",
     level: 65,
-    bgcolor: "#fbfbfb",
-    color: "#333",
-    levelColor:"#333",
-    nameColor:"#36205D",
+  
+    
     rank: 8,
     emoji:`${Emogi5}`
   },
@@ -121,10 +112,8 @@ export const MYLeaderboard = [
     date: "2022-07-29",
     username: "LEWIS_HAMILTON",
     level: 70,
-    bgcolor: "#fbfbfb",
-    color: "#333",
-    levelColor:"#333",
-    nameColor:"#36205D",
+   
+ 
     rank: 7,
     emoji: `${Cool}`,
   },

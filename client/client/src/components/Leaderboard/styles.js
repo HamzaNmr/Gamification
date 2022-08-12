@@ -1,37 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
-  bar: {
-    padding: "20px 30px",
-    marginBottom: "14px",
-    borderRadius: 7,
-    boxShadow: "0px 0px 64px -38px rgba(0,0,0,0.75)",
-    // border: '3px solid gray',
-    transition: ".5s ease-out",
-    "&:hover": {
-      transform: "scale(1.04)",
-    },
-  },
-  centered: {
-    display: "flex",
-    justifyContent: "start",
-    alignItems: "center",
-    gap: "20px",
-    paddingTop: "10px",
-  },
-
-  number: {
-    padding: "10px",
-    width: "20px",
-    height: "20px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 7,
-    color: "#eee",
-    fontSize: "1.3rem",
-    fontWeight: 700,
-  },
   space: {
     marginLeft: "360px",
   },
@@ -57,7 +26,10 @@ export default makeStyles((theme) => ({
     boxShadow: "0px 0px 64px -38px rgba(0,0,0,0.75)",
     width: '350px',
     marginBottom: '30px',
-    border: '3px solid #36205D'
+    border: '3px solid #36205D',
+    [theme.breakpoints.down('sm')]: {
+      width: '90%'
+    },
   },
   myFirstCard: {
     color: "#36205D",
@@ -74,7 +46,9 @@ export default makeStyles((theme) => ({
     gap: "14px",
     marginBottom: '30px',
     width: '357px',
-   
+    [theme.breakpoints.down('sm')]: {
+      width: '90%'
+    },
   },
   mySecondCard: {
     color: "#fbfbfb",
@@ -101,10 +75,49 @@ export default makeStyles((theme) => ({
 cardTopRight:{
     marginRight:"100px",
     width:"100%"
+},
+
+
+
+
+
+
+leaderboardCard: {
+  borderRadius: '15px !important',
+  backgroundColor: "#36205D !important",
+  padding: "20px !important",
+  width: '500px !important',
+  [theme.breakpoints.down('sm')]: {
+    width: '90% !important'
+  },
+},
+
+bar:{
+  padding: '20px 30px',
+  marginBottom: '14px',
+  borderRadius: 7,
+  boxShadow: '0px 0px 64px -38px rgba(0,0,0,0.75)',
+  // border: '3px solid gray',
+  transition: '.5s ease-out',
+  '&:hover':{
+      transform: 'scale(1.05)',
+  }
+},
+centered:{
+  display: 'flex', justifyContent: 'start', alignItems:'center', gap: '20px',
+ },
+number:{
+  padding: '10px',
+  width: '20px',
+  height: '20px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: 7,
+  color: 'white',
+  fontSize: '1.3rem',
+  fontWeight: 700,
 }
-
-
-
 
 
 
