@@ -132,125 +132,149 @@ function Item(data) {
          
 
             <ScrollAnimation animateIn="animate__bounceInRight" >
-              <Paper
-                style={{
-                  borderRadius: 15,
-                  backgroundColor: "#36205D",
-                  padding: "20px",
-                  width: '500px'
-                }}
-              >
+              <Paper className={classes.leaderboardCard}>
+              <div style={{display: 'flex', alignItems:'center', justifyContent: 'space-between', marginBottom: '14px'}}>
+              <div style={{color: 'white', marginLeft: '35px'}} className={classes.centered} >
+                    <Typography variant="body2">Rank</Typography>
+                    <Typography variant="body2">Players</Typography>
+              </div>
+              <div style={{color: 'white', marginRight: '50px'}}>
+                <Typography variant="body2"># Level</Typography>
+              </div>
+              </div>
                 {data.map((user, index) => (
+                  // <Paper className={classes.bar} key={index}>
+                  //   <div
+                  //     style={{
+                  //       display: "flex",
+                  //       alignItems: "center",
+                  //       gap: "30px",
+                  //     }}
+                  //   >
+                  //     <Grid item xs={1}>
+                  //       <div
+                  //         className={classes.number}
+                  //         style={{
+                  //           backgroundColor: `${user.bgcolor}`,
+                  //           color: `${user.color}`,
+                  //         }}
+                  //       >
+                  //         {user.rank}
+                  //       </div>
+                  //     </Grid>
+                  //     <Grid item xs={1}>
+                  //       <div
+                  //         style={{ color: "#333" }}
+                  //         className={classes.centered}
+                  //       >
+                  //         <Avatar
+                  //           alt=""
+                  //           //   src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360"
+                  //           src={user.img}
+                  //           style={{
+                  //             width: 50,
+                  //             height: 50,
+                  //             border: "1px solid #36205D",
+                  //           }}
+                  //         ></Avatar>
+                  //       </div>
+                  //     </Grid>
+
+                  //     {/* <Typography
+                  //   variant="subtitle1"
+                  //   className={classes.name}
+                  //   style={{ backgroundColor: `${user.nameColor}` }}
+                  // >
+                  //   {user.name}
+                  // </Typography> */}
+
+                  //     {/* //test start */}
+
+                  //     <Grid item xs={12}>
+                  //       <div>
+                  //         <Typography variant="subtitle1">
+                  //           {user.name}
+                  //         </Typography>
+                  //         <Popover
+                  //           id={id}
+                  //           open={open}
+                  //           anchorEl={anchorEl}
+                  //           onClose={handleClose}
+                  //           anchorOrigin={{
+                  //             vertical: "top",
+                  //             horizontal: "right",
+                  //           }}
+                  //         >
+                  //           <Typography className={classes.popover}>
+                  //             <h3>{user.date}</h3>
+                  //             <span>{user.location}</span>
+                  //           </Typography>
+                  //         </Popover>
+                  //       </div>
+
+                  //       {/* // test end */}
+
+                  //       <Typography
+                  //         variant="caption"
+                  //         style={{ color: "#36205D", fontWeight: "bold" }}
+                  //         className={classes.centeredd}
+                  //       >
+                  //         @{user.username}
+                  //       </Typography>
+
+                  //       <Typography
+                  //         variant="subtitle1"
+                  //         style={{ fontSize: "12px", color: "#36205D" }}
+                  //       >
+                  //         {user.date}
+                  //       </Typography>
+                  //       {/* </div>
+                  // </div> */}
+                  //     </Grid>
+                  //     <Grid item xs={6}></Grid>
+
+                  //     {/* // <div className={classes.space}></div> */}
+                  //     <Grid item xs={2}>
+                  //       <div className={classes.centered}>
+                  //         <span
+                  //           style={{
+                  //             color: `${user.levelColor}`,
+                  //             fontWeight: "900",
+                  //           }}
+                  //         >
+                  //           {user.level}
+                  //         </span>
+                  //         <img
+                  //           alt=""
+                  //           src={user.emoji}
+                  //           style={{ width: "20px", height: "20px" }}
+                  //         />
+                  //       </div>
+                  //     </Grid>
+                  //   </div>
+                  // </Paper>
                   <Paper className={classes.bar} key={index}>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "30px",
-                      }}
-                    >
-                      <Grid item xs={1}>
-                        <div
-                          className={classes.number}
-                          style={{
-                            backgroundColor: `${user.bgcolor}`,
-                            color: `${user.color}`,
-                          }}
-                        >
-                          {user.rank}
-                        </div>
-                      </Grid>
-                      <Grid item xs={1}>
-                        <div
-                          style={{ color: "#333" }}
-                          className={classes.centered}
-                        >
-                          <Avatar
-                            alt=""
-                            //   src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360"
-                            src={user.img}
-                            style={{
-                              width: 50,
-                              height: 50,
-                              border: "1px solid #36205D",
-                            }}
-                          ></Avatar>
-                        </div>
-                      </Grid>
-
-                      {/* <Typography
-                    variant="subtitle1"
-                    className={classes.name}
-                    style={{ backgroundColor: `${user.nameColor}` }}
-                  >
-                    {user.name}
-                  </Typography> */}
-
-                      {/* //test start */}
-
-                      <Grid item xs={12}>
+                  <div style={{display: 'flex', alignItems:'center', justifyContent: 'space-between',}}>
+                  
+                      <div style={{color: '#333'}} className={classes.centered}>
+                       <div className={classes.number} style={{backgroundColor: `${user.bgcolor || '#333'}`}}>{user.rank}</div>
+                        <Avatar alt="" src='https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' style={{width: 50, height: 50, border: '1px solid #36205D'}}>
+                        </Avatar>
                         <div>
-                          <Typography variant="subtitle1">
-                            {user.name}
-                          </Typography>
-                          <Popover
-                            id={id}
-                            open={open}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{
-                              vertical: "top",
-                              horizontal: "right",
-                            }}
-                          >
-                            <Typography className={classes.popover}>
-                              <h3>{user.date}</h3>
-                              <span>{user.location}</span>
-                            </Typography>
-                          </Popover>
-                        </div>
-
-                        {/* // test end */}
-
-                        <Typography
-                          variant="caption"
-                          style={{ color: "#36205D", fontWeight: "bold" }}
-                          className={classes.centeredd}
-                        >
+                        <Typography variant='subtitle1' style={{fontWeight: 500}}>
+                          {user.name}
+                        </Typography>
+                        <Typography variant='caption'  style={{color: '#36205D', fontWeight: 'bold'}} className={classes.centered}>
                           @{user.username}
                         </Typography>
-
-                        <Typography
-                          variant="subtitle1"
-                          style={{ fontSize: "12px", color: "#36205D" }}
-                        >
-                          {user.date}
-                        </Typography>
-                        {/* </div>
-                  </div> */}
-                      </Grid>
-                      <Grid item xs={6}></Grid>
-
-                      {/* // <div className={classes.space}></div> */}
-                      <Grid item xs={2}>
-                        <div className={classes.centered}>
-                          <span
-                            style={{
-                              color: `${user.levelColor}`,
-                              fontWeight: "900",
-                            }}
-                          >
-                            {user.level}
-                          </span>
-                          <img
-                            alt=""
-                            src={user.emoji}
-                            style={{ width: "20px", height: "20px" }}
-                          />
                         </div>
-                      </Grid>
-                    </div>
-                  </Paper>
+                      </div>
+                      <div className={classes.centered}>
+                          <span style={{color:`${user.bgcolor || '#333'}`, fontWeight: '900'}}>{user.level}</span>
+                          <img alt='' src={user.emoji} style={{width:'20px', height: '20px'}}/>
+                      </div>
+                  </div>
+              </Paper>
                 ))}
               </Paper>
               </ScrollAnimation>
