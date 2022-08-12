@@ -155,7 +155,7 @@ const ProfileModel = () => {
               </div>
 
               <div>
-                <Button variant='contained'>Edit</Button>
+                <Button variant='contained'>Edit profile</Button>
               </div>
                
             </div>

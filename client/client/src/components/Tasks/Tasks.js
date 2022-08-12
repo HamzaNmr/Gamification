@@ -14,10 +14,10 @@ const Tasks = () => {
 
             <Grid item lg={12} xs={12}>
           
-              <Paper style={{backgroundColor: '#432874', padding: '20px 30px', borderRadius: 15, color: 'white'}}>
-                <Typography variant='h4' style={{display: 'flex', alignItems: 'center',}}>
-                  <img alt='' src={AdviceImage} style={{width: 70, heigth: 70, marginRight: '14px'}}/>
-                  Advice  <span style={{fontSize: '1.2rem', marginLeft: '30px'}} className='adviceText'>Try to complete the tutorials video then go to answer on questions</span>
+              <Paper style={{backgroundColor: '#432874', padding: '7px 30px', borderRadius: 15, color: 'white',}}>
+                <Typography variant='h6' style={{display: 'flex', alignItems: 'center',}}>
+                  <img alt='' src={AdviceImage} style={{width: 40, heigth: 40, marginRight: '14px'}}/>
+                  Advice  <span style={{fontSize: '.8rem', marginLeft: '30px'}} className='adviceText'>Try to complete the tutorials video then go to answer on questions</span>
                 </Typography>
               </Paper>
            

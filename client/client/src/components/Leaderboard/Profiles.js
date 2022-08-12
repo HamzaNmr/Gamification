@@ -133,6 +133,15 @@ function Item(data) {
 
             <ScrollAnimation animateIn="animate__bounceInRight" >
               <Paper className={classes.leaderboardCard}>
+              <div style={{display: 'flex', alignItems:'center', justifyContent: 'space-between', marginBottom: '14px'}}>
+              <div style={{color: 'white', marginLeft: '35px'}} className={classes.centered} >
+                    <Typography variant="body2">Rank</Typography>
+                    <Typography variant="body2">Players</Typography>
+              </div>
+              <div style={{color: 'white', marginRight: '50px'}}>
+                <Typography variant="body2"># Level</Typography>
+              </div>
+              </div>
                 {data.map((user, index) => (
                   // <Paper className={classes.bar} key={index}>
                   //   <div
@@ -246,7 +255,7 @@ function Item(data) {
                   // </Paper>
                   <Paper className={classes.bar} key={index}>
                   <div style={{display: 'flex', alignItems:'center', justifyContent: 'space-between',}}>
-                      
+                  
                       <div style={{color: '#333'}} className={classes.centered}>
                        <div className={classes.number} style={{backgroundColor: `${user.bgcolor || '#333'}`}}>{user.rank}</div>
                         <Avatar alt="" src='https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' style={{width: 50, height: 50, border: '1px solid #36205D'}}>

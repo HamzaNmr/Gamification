@@ -2,9 +2,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
 
- textField:{
-    
-    },
+ paper:{
+  backgroundColor: '#EBEAEC', height: '77vh', border: '3px solid #333', borderRadius: 15, padding: '2rem',
+  [theme.breakpoints.down('md')]: {
+    height: 'auto !important',
+},
+ },
   commentButton:{
     borderRadius: 15,
     marginBottom: 10,
@@ -24,11 +27,11 @@ export default makeStyles((theme) => ({
   },
 
   commentsInnerContainer:{
-    height:'95vh',
+    height:'77vh',
     overflow:  'auto',
     marginRight: '30px',
     [theme.breakpoints.down('md')]: {
-        height: '65vh',
+        height: '55vh',
     },
   },
   styleComment: {
@@ -44,6 +47,7 @@ export default makeStyles((theme) => ({
     borderRadius: '15px',
     color: '#eee',
     padding: '10px 20px',
+    fontSize: '.8rem',
   },
 
   styleCommentReply: {

@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid, Paper, Typography, TextField, Button, Avatar, Grow } from '@material-ui/core';
 
 import useStyles from './styles';
-import OnlineUser from '../OnlineUser/OnlineUser';
+
 
 import CommentsImage from '../../images/comments.png';
 
@@ -24,7 +24,7 @@ const Community = () => {
   return (
    <Grow in>
      <div style={{margin: '77px 0 30px 0'}}>
-      <Paper elevation={12} style={{backgroundColor: '#EBEAEC', height: '100vh', border: '3px solid #333', borderRadius: 15, padding: '2rem'}}>
+      <Paper elevation={12} className={classes.paper}>
        <Grid container justifyContent='space-between' alignItems='stretch' spacing={3}>
 
         <Grid item lg={8} md={6} sm={12}>
@@ -33,7 +33,7 @@ const Community = () => {
             comments.map((comment, i) => (
               
               <div key={i}>
-                <div className={classes.styleComment} key={i}>
+              <div className={classes.styleComment} key={i}>
               <Avatar  alt='' src='https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' style={{ width: '40px', height: '40px', border: '3px solid #333'}}>
                   
                </Avatar>
@@ -41,7 +41,7 @@ const Community = () => {
                <Typography gutterBottom variant='subtitle1'>
  
              <div>
-             <strong style={{marginLeft:'12px', color: "#333"}} >{comment.name}</strong>
+             <strong style={{marginLeft:'12px', color: "#333",}} >{comment.name}</strong>
               
              <div className={classes.styleInnerComment}>
               {comment.description}
@@ -89,8 +89,6 @@ const Community = () => {
         <Button style={{marginTop: '10px'}} fullWidth  variant='contained' className={classes.commentButton}>Comment</Button>
         </div>
         
-
-        <OnlineUser/>
        
         </Grid>
 

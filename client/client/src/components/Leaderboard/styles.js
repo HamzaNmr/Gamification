@@ -22,11 +22,12 @@ export default makeStyles((theme) => ({
     // justifyContent: "center",
   },
   cardTop: {
-    display: 'flex', justifyContent: 'space-around', alignItems: 'center', backgroundColor: '#ECEBED', borderRadius: 15,padding: '30px 50px',
+    display: 'flex', justifyContent: 'space-around', alignItems: 'center', borderRadius: 15,padding: '30px 50px',
     boxShadow: "0px 0px 64px -38px rgba(0,0,0,0.75)",
     width: '350px',
     marginBottom: '30px',
     border: '3px solid #36205D',
+    background: 'linear-gradient(to bottom, #eee, #ddd ,white, #888987, gray)',
     [theme.breakpoints.down('sm')]: {
       width: '90%'
     },
@@ -100,7 +101,7 @@ bar:{
   // border: '3px solid gray',
   transition: '.5s ease-out',
   '&:hover':{
-      transform: 'scale(1.05)',
+      transform: 'scale(1.05) !important',
   }
 },
 centered:{
