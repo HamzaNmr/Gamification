@@ -80,15 +80,17 @@ h6 span{
   height: 36px;
   border-radius: 50%;
   color: white;
+
   background-color: #9687DB;
   font-family: 'unicons';
-  content: '\eb4f';
+  content: '\2196';
   z-index: 20;
   top: -10px;
   left: -10px;
   line-height: 36px;
   text-align: center;
-  font-size: 24px;
+  font-size: 2rem;
+  font-weight: 900;
   transition: all 0.5s ease;
 }
 .checkbox:checked + label:before {
@@ -189,13 +191,13 @@ h6 span{
 }
 .input-icon {
   position: absolute;
-  top: 0;
-  left: 18px;
+  top: 25px;
+  left: 40px;
   height: 48px;
   font-size: 24px;
   line-height: 48px;
   text-align: left;
-  color: white;
+  color: gray;
   -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
 }
@@ -282,7 +284,6 @@ h6 span{
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
 .btn:hover{
-  background-color: whitesmoke;
   letter-spacing: 3px;
   box-shadow: 0 8px 24px 0 rgba(18, 3, 30, 0.2);
 }

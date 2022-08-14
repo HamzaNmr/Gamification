@@ -1,4 +1,8 @@
 import React from 'react';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import BadgeIcon from '@mui/icons-material/Badge';
+
 // import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import './style.css'
@@ -29,11 +33,13 @@ const UserForm = () => {
                               <h4 className="...">Sign In</h4>
                               <div className="form-group">
                                 <input type="email" name="email" className="form-style" placeholder="Your Email" id="logemail" autoComplete="off" />
-                                <i className="input-icon uil uil-at" />
+                                {/* <i className="input-icon uil uil-at" /> */}
+                                <AlternateEmailIcon className='input-icon'/>
                               </div>
                               <div className="form-group">
                                 <input type="password" name="password" className="form-style" placeholder="Your Password" id="logpass" autoComplete="off" />
-                                <i className="input-icon uil uil-lock-alt" />
+                                {/* <i className="input-icon uil uil-lock-alt" /> */}
+                                <VpnKeyIcon className='input-icon'/>
                               </div>
                               <button className="btn mt-4">submit</button>
                               <p className="mb-0 mt-4 text-center letterSpacing"><a href="#0" className="link">Don't have an account? sign up</a></p>
@@ -46,15 +52,18 @@ const UserForm = () => {
                               <h4 className="mb-4 pb-3">Sign Up</h4>
                               <div className="form-group">
                                 <input type="text" name="logname" className="form-style" placeholder="Your Full Name" id="logname" autoComplete="off" />
-                                <i className="input-icon uil uil-user" />
+                                {/* <i className="input-icon uil uil-user" /> */}
+                                <BadgeIcon className='input-icon'/>
                               </div>
                               <div className="form-group mt-2">
                                 <input type="email" name="logemail" className="form-style" placeholder="Your Email" id="logemail" autoComplete="off" />
-                                <i className="input-icon uil uil-at" />
+                                {/* <i className="input-icon uil uil-at" /> */}
+                                <AlternateEmailIcon className='input-icon'/>
                               </div>
                               <div className="form-group mt-2">
                                 <input type="password" name="logpass" className="form-style" placeholder="Your Password" id="logpass" autoComplete="off" />
-                                <i className="input-icon uil uil-lock-alt" />
+                                {/* <i className="input-icon uil uil-lock-alt" /> */}
+                                <VpnKeyIcon className='input-icon'/>
                               </div>
                               <button className="btn mt-4">submit</button>
                             </div>
