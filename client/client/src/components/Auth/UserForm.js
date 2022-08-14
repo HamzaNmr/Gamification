@@ -1,21 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import BadgeIcon from '@mui/icons-material/Badge';
 
-// import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { signin, signup } from '../../actions/auth';
 
-import './style.css'
+import './style.css';
+
+const initialState = { firstName: '', lastName: '', email: '', password: ''};
 const UserForm = () => {
   
+  const [isSignup, setIsSignup] = useState(false);
+  const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value});
+};
+
+const switchMode = () => {
+    setIsSignup((prevIsSignup) => !prevIsSignup );
+};
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    if(isSignup){
+        dispatch(signup(formData, navigate));
+    }else{
+        dispatch(signin(formData, navigate));
+    }
+};
+
+
   return (
     <div>
-      {/* <div>
-        <ExternalLink href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" />
-      </div> */}
-      {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
-      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" /> */}
-      
+   
       <div style={{marginTop:'70px'}}>
         <div className="section firstDiv">
             <div className="container">
@@ -23,7 +47,7 @@ const UserForm = () => {
                 <div className="...">
                   <div className="...">
                     <h4 className="..."><span style={{marginRight :'30px'}} >Sign In</span><span>Sign Up</span></h4>
-                    <input className="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                    <input className="checkbox" type="checkbox" id="reg-log" name="reg-log" onClick={switchMode}/>
                     <label htmlFor="reg-log" />
                     <div className="card-3d-wrap mx-auto">
                       <div className="card-3d-wrapper">
@@ -31,17 +55,20 @@ const UserForm = () => {
                           <div className="center-wrap">
                             <div className="section text-center">
                               <h4 className="...">Sign In</h4>
+                              <form onSubmit={handleSubmit}>
                               <div className="form-group">
-                                <input type="email" name="email" className="form-style" placeholder="Your Email" id="logemail" autoComplete="off" />
+                                <input type="email" name="email" className="form-style" placeholder="Email" id="logemail" autoComplete="off"  onChange={handleChange}/>
                                 {/* <i className="input-icon uil uil-at" /> */}
                                 <AlternateEmailIcon className='input-icon'/>
                               </div>
                               <div className="form-group">
-                                <input type="password" name="password" className="form-style" placeholder="Your Password" id="logpass" autoComplete="off" />
+                                <input type="password" name="password" className="form-style" placeholder="Password" id="logpass" autoComplete="off"  onChange={handleChange}/>
                                 {/* <i className="input-icon uil uil-lock-alt" /> */}
                                 <VpnKeyIcon className='input-icon'/>
                               </div>
+                             
                               <button className="btn mt-4">submit</button>
+                              </form>
                               <p className="mb-0 mt-4 text-center letterSpacing"><a href="#0" className="link">Don't have an account? sign up</a></p>
                             </div>
                           </div>
@@ -50,22 +77,29 @@ const UserForm = () => {
                           <div className="center-wrap">
                             <div className="section text-center">
                               <h4 className="mb-4 pb-3">Sign Up</h4>
+                              <form onSubmit={handleSubmit}>
                               <div className="form-group">
-                                <input type="text" name="logname" className="form-style" placeholder="Your Full Name" id="logname" autoComplete="off" />
+                                <input type="text" name="firstName" className="form-style" placeholder="First Name" id="logname" autoComplete="off" onChange={handleChange} />
+                                {/* <i className="input-icon uil uil-user" /> */}
+                                <BadgeIcon className='input-icon'/>
+                              </div>
+                              <div className="form-group">
+                                <input type="text" name="lastName" className="form-style" placeholder="Last Name " id="logname" autoComplete="off"  onChange={handleChange} />
                                 {/* <i className="input-icon uil uil-user" /> */}
                                 <BadgeIcon className='input-icon'/>
                               </div>
                               <div className="form-group mt-2">
-                                <input type="email" name="logemail" className="form-style" placeholder="Your Email" id="logemail" autoComplete="off" />
+                                <input type="email" name="email" className="form-style" placeholder="Email" id="logemail" autoComplete="off"  onChange={handleChange}/>
                                 {/* <i className="input-icon uil uil-at" /> */}
                                 <AlternateEmailIcon className='input-icon'/>
                               </div>
                               <div className="form-group mt-2">
-                                <input type="password" name="logpass" className="form-style" placeholder="Your Password" id="logpass" autoComplete="off" />
+                                <input type="password" name="password" className="form-style" placeholder="Password" id="logpass" autoComplete="off"  onChange={handleChange}/>
                                 {/* <i className="input-icon uil uil-lock-alt" /> */}
                                 <VpnKeyIcon className='input-icon'/>
                               </div>
-                              <button className="btn mt-4">submit</button>
+                              <button className="btn" type='submit'>submit</button>
+                              </form>
                             </div>
                           </div>
                         </div>
