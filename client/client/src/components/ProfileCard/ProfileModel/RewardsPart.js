@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography, Box, ButtonBase } from "@material-ui/core";
+import { Card,CardContent,Typography} from "@material-ui/core";
 import './reward.css';
 import RewardImage from '../../../images/reward1.png';
 
-import useStyles from './styles';
+// import useStyles from './styles';
 
 
 const rewards = [
@@ -21,7 +21,7 @@ const rewards = [
 ]
 const RewardsPart = () => {
 
-    const classes = useStyles();
+    // const classes = useStyles();
   return (
     <div style={{display: 'flex', width: '100%', height: 270, flexWrap: 'wrap', overflow: 'auto',}}>
         {
@@ -29,7 +29,7 @@ const RewardsPart = () => {
                 <Card className="card" style={{borderRadius: 10,}} key={i}>
 
                 <div className='card-header'>
-                   <img alt='' src={reward.image} style={{width: 50, height: 50, marginTop: '7px'}}/>
+                   <img alt='' src={reward.image} style={{width: 40, height: 40, marginTop: '9px'}}/>
                 </div>
                 
                 <CardContent className="card-body" >

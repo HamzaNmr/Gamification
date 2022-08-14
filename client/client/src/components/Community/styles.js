@@ -10,7 +10,7 @@ export default makeStyles((theme) => ({
  },
   commentButton:{
     borderRadius: 15,
-    marginBottom: 10,
+    marginBottom: '5px',
     backgroundColor: "#9687DB",
     color:"white",
     fontSize: "1.1rem",
