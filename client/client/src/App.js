@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container } from '@material-ui/core';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 
@@ -6,7 +7,7 @@ import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Rewards from './components/Rewards/Rewards';
 import RewardsPage from './components/Rewards/RewardsPage';
-
+import Auth from './components/Auth/UserForm';
 import Community from './components/Community/Community';
 import Tasks from './components/Tasks/Tasks';
 
@@ -20,7 +21,8 @@ function App() {
         <Container maxWidth="xl" className='body'>
               <Navbar />
               <Routes>
-                <Route path="/" exact element={<Navigate to="/home"/>} />
+                <Route path="/" exact element={<Navigate to="/Auth"/>} />
+                <Route path="/Auth" exact element={<Auth/>} />
                 <Route path="/home" exact element={<Home/>} />
                 <Route path="/leaderboard" exact element={<Leaderboard/>} />
                 <Route path="/rewards" exact element={<RewardsPage/>} />
