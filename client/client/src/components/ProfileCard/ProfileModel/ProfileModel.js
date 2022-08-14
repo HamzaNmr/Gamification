@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
-import { Paper, Typography, Grow, Avatar, LinearProgress,  Divider, Tooltip} from '@material-ui/core';
+import { Typography, Avatar, LinearProgress,  Divider, Tooltip} from '@material-ui/core';
 
 import useStyles from './styles';
 
@@ -113,7 +113,7 @@ const ProfileModel = () => {
           
           <div  className={classes.gridDiv}>
                 <div>
-                  <Avatar variant="rounded"  alt="Remy Sharp" src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360" style={{width: '150px', height: '150px', border:"5px solid #9687DB"}}>
+                  <Avatar variant="rounded"  alt="Remy Sharp" src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360" style={{width: '150px', height: '150px', borderRadius: 15, border:"5px solid #9687DB"}}>
                   </Avatar>
                 </div>
 

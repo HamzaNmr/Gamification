@@ -12,13 +12,13 @@ const UserForm = () => {
       {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
       <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" /> */}
       
-      <div style={{marginTop:'99px'}}>
+      <div style={{marginTop:'70px'}}>
         <div className="section firstDiv">
             <div className="container">
-              <div className="row full-height justify-content-center">
-                <div className="col-12 text-center align-self-center py-5">
-                  <div className="section pb-5 pt-5 pt-sm-2 text-center">
-                    <h6 className="mb-0 pb-3"><span style={{marginRight :'10px'}} >Sign In</span><span>Sign Up</span></h6>
+              <div className="...">
+                <div className="...">
+                  <div className="...">
+                    <h4 className="..."><span style={{marginRight :'30px'}} >Sign In</span><span>Sign Up</span></h4>
                     <input className="checkbox" type="checkbox" id="reg-log" name="reg-log" />
                     <label htmlFor="reg-log" />
                     <div className="card-3d-wrap mx-auto">
@@ -26,13 +26,13 @@ const UserForm = () => {
                         <div className="card-front">
                           <div className="center-wrap">
                             <div className="section text-center">
-                              <h4 className="mb-4 pb-3">Sign In</h4>
+                              <h4 className="...">Sign In</h4>
                               <div className="form-group">
-                                <input type="email" name="logemail" className="form-style" placeholder="Your Email" id="logemail" autoComplete="off" />
+                                <input type="email" name="email" className="form-style" placeholder="Your Email" id="logemail" autoComplete="off" />
                                 <i className="input-icon uil uil-at" />
                               </div>
-                              <div className="form-group mt-2">
-                                <input type="password" name="logpass" className="form-style" placeholder="Your Password" id="logpass" autoComplete="off" />
+                              <div className="form-group">
+                                <input type="password" name="password" className="form-style" placeholder="Your Password" id="logpass" autoComplete="off" />
                                 <i className="input-icon uil uil-lock-alt" />
                               </div>
                               <button className="btn mt-4">submit</button>

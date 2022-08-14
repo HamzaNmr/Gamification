@@ -5,8 +5,10 @@ import useStyles from './styles';
 
 
 import CommentsImage from '../../images/comments.png';
+import CommunityImage from '../../images/chatting.gif';
 
 import ScrollAnimation from "react-animate-on-scroll";
+import { red } from '@material-ui/core/colors';
 
 const comments = [
   {name: 'Hamza Nemr', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'
@@ -88,8 +90,10 @@ const Community = () => {
         <TextField fullWidth minRows={4} variant='filled' label='Comment' multiline className={classes.textField}/>
         <Button style={{marginTop: '10px'}} fullWidth  variant='contained' className={classes.commentButton}>Comment</Button>
         </div>
-        
-       
+        <div>
+        <img src={CommunityImage} alt=''/>
+       <Typography variant='body2'> Illustration by <a href="https://icons8.com/illustrations/author/625472">Ekaterina Rogova</a> from <a href="https://icons8.com/illustrations">Ouch!</a></Typography>
+        </div>
         </Grid>
 
        </Grid>
