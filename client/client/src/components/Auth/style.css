@@ -83,7 +83,7 @@ h6 span{
 
   background-color: #9687DB;
   font-family: 'unicons';
-  content: '\2196';
+  content: '\eb4f';/*'\2196';*/
   z-index: 20;
   top: -10px;
   left: -10px;
