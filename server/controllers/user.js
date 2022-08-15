@@ -63,6 +63,14 @@ const { hashSync, compareSync } = require('bcrypt');
             id: user._id,
             name: user.name,
             email :user.email,
+            userName: user.userName,
+            bio: user.bio,
+            level: user.level,
+            experience: user.experience,
+            coins: user.coins,
+            imageUrl: user.imageUrl,
+            rewards: user.rewards,
+            badges: user.badges,
         }
 
         console.log(payload);
@@ -73,9 +81,17 @@ const { hashSync, compareSync } = require('bcrypt');
             success: true,
             message: "loged in successfuly",
             result: {
+                id: user._id,
                 name: user.name,
                 email :user.email,
-                id: user._id,
+                userName: user.userName,
+                bio: user.bio,
+                level: user.level,
+                experience: user.experience,
+                coins: user.coins,
+                imageUrl: user.imageUrl,
+                rewards: user.rewards,
+                badges: user.badges,
             },
             token: "Bearer " + token,
         })
