@@ -34,9 +34,18 @@ const userSchema = mongoose.Schema({
         default: 0,
     },
     imageUrl: String,
-    rewards: [String],
+    rewards: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'rewardsModel',
+        }
+    ],
     badges:[String],
     bio: String,
+    creatAt: {
+        type: Date,
+        default: Date.now(),
+    }
 });
 
 const UserModel = mongoose.model('UserModel', userSchema);

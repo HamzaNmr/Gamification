@@ -14,6 +14,7 @@ import {useNavigate} from "react-router-dom";
 const Navbar = () => {
 
     const classes = useStyles();
+    const user = JSON.parse(localStorage.getItem('profile'));
     const navigate = useNavigate();
 
       return (
@@ -34,7 +35,7 @@ const Navbar = () => {
 
             <div className={classes.coin}>
             <img src={Coin} alt="" style={{width: '30px',}}/>
-            <span>5.2</span>
+            <span>{user.result.coins}</span>
             </div>
 
             <Notfication/>
