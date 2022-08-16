@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const UserModel = require('../models/userModel');
+const UserModel = require('../models/UserModel');
 require('../passportJwt');
 const { hashSync, compareSync } = require('bcrypt');
 
@@ -99,5 +99,36 @@ const { hashSync, compareSync } = require('bcrypt');
 
 };
 
+const updateProfile = async (req, res) => {
+    const {firstName, lastName, email, password, bio, imageUrl, userName} = req.body;
+    
+    try {
+        const existingUser = await UserModel.findOneAndUpdate({ email });
+        console.log({email});
+        if(existingUser){
+            const result = await UserModel.create({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                name: `${firstName} ${lastName}`,
+                email: req.body.email,
+                password: hashSync(req.body.password, 14),
+                bio: req.body.bio,
+                userName: req.body.userName,
+                imageUrl: req.body.imageUrl,
+            })
 
-module.exports = { signup, signin };
+            res.status(200).json({result: result, token: token});
+        }else{
+            res.status(404).json({message: 'this user not exist'})
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+
+    
+};
+
+
+
+module.exports = { signup, signin, updateProfile};

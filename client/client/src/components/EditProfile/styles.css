@@ -1,0 +1,30 @@
+.input-file input[type="file" i]::-webkit-file-upload-button{
+    visibility: hidden;
+  }
+
+  .input-file ::before {
+    content: 'Choose your picture';
+    display: inline-block;
+    background-color: #432874;
+    border: 1px solid #999;
+    /* width: 20px;
+    height: 20px; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    border-radius: 15px;
+    padding: 10px 20px;
+    outline: none;
+    white-space: nowrap;
+    /* -webkit-user-select: none; */
+    cursor: pointer;
+    font-weight: 700;
+    font-size: .8rem;
+    color: #eee;
+  }
+ .input-file :hover::before {
+    border-color: black;
+  }
+  .input-file:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }

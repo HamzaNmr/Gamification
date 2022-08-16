@@ -15,7 +15,7 @@
 	font-size: 15px;
 	line-height: 1.7;
 	color: white;
-	background: linear-gradient(120deg, #432874,#9687DB);
+	background: #432874;
   border-radius: 30px;
   height: 88vh;
 }
@@ -70,7 +70,7 @@ h6 span{
   padding: 0;
   margin: 10px auto;
   cursor: pointer;
-  background-color: white;
+  background-color: #eee;
 }
 .checkbox:checked + label:before,
 .checkbox:not(:checked) + label:before{
@@ -178,7 +178,7 @@ h6 span{
   letter-spacing: 0.5px;
   outline: none;
   color: #333;
-  background-color: #FFFFFF;
+  background-color: #eee;
   border: none;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;

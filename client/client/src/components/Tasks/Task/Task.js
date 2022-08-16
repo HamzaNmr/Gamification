@@ -8,8 +8,10 @@ import QuestionImage from '../../../images/light-bulb.png';
 import DescriptionImage from '../../../images/job-seeking.png';
 import VideoImage from '../../../images/video.png';
 
-
+import "animate.css/animate.min.css";
 import ScrollAnimation from "react-animate-on-scroll";
+
+
 
 const arr = [{question: '?', description: 'x'}, {description: 'x', videoUrl: 'v'}, {question: '?', description: 'x',videoUrl: 'v'}, {}, {},{}, {},{},{},{}]
 const Task = () => {

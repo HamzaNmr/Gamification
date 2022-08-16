@@ -1,5 +1,5 @@
 import * as api from "../api/index";
-import { AUTH } from "../constants/actionsType";
+import { AUTH, UPDATE, FETCH_USER, START_LOADING, END_LOADING } from "../constants/actionsType";
 
 
 export const signin = (formData, navigate) => async (dispatch) => {
@@ -9,6 +9,7 @@ export const signin = (formData, navigate) => async (dispatch) => {
         dispatch({ type: AUTH, data });
 
         navigate('/home', {replace: true})
+        console.log(data);
     } catch (error) {
         console.log(error);
     }
@@ -21,7 +22,9 @@ export const signup = (formData, navigate) => async (dispatch) => {
         dispatch({ type: AUTH, data });
 
         navigate('/home', {replace: true})
+        console.log(data);
     } catch (error) {
         console.log(error);
     }
 }
+

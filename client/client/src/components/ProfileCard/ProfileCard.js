@@ -34,27 +34,30 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 const ProfileCard = () => {
 
     const classes = useStyles();
-    const expereience = 20;
+    const user = JSON.parse(localStorage.getItem('profile'));
+    const experience = user?.result?.experience;
 
-    
+  
   return (
     <Grow in>
         <div>
             <Paper style={{ backgroundColor: '#36205D', padding: '2rem 3rem', borderRadius: 15, marginBottom: '30px', display: 'flex', justifyContent:'space-between',}}>
                <div  className={classes.gridDiv}>
                 <div>
-                  <Avatar variant="rounded"  alt="Remy Sharp" src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360" style={{width: '150px', height: '150px',borderRadius: 15, border:"5px solid #9687DB"}}>
+                  <Avatar variant="rounded"  alt={user?.result?.name} src={user?.result?.imageUrl} style={{width: '150px', height: '150px',borderRadius: 15, border:"5px solid #9687DB"}}>
+                     <Typography variant='h1'>{user?.result?.name.charAt(0)}</Typography>
                   </Avatar>
                 </div>
 
                 <div>
                 <div style={{color: 'white'}} className={classes.centered}>
-                  <Avatar variant="square" alt="Remy Sharp" src={LevelAvatar} style={{width: 30, height: 30,}}>
+                  <Avatar variant="square" alt='' src={LevelAvatar} style={{width: 30, height: 30,}}>
                   </Avatar>
                   <div>
                   <ProfileModel/>
                   <Typography variant='caption'  style={{color: '#CBC8FF'}} className={classes.centered}>
-                    @Hamza_Nemer <HdrStrongIcon/> Level 2
+                    {user?.result?.userName ? user?.result?.userName : 'no userName yet'}
+                     <HdrStrongIcon/> Level {user?.result?.level}
                   </Typography>
                   </div>
                 </div>
@@ -66,9 +69,9 @@ const ProfileCard = () => {
                  <img alt='Experience' src={Star} style={{width: 20, height: 20,}} />
                 </Tooltip>
 
-                  <BorderLinearProgress variant="determinate" value={expereience * 2}/>
+                  <BorderLinearProgress variant="determinate" value={experience * 2}/>
                   
-                  <Typography variant='body2' style={{color:'#CBC8FF'}}>{expereience}/50</Typography>
+                  <Typography variant='body2' style={{color:'#CBC8FF'}}>{experience}/50</Typography>
                  
                 </div>
 
