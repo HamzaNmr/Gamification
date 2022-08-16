@@ -1,25 +1,27 @@
 import React from 'react';
+
+
+
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import { Typography, Avatar, LinearProgress,  Divider, Tooltip} from '@material-ui/core';
-
 import useStyles from './styles';
-
 import HdrStrongIcon from '@mui/icons-material/HdrStrong';
 
 import LevelAvatar from '../../../images/swords.png';
 import Star from '../../../images/favourites.png';
-import SpeedBadge from '../../../images/running.png';
-import OrganizeBadge from '../../../images/morning-routine.png';
-import CommunityBadge from '../../../images/unity.png';
-import WinnerBadge from '../../../images/gamification.png';
-import TopBadge from '../../../images/award.png';
-import CompleteBadge from '../../../images/loading.png';
+// import SpeedBadge from '../../../images/running.png';
+// import OrganizeBadge from '../../../images/morning-routine.png';
+// import CommunityBadge from '../../../images/unity.png';
+// import WinnerBadge from '../../../images/gamification.png';
+// import TopBadge from '../../../images/award.png';
+// import CompleteBadge from '../../../images/loading.png';
 import Coin from '../../../images/dollar.png';
 import NoBadge from '../../../images/banned.png';
+
 
 import RewardsPart from './RewardsPart';
 import EditProfile from '../../EditProfile/EditProfile';
@@ -71,19 +73,26 @@ const ProfileModel = () => {
 
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('profile'));
-    const experience = user.result.experience;
+    const experience = user?.result?.experience;
+
+   
+   
 
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+      setOpen(true);
+    };
+    
     const handleClose = () => setOpen(false);
 
     const [Editopen, setEditOpen] = React.useState(false);
     const editOpen = () => {
-      setEditOpen(true)
+      setEditOpen(true);
       document.getElementById('transition').style.left = '29%';
     };
+
     const editClose = () => {
-      setEditOpen(false)
+      setEditOpen(false);
       document.getElementById('transition').style.left = '50%';
     };
 
@@ -107,16 +116,14 @@ const ProfileModel = () => {
      
     }
 
-    const transitionModel =  () => {
-       document.getElementById('transition').style.left = '29%';
-    }
+  
 
 
   return (
     <div>
        <Tooltip title="Profile">
        <Typography variant='subtitle1' style={{fontWeight: 700, cursor: 'pointer',}}  onClick={handleOpen} >
-                    {user.result.name}
+                    {user?.result?.name}
         </Typography>
        </Tooltip>
 
@@ -143,7 +150,7 @@ const ProfileModel = () => {
           <div  className={classes.gridDiv}>
                 <div>
                 <Avatar variant="rounded"  alt={user?.result?.name} src={user?.result?.imageUrl} style={{width: '150px', height: '150px',borderRadius: 15, border:"5px solid #9687DB"}}>
-                     <Typography variant='h1'>{user.result.name.charAt(0)}</Typography>
+                     <Typography variant='h1'>{user?.result?.name.charAt(0)}</Typography>
                 </Avatar>
                 </div>
 
@@ -154,8 +161,8 @@ const ProfileModel = () => {
                   <div>
                   <ProfileModel/>
                   <Typography variant='caption'  style={{color: '#CBC8FF'}} className={classes.centered}>
-                    {user.result.userName ? user.result.userName : 'no userName yet'}
-                     <HdrStrongIcon/> Level {user.result.level}
+                    {user?.result?.userName ? user?.result?.userName : 'no userName yet'}
+                     <HdrStrongIcon/> Level {user?.result?.level}
                   </Typography>
                   </div>
                 </div>
@@ -174,7 +181,7 @@ const ProfileModel = () => {
 
                <div className={classes.coin}>
                <img src={Coin} alt="" style={{width: '30px',}}/>
-               <span style={{color:'white'}}>{user.result.coins}</span>
+               <span style={{color:'white'}}>{user?.result?.coins}</span>
                </div>
             </div>
 
@@ -214,18 +221,18 @@ const ProfileModel = () => {
                 <div>
                 <Typography variant='h6' style={{fontWeight:'700', color: '#4E4A57',}}>Bio</Typography>
                 <Divider style={{width: '70%', marginBlock: '10px'}}/>
-                <Typography variant='body2'>{user.result.bio ? user.result.bio : 'Write a brief introduction about yourself'}</Typography>
+                <Typography variant='body2'>{user?.result?.bio ? user?.result?.bio : 'Write a brief introduction about yourself'}</Typography>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
                 <Typography variant='h6' style={{fontWeight:'700', color: '#4E4A57',}}>General info</Typography>
                 <Divider style={{ width: '70%',marginBlock: '10px',}}/>
                 <div style={{color: '#36205D', marginTop: '30px'}}>
-                <Typography variant='subtitle2' style={{fontWeight: 700, marginBottom: '7px'}}>First Name : <span className={classes.span}> {user.result.firstName} </span> </Typography>
+                <Typography variant='subtitle2' style={{fontWeight: 700, marginBottom: '7px'}}>First Name : <span className={classes.span}> {user?.result?.firstName} </span> </Typography>
 
-                <Typography variant='subtitle2' style={{fontWeight: 700,  marginBottom: '7px'}}>Last Name :  <span  className={classes.span}> {user.result.lastName} </span> </Typography>
+                <Typography variant='subtitle2' style={{fontWeight: 700,  marginBottom: '7px'}}>Last Name :  <span  className={classes.span}> {user?.result?.lastName} </span> </Typography>
 
-                <Typography variant='subtitle2' style={{fontWeight: 700,  marginBottom: '7px'}}>Username :  <span  className={classes.span}>  {user.result.userName ? user.result.userName : 'no userName yet'} </span> </Typography>
+                <Typography variant='subtitle2' style={{fontWeight: 700,  marginBottom: '7px'}}>Username :  <span  className={classes.span}>  {user?.result?.userName ? user?.result?.userName : 'no userName yet'} </span> </Typography>
 
                 </div>
                 </div>
@@ -243,16 +250,15 @@ const ProfileModel = () => {
                 <img alt='' src={TopBadge} className={classes.img}/>
                 <img alt='' src={CompleteBadge} className={classes.img}/> */}
                 
-                {
-                  
-                 (user.result.badges.length === 0)
+                { 
+                 (user?.result?.badges.length === 0)
                   ?
                   <div style={{width: '100%', height: '200px', display:'flex', justifyContent: 'center',alignItems: 'center', flexDirection: 'column',}}>
                     <img src={NoBadge} alt='' style={{width: 90, height: 90}}/>
                     <Typography variant='body2' style={{marginTop: '20px', color: '#CBA9F3' }}>No Badges Yet</Typography>
                   </div>
                   : 
-                  user.result.badges.map((badge) => (
+                  user?.result?.badges.map((badge) => (
                     <img alt='' src={badge} className={classes.img}/>))
                 }
              </div>

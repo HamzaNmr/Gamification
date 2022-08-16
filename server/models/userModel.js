@@ -35,10 +35,7 @@ const userSchema = mongoose.Schema({
     },
     imageUrl: String,
     rewards: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'rewardsModel',
-        }
+        
     ],
     badges:[String],
     bio: String,

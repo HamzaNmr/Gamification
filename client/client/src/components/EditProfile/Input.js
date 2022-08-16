@@ -6,7 +6,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 import useStyles from "./styles";
 
-const Input = ({ name, handleChange, handleShowPassword, label, rows, half, autoFocus, type }) => {
+const Input = ({ name, handleChange, handleShowPassword, label, rows, half, autoFocus, type, value }) => {
     const classes = useStyles();
    return(
 
@@ -21,6 +21,7 @@ const Input = ({ name, handleChange, handleShowPassword, label, rows, half, auto
              autoFocus={autoFocus}
              type={type}
              rows={rows}
+             value={value}
              InputProps={ name === 'password' ? {
                    endAdornment: (
                      <InputAdornment position="end">
