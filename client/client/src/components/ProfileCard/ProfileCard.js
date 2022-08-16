@@ -35,7 +35,8 @@ const ProfileCard = () => {
 
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('profile'));
-    const experience = user.result.experience;
+    const experience = user?.result?.experience;
+
   
   return (
     <Grow in>
@@ -44,7 +45,7 @@ const ProfileCard = () => {
                <div  className={classes.gridDiv}>
                 <div>
                   <Avatar variant="rounded"  alt={user?.result?.name} src={user?.result?.imageUrl} style={{width: '150px', height: '150px',borderRadius: 15, border:"5px solid #9687DB"}}>
-                     <Typography variant='h1'>{user.result.name.charAt(0)}</Typography>
+                     <Typography variant='h1'>{user?.result?.name.charAt(0)}</Typography>
                   </Avatar>
                 </div>
 
@@ -55,8 +56,8 @@ const ProfileCard = () => {
                   <div>
                   <ProfileModel/>
                   <Typography variant='caption'  style={{color: '#CBC8FF'}} className={classes.centered}>
-                    {user.result.userName ? user.result.userName : 'no userName yet'}
-                     <HdrStrongIcon/> Level {user.result.level}
+                    {user?.result?.userName ? user?.result?.userName : 'no userName yet'}
+                     <HdrStrongIcon/> Level {user?.result?.level}
                   </Typography>
                   </div>
                 </div>

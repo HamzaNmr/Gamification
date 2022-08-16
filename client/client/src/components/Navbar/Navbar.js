@@ -35,7 +35,7 @@ const Navbar = () => {
 
             <div className={classes.coin}>
             <img src={Coin} alt="" style={{width: '30px',}}/>
-            <span>{user.result.coins}</span>
+            <span>{user?.result?.coins}</span>
             </div>
 
             <Notfication/>
