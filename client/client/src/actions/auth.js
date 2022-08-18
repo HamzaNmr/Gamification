@@ -1,5 +1,5 @@
 import * as api from "../api/index";
-import { AUTH, UPDATE, FETCH_USER, START_LOADING, END_LOADING } from "../constants/actionsType";
+import { AUTH } from "../constants/actionsType";
 
 
 export const signin = (formData, navigate) => async (dispatch) => {

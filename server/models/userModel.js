@@ -12,7 +12,10 @@ const userSchema = mongoose.Schema({
         required: true,
     },
     name: String,
-    userName: String,
+    userName: {
+        type: String,
+        default: 'no userName yet'
+    },
     password: {
         type: String,
         required: true,
@@ -33,12 +36,18 @@ const userSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
-    imageUrl: String,
+    imageUrl: {
+        type: String,
+        default: ''
+    },
     rewards: [
         
     ],
     badges:[String],
-    bio: String,
+    bio: {
+        type: String,
+        default: 'Write a brief introduction about yourself'
+    },
     creatAt: {
         type: Date,
         default: Date.now(),

@@ -1,15 +1,23 @@
-import { UPDATEPROFILE } from "../constants/actionsType";
+import { UPDATEDPROFILE, FETCH_USERS, START_LOADING, END_LOADING } from "../constants/actionsType";
 
-const userReducer = (state = { userData: null }, action) => {
+export default (state = { isLoading: true, users: [] }, action) => {
     switch (action.type) {
-        
-        case UPDATEPROFILE:
-            localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
-            return { ...state, userData: action?.data };
+        case START_LOADING:
+            return { ...state, isLoading: true};
+        case END_LOADING:
+            return { ...state, isLoading: false};
+        case FETCH_USERS:
+            return {
+                ...state,
+                users: action.payload,
+            };
+        case UPDATEDPROFILE:
+            localStorage.setItem('profile', JSON.stringify({ ...action.payload }));
+            return{ ...state, users: state.users.map((user) => user._id === action.payload._id ? action.payload : user)};
+
         default:
             return state;
     }
 
 }
 
-export default userReducer;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 
 
@@ -75,7 +75,7 @@ const ProfileModel = () => {
     const user = JSON.parse(localStorage.getItem('profile'));
     const experience = user?.result?.experience;
 
-   
+    const [currentId, setCurrentId] = useState(null);
    
 
     const [open, setOpen] = React.useState(false);
@@ -89,6 +89,7 @@ const ProfileModel = () => {
     const editOpen = () => {
       setEditOpen(true);
       document.getElementById('transition').style.left = '29%';
+      setCurrentId(user?.result?.id || user?.result?._id);
     };
 
     const editClose = () => {
@@ -208,7 +209,7 @@ const ProfileModel = () => {
                 >
                <Fade in={Editopen}>
                 <Box sx={edit}>
-                  <EditProfile/>
+                  <EditProfile currentId={currentId} setCurrentId={setCurrentId} />
                 </Box>
                 </Fade>
                </Modal>
