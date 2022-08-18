@@ -71,7 +71,6 @@ const { hashSync, compareSync } = require('bcrypt');
             level: user.level,
             experience: user.experience,
             coins: user.coins,
-            imageUrl: user.imageUrl,
             rewards: user.rewards,
             badges: user.badges,
         }
@@ -94,7 +93,6 @@ const { hashSync, compareSync } = require('bcrypt');
                 level: user.level,
                 experience: user.experience,
                 coins: user.coins,
-                imageUrl: user.imageUrl,
                 rewards: user.rewards,
                 badges: user.badges,
             },

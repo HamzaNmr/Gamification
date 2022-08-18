@@ -23,7 +23,6 @@ router.get('/protected', passport.authenticate("jwt", { session: false }), (req,
             level: user.level,
             experience: user.experience,
             coins: user.coins,
-            imageUrl: user.imageUrl,
             rewards: user.rewards,
             badges: user.badges,
         }
