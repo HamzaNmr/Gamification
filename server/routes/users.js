@@ -14,6 +14,8 @@ router.get('/protected', passport.authenticate("jwt", { session: false }), (req,
         success: true,
         user: {
             id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
             name: user.name,
             email :user.email,
             userName: user.userName,

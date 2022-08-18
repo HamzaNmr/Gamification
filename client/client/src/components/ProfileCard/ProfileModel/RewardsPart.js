@@ -24,11 +24,11 @@ const RewardsPart = () => {
 
     // const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('profile'));
-    const rewards = user.result.rewards;
+    const rewards = user?.result?.rewards;
   return (
     <div style={{display: 'flex', width: '100%', height: 270, flexWrap: 'wrap', overflow: 'auto',}}>
         {
-           ( rewards.length === 0 ) 
+           ( rewards?.length === 0 ) 
            ?
            <div style={{width: '100%', height: '200px', display:'flex', justifyContent: 'center',alignItems: 'center', flexDirection: 'column',}}>
             <img src={CoinsAnime} alt='' style={{width: 170, height: 170}}/>
