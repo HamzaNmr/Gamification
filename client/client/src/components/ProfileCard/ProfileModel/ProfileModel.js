@@ -72,7 +72,9 @@ const edit = {
 const ProfileModel = () => {
 
     const classes = useStyles();
+
     const user = JSON.parse(localStorage.getItem('profile'));
+    
     const experience = user?.result?.experience;
 
     const [currentId, setCurrentId] = useState(null);

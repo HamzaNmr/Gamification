@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useSelector } from 'react-redux';
 import useStyles from './styles';
 
 
@@ -12,6 +12,8 @@ import LevelAvatar from '../../images/swords.png';
 
 
 const ThreeDCard = () => {
+
+  
 
   const classes = useStyles();
    
