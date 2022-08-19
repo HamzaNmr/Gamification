@@ -1,9 +1,11 @@
-import { Button, Paper, Typography } from '@material-ui/core'
-import React from 'react'
+import { Button, Paper, Typography } from '@material-ui/core';
+import React from 'react';
+import useStyles from './styles.js';
 
 const ThreeDEarth = () => {
+    const classes = useStyles();
   return (
-    <div style={{textAlign: 'center', marginRight:' 14rem'}}>
+    <div style={{textAlign: 'center', marginRight:' 14rem'}} className={classes.container}>
         <Typography variant='h6' style={{fontWeight: 700, color: 'white'}}>
             Communicate <span style={{fontSize:'2rem', marginInline: '1rem'}}>&</span> Win
         </Typography>

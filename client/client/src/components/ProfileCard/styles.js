@@ -3,11 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 
  export default makeStyles((theme) => ({
-    // paper:{
-    //     backgroundColor: '#36205D',
-    //     padding: '2rem 3rem',
-    //     borderRadius: 15,
-    // }, 
+   avatar:{
+    marginBottom: '30px',
+   },
 
     gridDiv:{
         display: 'flex', justifyContent: 'start', gap: '30px',

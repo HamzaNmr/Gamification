@@ -105,6 +105,24 @@ const MenuIcon = () => {
                   <ListItemText>Rewards</ListItemText>
                 </ListItemButton>
               </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                   <EmojiEventsOutlinedIcon />
+                  </ListItemIcon>
+                  <ListItemText>Tasks</ListItemText>
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                   <EmojiEventsOutlinedIcon />
+                  </ListItemIcon>
+                  <ListItemText>Community</ListItemText>
+                </ListItemButton>
+              </ListItem>
   
               <ListItem disablePadding>
                 <ListItemButton>

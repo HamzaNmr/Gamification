@@ -113,6 +113,7 @@ const getUsers = async (req, res) => {
 };
 
 
+
 const updateProfile = async (req, res) => {
     const { id: _id } = req.params;
     const user = req.body;
@@ -128,4 +129,4 @@ const updateProfile = async (req, res) => {
 
 
 
-module.exports = { signup, signin, updateProfile, getUsers};
+module.exports = { signup, signin, updateProfile, getUsers };

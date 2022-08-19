@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useSelector } from 'react-redux';
 
 
 import Backdrop from '@mui/material/Backdrop';
@@ -69,15 +69,13 @@ const edit = {
 };
 
 
-const ProfileModel = () => {
+const ProfileModel = ({ currentId }) => {
 
     const classes = useStyles();
 
     const user = JSON.parse(localStorage.getItem('profile'));
     
-    const experience = user?.result?.experience;
-
-    const [currentId, setCurrentId] = useState(null);
+    
    
 
     const [open, setOpen] = React.useState(false);
@@ -91,13 +89,15 @@ const ProfileModel = () => {
     const editOpen = () => {
       setEditOpen(true);
       document.getElementById('transition').style.left = '29%';
-      setCurrentId(user?.result?.id || user?.result?._id);
     };
 
     const editClose = () => {
       setEditOpen(false);
       document.getElementById('transition').style.left = '50%';
     };
+
+    console.log(currentId, 'profileModel');
+    const userInfo = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
 
     const switchProfile = () => {
         document.getElementById('profilePart').style.display = 'flex';
@@ -126,7 +126,7 @@ const ProfileModel = () => {
     <div>
        <Tooltip title="Profile">
        <Typography variant='subtitle1' style={{fontWeight: 700, cursor: 'pointer',}}  onClick={handleOpen} >
-                    {user?.result?.name}
+                    {userInfo?.name}
         </Typography>
        </Tooltip>
 
@@ -152,8 +152,8 @@ const ProfileModel = () => {
           
           <div  className={classes.gridDiv}>
                 <div>
-                <Avatar variant="rounded"  alt={user?.result?.name} src={user?.result?.imageUrl} style={{width: '150px', height: '150px',borderRadius: 15, border:"5px solid #9687DB"}}>
-                     <Typography variant='h1'>{user?.result?.name.charAt(0)}</Typography>
+                <Avatar variant="rounded"  alt={userInfo?.name} src={userInfo?.imageUrl} style={{width: '150px', height: '150px',borderRadius: 15, border:"5px solid #9687DB"}}>
+                     <Typography variant='h1'>{userInfo?.name.charAt(0)}</Typography>
                 </Avatar>
                 </div>
 
@@ -162,10 +162,12 @@ const ProfileModel = () => {
                   <Avatar variant="square" alt="Remy Sharp" src={LevelAvatar} style={{width: 30, height: 30,}}>
                   </Avatar>
                   <div>
-                  <ProfileModel/>
+                  <Typography variant='subtitle1' style={{fontWeight: 700, cursor: 'pointer',}}  onClick={handleOpen} >
+                    {userInfo?.name}
+                  </Typography>
                   <Typography variant='caption'  style={{color: '#CBC8FF'}} className={classes.centered}>
-                    {user?.result?.userName ? user?.result?.userName : 'no userName yet'}
-                     <HdrStrongIcon/> Level {user?.result?.level}
+                    {userInfo?.userName ? userInfo?.userName : 'no userName yet'}
+                     <HdrStrongIcon/> Level {userInfo?.level}
                   </Typography>
                   </div>
                 </div>
@@ -174,8 +176,8 @@ const ProfileModel = () => {
 
                 <div style={{display:'flex', alignItems:'center', justifyContent: 'center', gap: '10px', marginTop: '20px',}} >
                   <img alt='Experience' src={Star} style={{width: 20, height: 20,}} />
-                  <BorderLinearProgress variant="determinate" value={experience * 2}/>
-                  <Typography variant='body2' style={{color:'#CBC8FF'}}>{experience}/50</Typography>
+                  <BorderLinearProgress variant="determinate" value={userInfo?.experience * 2}/>
+                  <Typography variant='body2' style={{color:'#CBC8FF'}}>{userInfo?.experience}/50</Typography>
                 </div>
 
                 </div>
@@ -184,7 +186,7 @@ const ProfileModel = () => {
 
                <div className={classes.coin}>
                <img src={Coin} alt="" style={{width: '30px',}}/>
-               <span style={{color:'white'}}>{user?.result?.coins}</span>
+               <span style={{color:'white'}}>{userInfo?.coins}</span>
                </div>
             </div>
 
@@ -211,7 +213,7 @@ const ProfileModel = () => {
                 >
                <Fade in={Editopen}>
                 <Box sx={edit}>
-                  <EditProfile currentId={currentId} setCurrentId={setCurrentId} />
+                  <EditProfile currentId={currentId} />
                 </Box>
                 </Fade>
                </Modal>
@@ -220,22 +222,24 @@ const ProfileModel = () => {
             </div>
 
             <div style={{padding: '0 50px', display: 'flex',}} id='profilePart'>
-            <div style={{width: '100%'}}>
+            <div style={{width: '100%',}}>
                 <div>
                 <Typography variant='h6' style={{fontWeight:'700', color: '#4E4A57',}}>Bio</Typography>
                 <Divider style={{width: '70%', marginBlock: '10px'}}/>
-                <Typography variant='body2'>{user?.result?.bio ? user?.result?.bio : 'Write a brief introduction about yourself'}</Typography>
+                <div style={{width: '80%', flexWrap: 'wrap', wordBreak: 'break-all',}}>
+                <Typography variant='body2'>{userInfo?.bio ? userInfo?.bio : 'Write a brief introduction about yourself'}</Typography>
+                </div>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
                 <Typography variant='h6' style={{fontWeight:'700', color: '#4E4A57',}}>General info</Typography>
                 <Divider style={{ width: '70%',marginBlock: '10px',}}/>
-                <div style={{color: '#36205D', marginTop: '30px'}}>
-                <Typography variant='subtitle2' style={{fontWeight: 700, marginBottom: '7px'}}>First Name : <span className={classes.span}> {user?.result?.firstName} </span> </Typography>
+                <div style={{color: '#36205D', marginTop: '20px'}}>
+                <Typography variant='subtitle2' style={{fontWeight: 700, marginBottom: '7px'}}>First Name : <span className={classes.span}> {userInfo?.firstName} </span> </Typography>
 
-                <Typography variant='subtitle2' style={{fontWeight: 700,  marginBottom: '7px'}}>Last Name :  <span  className={classes.span}> {user?.result?.lastName} </span> </Typography>
+                <Typography variant='subtitle2' style={{fontWeight: 700,  marginBottom: '7px'}}>Last Name :  <span  className={classes.span}> {userInfo?.lastName} </span> </Typography>
 
-                <Typography variant='subtitle2' style={{fontWeight: 700,  marginBottom: '7px'}}>Username :  <span  className={classes.span}>  {user?.result?.userName ? user?.result?.userName : 'no userName yet'} </span> </Typography>
+                <Typography variant='subtitle2' style={{fontWeight: 700,  marginBottom: '7px'}}>Username :  <span  className={classes.span}>  {userInfo?.userName ? userInfo?.userName : 'no userName yet'} </span> </Typography>
 
                 </div>
                 </div>
@@ -254,14 +258,14 @@ const ProfileModel = () => {
                 <img alt='' src={CompleteBadge} className={classes.img}/> */}
                 
                 { 
-                 (user?.result?.badges.length === 0)
+                 (userInfo?.badges.length === 0)
                   ?
                   <div style={{width: '100%', height: '200px', display:'flex', justifyContent: 'center',alignItems: 'center', flexDirection: 'column',}}>
                     <img src={NoBadge} alt='' style={{width: 90, height: 90}}/>
                     <Typography variant='body2' style={{marginTop: '20px', color: '#CBA9F3' }}>No Badges Yet</Typography>
                   </div>
                   : 
-                  user?.result?.badges.map((badge) => (
+                  userInfo?.badges.map((badge) => (
                     <img alt='' src={badge} className={classes.img}/>))
                 }
              </div>
