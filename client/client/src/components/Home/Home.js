@@ -16,11 +16,10 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
-  const [currentId, setCurrentId] = useState(null);
+  const currentId = (user?.result?.id || user?.result?._id);
 
-
+console.log( currentId , 'home')
    useEffect(() => {
-    setCurrentId(user?.result?.id || user?.result?._id);
     dispatch(getusers());
 }, [currentId, dispatch]);
 
@@ -32,12 +31,12 @@ const Home = () => {
     <div>    
         <Container maxWidth='xl' style={{marginTop: '70px'}}>
      <Grid item>
-        <ProfileCard/>
+        <ProfileCard currentId={currentId}/>
       </Grid>
 
      <Grid container justifyContent='space-between' alignItems='stretch' spacing={3}>
      <Grid item lg={4} md={12}>
-        { !isLoading ? <LeaderCard/> : <Skeleton sx={{ bgcolor: '#E9E8EA' }} variant="rectangular" width={500} height={350} /> }
+        { !isLoading ? <LeaderCard/> : <Skeleton sx={{ backgroundColor: '#E9E8EA', width: '100%', height: '100%', borderRadius: 7  }} variant="rectangular"/>}
         <div>
          <div className="wave"></div>
          <div className="wave"></div>

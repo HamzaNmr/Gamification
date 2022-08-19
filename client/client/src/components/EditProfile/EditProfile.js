@@ -19,7 +19,7 @@ const userJSON = JSON.parse(localStorage.getItem('profile'));
 
 
 
-const EditProfile = ({ setCurrentId, currentId }) => {
+const EditProfile = ({ currentId }) => {
   
     const classes = useStyles();
     const navigate = useNavigate();
@@ -42,10 +42,10 @@ const EditProfile = ({ setCurrentId, currentId }) => {
 const handleSubmit = (e) => {
   e.preventDefault();
   dispatch(updateprofile(currentId,{...formData, email: userJSON?.result?.email}));
+  console.log('editing...');
 };
 
 const clear = () => {
-  setCurrentId(null);
   setFormData({imageUrl: '',firstName: '', lastName: '', userName: '', bio: ''});
 }
 
@@ -67,8 +67,8 @@ const clear = () => {
         
           <Grid container spacing={1}>
             <div style={{margin: '10px 0 20px 10px', display: 'flex', alignItems: 'end', gap: '30px'}}>
-            <Avatar variant="rounded"  alt={userJSON?.result?.name} src={userJSON?.result?.imageUrl} style={{width: '100px', height: '100px',borderRadius: 15, border:"5px solid #432874",}}>
-                     <Typography variant='h4'>{userJSON?.result?.name.charAt(0)}</Typography>
+            <Avatar variant="rounded"  alt={userInfo?.name} src={userInfo?.imageUrl} style={{width: '100px', height: '100px',borderRadius: 15, border:"5px solid #432874",}}>
+                     <Typography variant='h4'>{userInfo?.name.charAt(0)}</Typography>
             </Avatar>
             <div style={{marginBottom: '35px'}} className='input-file'>
             <FileBase type="file" multiple={false} onDone={ ({base64}) => setFormData({ ...formData, imageUrl: base64 }) } />

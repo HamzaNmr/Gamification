@@ -18,8 +18,10 @@ const LeaderCard = () => {
 
     const classes = useStyles();
 
+
     const leaders = useSelector((state) => state.user.users.sort((a, b) => b.level - a.level ));
-    console.log(leaders, 'leaaders');
+ 
+    console.log(leaders, 'leaders');
    
     const color = ['#FFBE5D', '#00CEC9', '#E17055'];
     const emoji = [`${Fire}`, `${Cool}`, `${Clapping}`];
@@ -29,6 +31,7 @@ const LeaderCard = () => {
     <Paper style={{borderRadius: 15, backgroundColor: '#EDECEE',padding: '20px',}}>
        {
         leaders.map((user, i) => (
+          (i < 3) &&
           <Paper className={classes.bar} key={i}>
           <div style={{display: 'flex', alignItems:'center', justifyContent: 'space-between',}}>
               

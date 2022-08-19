@@ -1,5 +1,5 @@
 import * as api from "../api/index";
-import { FETCH_USERS, UPDATEDPROFILE, START_LOADING, END_LOADING } from "../constants/actionsType";
+import { FETCH_USERS, UPDATEDPROFILE, START_LOADING, END_LOADING, FETCH_TOP_USERS } from "../constants/actionsType";
 
 
 export const getusers = () => async (dispatch) => {
@@ -12,6 +12,19 @@ export const getusers = () => async (dispatch) => {
         dispatch({ type: FETCH_USERS, payload: data});
 
         dispatch({ type: END_LOADING });
+    } catch (error) {
+        console.log(error.message);
+    }
+ }
+
+ export const getTopUsers = () => async (dispatch) => {
+
+    try {
+
+        const { data } = await api.getUsers();
+    
+        dispatch({ type: FETCH_TOP_USERS, payload: data});
+
     } catch (error) {
         console.log(error.message);
     }
