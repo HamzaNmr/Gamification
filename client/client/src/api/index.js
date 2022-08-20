@@ -10,7 +10,8 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
+export const getUsers = () => API.get('/home');
+export const updateProfile = (id, updatedProfile) => API.patch(`/home/${id}`, updatedProfile);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
-export const updateProfile = (formData) => API.patch('/home', formData);

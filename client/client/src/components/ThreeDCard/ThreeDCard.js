@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useSelector } from 'react-redux';
 import useStyles from './styles';
 
 
@@ -13,7 +13,26 @@ import LevelAvatar from '../../images/swords.png';
 
 const ThreeDCard = () => {
 
+  
+
   const classes = useStyles();
+
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const currentId = (user?.result?.id || user?.result?._id);
+  console.log(currentId, 'threeDrank');
+  const users = useSelector((state) => state.user.users)
+  
+let i = 0;
+let rank = [];
+while(i < users.length){
+  if(users[i]._id == currentId){
+      rank.push(i+1);
+      rank.push(users[i]);
+  }
+  i++;
+}
+
+console.log(rank);
    
   const containerMove = (e) => {
       let xAxis = (window.innerWidth / 2 + e.pageX) / 10;
@@ -49,9 +68,9 @@ const ThreeDCard = () => {
         </Avatar>
       </div>
      <div id="image">
-     <Avatar variant='rounded' alt="" src='https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' className={classes.image}>
+     <Avatar variant='rounded' alt="" src={rank[1].imageUrl} className={classes.image}>
      </Avatar>
-       <Typography id="rank"  style={{fontWeight: 900, color: '#eee', marginTop: '10px'}}> RANK 13</Typography>
+       <Typography id="rank"  style={{fontWeight: 900, color: '#eee', marginTop: '10px'}}> RANK {rank[0]}</Typography>
      </div>
        <div className={classes.paragraph}>
        <Typography variant='body2' style={{fontWeight: 700}}>

@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
     },
 
     card:{
-      display: 'flex', height: '150px', backgroundColor: '#EBEAEC', width: '690px',
+      display: 'flex', height: '150px', backgroundColor: '#EBEAEC', width: '670px',
       [theme.breakpoints.down('md')]: {
         width: '100%',
       },

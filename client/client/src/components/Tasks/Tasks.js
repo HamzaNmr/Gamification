@@ -12,7 +12,7 @@ const Tasks = () => {
      <div style={{margin: '77px 0 30px 0'}}>
         <Grid container justifyContent='space-between' alignItems='stretch' spacing={3}>
 
-            <Grid item lg={12} xs={12}>
+            <Grid item lg={12} xs={12} >
           
               <Paper style={{backgroundColor: '#432874', padding: '7px 30px', borderRadius: 15, color: 'white',}}>
                 <Typography variant='h6' style={{display: 'flex', alignItems: 'center',}}>
@@ -23,7 +23,7 @@ const Tasks = () => {
            
             </Grid>
 
-            <Grid item lg={12} md={6} sm={12} xs={12}>
+            <Grid item lg={12} md={12} sm={12} xs={12}>
                 <Paper style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '30px',
               backgroundColor: '#EBEAEC', border: '3px solid #333', borderRadius: 15, padding: '2rem'}}>
                   <Task/>

@@ -1,10 +1,11 @@
 const express = require('express');
 const passport = require('passport');
-const { updateProfile } = require('../controllers/user.js');
+const { updateProfile, getUsers  } = require('../controllers/user.js');
 require("../passportJwt.js");
 
 const router = express.Router();
 
-router.patch('/', updateProfile);
+router.get('/', getUsers);
+router.patch('/:id', passport.authenticate("jwt", { session: false }), updateProfile);
 
 module.exports = router;

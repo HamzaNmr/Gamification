@@ -29,7 +29,8 @@ export default makeStyles((theme) => ({
     border: '3px solid #36205D',
     background: 'linear-gradient(to bottom, #eee, #ddd ,white, #888987, gray)',
     [theme.breakpoints.down('sm')]: {
-      width: '90%'
+      width: '87%',
+      marginRight: '25px'
     },
   },
   myFirstCard: {

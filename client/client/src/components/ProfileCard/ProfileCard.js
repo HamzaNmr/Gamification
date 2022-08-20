@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import useStyles from './styles';
 import { Paper, Typography, Grow, Avatar, LinearProgress, Tooltip} from '@material-ui/core';
@@ -31,21 +32,24 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 
 
-const ProfileCard = () => {
+const ProfileCard = ({ currentId }) => {
 
     const classes = useStyles();
-    const user = JSON.parse(localStorage.getItem('profile'));
-    const experience = user?.result?.experience;
+    // const user = JSON.parse(localStorage.getItem('profile'));
+    // const experience = user?.result?.experience;
 
+
+    console.log(currentId , 'profileCard');
+    const userInfo = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
   
   return (
     <Grow in>
         <div>
-            <Paper style={{ backgroundColor: '#36205D', padding: '2rem 3rem', borderRadius: 15, marginBottom: '30px', display: 'flex', justifyContent:'space-between',}}>
+            <Paper style={{ backgroundColor: '#36205D', padding: '2rem 3rem', borderRadius: 15, marginBottom: '30px', display: 'flex', justifyContent:'space-between', }}>
                <div  className={classes.gridDiv}>
                 <div>
-                  <Avatar variant="rounded"  alt={user?.result?.name} src={user?.result?.imageUrl} style={{width: '150px', height: '150px',borderRadius: 15, border:"5px solid #9687DB"}}>
-                     <Typography variant='h1'>{user?.result?.name.charAt(0)}</Typography>
+                  <Avatar variant="rounded"  alt={userInfo?.name} src={userInfo?.imageUrl} style={{width: '150px', height: '150px',borderRadius: 15, border:"5px solid #9687DB"}} className={classes.avatar}>
+                     <Typography variant='h1'>{userInfo?.name.charAt(0)}</Typography>
                   </Avatar>
                 </div>
 
@@ -54,10 +58,10 @@ const ProfileCard = () => {
                   <Avatar variant="square" alt='' src={LevelAvatar} style={{width: 30, height: 30,}}>
                   </Avatar>
                   <div>
-                  <ProfileModel/>
+                  <ProfileModel currentId={currentId}/>
                   <Typography variant='caption'  style={{color: '#CBC8FF'}} className={classes.centered}>
-                    {user?.result?.userName ? user?.result?.userName : 'no userName yet'}
-                     <HdrStrongIcon/> Level {user?.result?.level}
+                    {userInfo?.userName ? userInfo?.userName : 'no userName yet'}
+                     <HdrStrongIcon/> Level {userInfo?.level}
                   </Typography>
                   </div>
                 </div>
@@ -69,9 +73,9 @@ const ProfileCard = () => {
                  <img alt='Experience' src={Star} style={{width: 20, height: 20,}} />
                 </Tooltip>
 
-                  <BorderLinearProgress variant="determinate" value={experience * 2}/>
+                  <BorderLinearProgress variant="determinate" value={userInfo?.experience * 2}/>
                   
-                  <Typography variant='body2' style={{color:'#CBC8FF'}}>{experience}/50</Typography>
+                  <Typography variant='body2' style={{color:'#CBC8FF'}}>{userInfo?.experience}/50</Typography>
                  
                 </div>
 

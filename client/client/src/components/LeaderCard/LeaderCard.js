@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { Paper, Typography, Avatar ,Grow} from '@material-ui/core';
 import Fire from '../../images/fire.png';
@@ -17,37 +18,39 @@ const LeaderCard = () => {
 
     const classes = useStyles();
 
-    const leaders = [
-      {name: "Ali al-Malla", username: "Ali1234_h75gg", level: 120, color: '#FFBE5D', rank: 1, emoji: `${Fire}`},
-      {name: "Ali Mansour", username: "ALI_ITACHI_13", level: 105, color: '#00CEC9', rank: 2, emoji: `${Cool}`},
-      {name: "Kawthar Safa", username: "Abou_ali_safa", level: 100, color: '#E17055', rank: 3, emoji:  `${Clapping}`},
-    ];
 
+    const leaders = useSelector((state) => state.user.users.sort((a, b) => b.level - a.level ));
+ 
+    console.log(leaders, 'leaders');
+   
+    const color = ['#FFBE5D', '#00CEC9', '#E17055'];
+    const emoji = [`${Fire}`, `${Cool}`, `${Clapping}`];
 
   return (
     <Grow in>
     <Paper style={{borderRadius: 15, backgroundColor: '#EDECEE',padding: '20px',}}>
        {
         leaders.map((user, i) => (
+          (i < 3) &&
           <Paper className={classes.bar} key={i}>
           <div style={{display: 'flex', alignItems:'center', justifyContent: 'space-between',}}>
               
               <div style={{color: '#333'}} className={classes.centered}>
-               <div className={classes.number} style={{backgroundColor: `${user.color || '#333'}`}}>{user.rank}</div>
-                <Avatar alt="" src='https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' style={{width: 50, height: 50, border: '1px solid #36205D'}}>
+               <div className={classes.number} style={{backgroundColor: `${color[i] || '#333'}`}}>{i+1}</div>
+                <Avatar alt="" src={user.imageUrl} style={{width: 50, height: 50, border: '1px solid #36205D'}}>
                 </Avatar>
                 <div>
                 <Typography variant='subtitle1' style={{fontWeight: 500}}>
                   {user.name}
                 </Typography>
                 <Typography variant='caption'  style={{color: '#36205D', fontWeight: 'bold'}} className={classes.centered}>
-                  @{user.username}
+                  @{user.userName}
                 </Typography>
                 </div>
               </div>
               <div className={classes.centered}>
-                  <span style={{color:`${user.color || '#333'}`, fontWeight: '900'}}>{user.level}</span>
-                  <img alt='' src={user.emoji} style={{width:'20px', height: '20px'}}/>
+                  <span style={{color:`${color[i] || '#333'}`, fontWeight: '900'}}>{user.level}</span>
+                  <img alt='' src={emoji[i]} style={{width:'20px', height: '20px'}}/>
               </div>
           </div>
       </Paper>

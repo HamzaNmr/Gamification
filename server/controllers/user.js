@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const UserModel = require('../models/UserModel');
@@ -61,6 +62,8 @@ const { hashSync, compareSync } = require('bcrypt');
 
         const payload = {
             id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
             name: user.name,
             email :user.email,
             userName: user.userName,
@@ -68,7 +71,6 @@ const { hashSync, compareSync } = require('bcrypt');
             level: user.level,
             experience: user.experience,
             coins: user.coins,
-            imageUrl: user.imageUrl,
             rewards: user.rewards,
             badges: user.badges,
         }
@@ -82,6 +84,8 @@ const { hashSync, compareSync } = require('bcrypt');
             message: "loged in successfuly",
             result: {
                 id: user._id,
+                firstName: user.firstName,
+                lastName: user.lastName,
                 name: user.name,
                 email :user.email,
                 userName: user.userName,
@@ -89,7 +93,6 @@ const { hashSync, compareSync } = require('bcrypt');
                 level: user.level,
                 experience: user.experience,
                 coins: user.coins,
-                imageUrl: user.imageUrl,
                 rewards: user.rewards,
                 badges: user.badges,
             },
@@ -99,36 +102,31 @@ const { hashSync, compareSync } = require('bcrypt');
 
 };
 
-const updateProfile = async (req, res) => {
-    const {firstName, lastName, email, password, bio, imageUrl, userName} = req.body;
-    
-    try {
-        const existingUser = await UserModel.findOneAndUpdate({ email });
-        console.log({email});
-        if(existingUser){
-            const result = await UserModel.create({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                name: `${firstName} ${lastName}`,
-                email: req.body.email,
-                password: hashSync(req.body.password, 14),
-                bio: req.body.bio,
-                userName: req.body.userName,
-                imageUrl: req.body.imageUrl,
-            })
 
-            res.status(200).json({result: result, token: token});
-        }else{
-            res.status(404).json({message: 'this user not exist'})
-        }
-
-    } catch (error) {
-        console.log(error);
+const getUsers = async (req, res) => {
+    try{
+        const users = await UserModel.find();
+        res.status(200).json(users);
+    } catch (error){
+        res.status(404).json({ message: error.message});
     }
-
-    
 };
 
 
 
-module.exports = { signup, signin, updateProfile};
+const updateProfile = async (req, res) => {
+    const { id: _id } = req.params;
+    const user = req.body;
+
+     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("This post is not exist");
+
+     const updatedProfile = await UserModel.findByIdAndUpdate(_id, user, { new: true });
+
+     res.json(updatedProfile);
+};
+
+
+
+
+
+module.exports = { signup, signin, updateProfile, getUsers };
