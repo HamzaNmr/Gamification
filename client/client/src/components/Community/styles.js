@@ -40,15 +40,39 @@ export default makeStyles((theme) => ({
   gap: '1rem',
   marginBottom: '1rem',
   width:' 90%',
+  marginBottom: '14px'
   },
+
+
   styleInnerComment:{
     marginTop: "5px",
-    backgroundColor: '#9687DB',
+
+    // style: https://css.glass/
+
+    backgroundColor: 'rgba(150, 135, 219, 0.35)',
     borderRadius: '15px',
-    color: '#eee',
+    boxShadow:' 0 4px 30px rgba(0, 0, 0, 0.1)',
+    backdropFilter: 'blur(8.5px)',
+    border: '1px solid rgba(150, 135, 219, 0.22)',
+    color: '#333',
     padding: '10px 20px',
     fontSize: '.8rem',
+    marginTop: 0, 
   },
+
+  
+
+  // before:{
+  //   position: 'absolute',
+  //   left: '-5.8px',
+  //   width: '20px',
+  //   height: '20px',
+  //   backgroundColor: '#CDCCCD',
+   
+  //   transform: 'rotate(135deg)',
+  //   borderRadius: 3,
+  
+  // },
 
   styleCommentReply: {
     display:'flex',

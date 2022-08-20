@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 
 const AuthRoutes = require('./routes/users.js');
 const ControllUSerRoutes = require('./routes/user.js');
+const TasksRoutes = require('./routes/tasks.js');
 const passport = require('passport');
 
 
@@ -20,6 +21,7 @@ dotenv.config();
 
  
  app.use('/home', ControllUSerRoutes);
+ app.use('/tasks', TasksRoutes);
  app.use('/user', AuthRoutes);
  app.use(passport.initialize());
 

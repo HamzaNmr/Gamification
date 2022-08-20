@@ -64,10 +64,13 @@ export default makeStyles((theme) => ({
     // marginLeft:"50px"
   },
   leftGrid: {
-   
+  
+  
   },
   rightGrid: {
     marginLeft:"20px",
+    height: '90vh',
+    overflow: 'auto',
   },
   duration:{
     display: "flex",
@@ -86,9 +89,10 @@ cardTopRight:{
 
 leaderboardCard: {
   borderRadius: '15px !important',
-  backgroundColor: "#36205D !important",
+  backgroundColor: "#35205C !important",
   padding: "20px !important",
   width: '500px !important',
+  marginLeft: '30px',
   [theme.breakpoints.down('sm')]: {
     width: '90% !important'
   },

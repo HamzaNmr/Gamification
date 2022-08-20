@@ -2,22 +2,9 @@ import React, { useState } from "react";
 import useStyles from "./styles";
 import "./Style.css";
 import { Paper, Typography, Avatar, Grow } from "@material-ui/core";
-import Fire from "../../images/fire.png";
-import Clapping from "../../images/clapping.png";
-import Cool from "../../images/cool.png";
-import Emogi1 from "../../images/emogi1.png";
-import Emogi2 from "../../images/emogi2.png";
-import Emogi3 from "../../images/emogi3.png";
-import Emogi4 from "../../images/emogi4.png";
-import Emogi5 from "../../images/emogi5.png";
-import Popover from "@mui/material/Popover";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
 import ScrollAnimation from "react-animate-on-scroll";
+import meditatingAnime from '../../images/meditatingAnime.gif'
 
 export default function profiles({ MYLeaderboard }) {
   return (
@@ -31,55 +18,17 @@ export default function profiles({ MYLeaderboard }) {
 function Item(data) {
   const classes = useStyles();
 
-  //test start
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
-
-  //test end
 
   return (
     <Grid container alignItems='stretch'>
-      <Grid item lg={6} sm={12} className={classes.leftGrid}  style={{
+      <Grid item lg={4} sm={12} className={classes.leftGrid}  style={{
         display: 'flex', flexDirection: 'column', alignItems: "end", paddingInline: '20px' 
       }}>
 
         {/* card top */}
         <ScrollAnimation animateIn="animate__bounceInLeft" >
         <div className={classes.cardTop}>
-          {/* <Grid container className={classes.cardTop}>
-            <Grid item xs={6}>
-              <Typography className={classes.myFirstCard}>My rank</Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography className={classes.myFirstCard}>My score</Typography>
-            </Grid> 
-            <Grid item xs={6}>
-              <Typography className={classes.myFirstCard}>
-                <h2>3RD PLACE</h2>
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <h2 className={classes.myFirstCard}>120</h2>
-            </Grid>
-          </Grid> */}
+        
           <div>
           <Typography variant="subtitle1">My rank</Typography>
           <Typography variant="h4"> 3rd place</Typography>
@@ -126,7 +75,7 @@ function Item(data) {
 
 {/* /////////////////////////////////////////////////////////////////////// */}
 
-    <Grid item sm={12} lg={6} className={classes.rightGrid}>
+    <Grid item sm={12} lg={5} className={classes.rightGrid}>
       
         
          
@@ -280,6 +229,22 @@ function Item(data) {
               </ScrollAnimation>
           </Grid>
        
+       <Grid item lg={3} sm={12}>
+       <ScrollAnimation animateIn="animate__bounceInRight" >
+       <div>
+       <img src={meditatingAnime} alt="" style={{width: 300, height: 300}}/>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap',
+              backgroundColor: '#EBEAEC', border: '3px solid #333', borderRadius: 15, padding: '1rem'}}>
+        <Typography variant="h4">
+          Dear,
+        </Typography>
+        <Typography variant="h6">
+          Go, and be the first one here. The hard work will make you the best.
+        </Typography>
+        </div>
+       </div>
+       </ScrollAnimation>
+       </Grid>
 
      
     </Grid>

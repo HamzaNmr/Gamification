@@ -2,9 +2,10 @@
 .container{
 
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
+  padding: 30px;
 }
 
 .firstDiv{
@@ -15,7 +16,8 @@
 	color: white;
 	background: #432874;
   border-radius: 30px;
-  height: 88vh;
+  border: 5px solid #9687DB;
+  height: 95vh;
 }
 
 a {
@@ -121,6 +123,7 @@ h6 span{
 .card-front, .card-back {
   width: 100%;
   height: 100%;
+  border: 5px solid #eee;
   background-color: #9687DB;
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
   background-position: bottom center;

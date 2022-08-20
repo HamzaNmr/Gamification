@@ -8,16 +8,15 @@ import CommentsImage from '../../images/comments.png';
 import CommunityImage from '../../images/chatting.gif';
 
 import ScrollAnimation from "react-animate-on-scroll";
-import { red } from '@material-ui/core/colors';
+
 
 const comments = [
   {name: 'Hamza Nemr', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'
 , reply:{name: 'Ali Mansour', description: "yes this completly right. amazing"}},
-  {name: 'Hamza Nemr', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'},
-  {name: 'Hamza Nemr', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'},
-  {name: 'Hamza Nemr', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'},
-  {name: 'Hamza Nemr', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'},
-  {name: 'Hamza Nemr', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'},
+  {imageUrl:'https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' ,name: 'Ali mansour', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'},
+  {name: 'Ali Malla', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'},
+  {name: 'Kawthar Safa', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'},
+  {name: 'Fatima Mansour', description: 'Historically, surnames evolved as a way to sort people into groups - by occupation, place of origin, clan affiliation, patronage, parentage, adoption, and even physical characteristics (like red hair). Many of the modern surnames in the dictionary can be traced back to Britain and Ireland.'},
 ]
 
 const Community = () => {
@@ -36,19 +35,18 @@ const Community = () => {
               
               <div key={i}>
               <div className={classes.styleComment} key={i}>
-              <Avatar  alt='' src='https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' style={{ width: '40px', height: '40px', border: '3px solid #333'}}>
+
+              <Avatar  alt='' src={comment.imageUrl} style={{ width: '40px', height: '40px', border: '3px solid #333'}}>
                   
-               </Avatar>
+              </Avatar>
      
-               <Typography gutterBottom variant='subtitle1'>
+             <Typography gutterBottom variant='subtitle1'>
  
-             <div>
-             <strong style={{marginLeft:'12px', color: "#333",}} >{comment.name}</strong>
-              
              <div className={classes.styleInnerComment}>
+             <strong style={{ color: "#333",}} >{comment.name}</strong> <br/>
               {comment.description}
              </div>
-             </div>
+            
               
              </Typography>
              </div>

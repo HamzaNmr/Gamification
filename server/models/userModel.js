@@ -40,10 +40,9 @@ const userSchema = mongoose.Schema({
         type: String,
         default: ''
     },
-    rewards: [
-        
-    ],
+    rewards: [string],
     badges:[String],
+    tasks:[String],
     bio: {
         type: String,
         default: 'Write a brief introduction about yourself'
