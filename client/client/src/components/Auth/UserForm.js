@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from 'react';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import BadgeIcon from '@mui/icons-material/Badge';
+import Logo from '../../images/gamification.png';
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -40,7 +41,7 @@ const handleSubmit = (e) => {
   return (
     <div>
    
-      <div style={{marginTop:'70px'}}>
+      <div style={{marginTop:'10px'}}>
         <div className="section firstDiv">
             <div className="container">
               <div className="...">
@@ -108,9 +109,14 @@ const handleSubmit = (e) => {
                   </div>
                 </div>
               </div>
+
+              <div style={{ marginTop: '140px'}}>
+                <img src={Logo} alt='' style={{width: 300, height: 300}}/>
+              </div>
             </div>
           </div>
         </div> 
+
     </div>
   )
 }

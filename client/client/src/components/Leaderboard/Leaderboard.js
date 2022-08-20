@@ -28,7 +28,7 @@ const Leaderboard = () => {
 
   return (
     <div className="board" style={{
-      margin:"99px 0 50px 0"
+      margin:"77px 0 50px 0"
     }} >
       
    

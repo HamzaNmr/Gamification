@@ -1,12 +1,26 @@
 import { Grid, Grow, Paper, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Task from './Task/Task';
 import TaskDetail from '../TaskDetail/TaskDetail';
 import AdviceImage from '../../images/advice1.png';
 
 import './styles.css';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { getTasks } from '../../actions/tasks';
+
 const Tasks = () => {
+
+  const [currentPostId, setCurrentPostId] = useState(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTasks());
+}, [currentPostId, dispatch]);
+
+const {tasks, isLoading } = useSelector((state) => state.tasks);
+console.log(tasks , isLoading);
+
   return (
     <Grow in>
      <div style={{margin: '77px 0 30px 0'}}>
@@ -26,7 +40,11 @@ const Tasks = () => {
             <Grid item lg={12} md={12} sm={12} xs={12}>
                 <Paper style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '30px',
               backgroundColor: '#EBEAEC', border: '3px solid #333', borderRadius: 15, padding: '2rem'}}>
-                  <Task/>
+                 {
+                  tasks.map((task, i) => (
+                    <Task  task={task} setCurrentPostId={setCurrentPostId} key={i}/>
+                  ))
+                 }
                 </Paper>
             </Grid>
 

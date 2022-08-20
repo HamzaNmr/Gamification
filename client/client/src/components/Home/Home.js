@@ -24,19 +24,22 @@ console.log( currentId , 'home')
 }, [currentId, dispatch]);
 
   const { users, isLoading } = useSelector((state) => state.user);
-  console.log(users);
+  console.log(users, isLoading);
   
   return (
    
     <div>    
-        <Container maxWidth='xl' style={{marginTop: '70px'}}>
+        {
+          !isLoading 
+          ? 
+          <Container maxWidth='xl' style={{marginTop: '70px'}}>
      <Grid item>
         <ProfileCard currentId={currentId}/>
       </Grid>
 
      <Grid container justifyContent='space-between' alignItems='stretch' spacing={3}>
      <Grid item lg={4} md={12}>
-        { !isLoading ? <LeaderCard/> : <Skeleton sx={{ backgroundColor: '#E9E8EA', width: '100%', height: '100%', borderRadius: 7  }} variant="rectangular"/>}
+        <LeaderCard/>
         <div>
          <div className="wave"></div>
          <div className="wave"></div>
@@ -54,6 +57,27 @@ console.log( currentId , 'home')
      
      </Grid>
     </Container>
+    :
+       <div style={{marginTop: '100px'}}>
+        <div className="loader">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+       </div>
+        }
       
     </div>
   )

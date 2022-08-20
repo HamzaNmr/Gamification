@@ -13,26 +13,27 @@ import ScrollAnimation from "react-animate-on-scroll";
 
 
 
-const arr = [{question: '?', description: 'x'}, {description: 'x', videoUrl: 'v'}, {question: '?', description: 'x',videoUrl: 'v'}, {}, {},{}, {},{},{},{}]
-const Task = () => {
+// const arr = [{question: '?', description: 'x'}, {description: 'x', videoUrl: 'v'}, {question: '?', description: 'x',videoUrl: 'v'}, {}, {},{}, {},{},{},{}]
+const Task = ({ task }) => {
 
     const classes = useStyles();
     const navigate = useNavigate();
 
+    console.log(task._id);
     const openTask = () => {
-      navigate('/tasks/task-detail', { replace: false });
-    }
+      navigate(`/tasks/${task._id}`);
+  };
 
   return (
-   arr.map((task,i) => (
+   
 
-    <ScrollAnimation animateIn="animate__bounceInRight" key={i}>
+    <ScrollAnimation animateIn="animate__bounceInRight" >
     
-    <Card raised elevation={6} className={classes.card} sx={{ borderRadius: 5}} key={i}>
+    <Card raised elevation={6} className={classes.card} sx={{ borderRadius: 5}} >
     <CardMedia
     component="img"
     sx={{ width: 151 }}
-    image="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
+    image={task?.image || "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"}
     alt="Live from space album cover"
   />
 
@@ -41,19 +42,21 @@ const Task = () => {
     <CardContent sx={{ }}>
 
       <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%' }}>
-      <div style={{height:'100px', width: '70%', flexWrap: 'wrap', wordBreak: 'break-word', overflow: 'hidden'}}>
+      <div style={{height:'100px', width: '70%', flexWrap: 'wrap', wordBreak: 'break-word', overflow: 'hidden',}}>
       <Typography component="div" variant="h5" style={{fontWeight: 700, color: '#432874', marginBottom: '10px'}}>
-        Live From Space
+        {task?.title}
       </Typography>
-      <Typography variant="subtitle1" color="text.secondary" component="div" style={{fontSize: '.8rem'}}>
-        Mac Millerllllllllllllllllllllllllllllllllidia
+      <div style={{height: '50px', overflow: 'hidden',}}>
+      <Typography variant="subtitle1" color="text.secondary" component="div" style={{fontSize: '.8rem',}}>
+       {task?.description}
       </Typography>
+      </div>
       </div>
 
      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '70px'}}>
      <div className={classes.coin}>
             <img src={Coin} alt="" style={{width: '30px',}}/>
-            <span>5.2</span>
+            <span>{task?.coin}</span>
       </div>
       
      </div>
@@ -63,7 +66,7 @@ const Task = () => {
         <div style={{width: '70%', display: 'flex',}}>
           <img alt='' src={DescriptionImage} style={{width: 20, height: 20,  marginRight: '10px'}}/> 
           {
-            task.question && task.videoUrl ? 
+            task.question && task.link ? 
             <div>
             <img alt='' src={QuestionImage} style={{width: 20, height: 20, marginRight: '10px'}}/> 
             <img alt='' src={VideoImage} style={{width: 20, height: 20}}/>
@@ -71,7 +74,7 @@ const Task = () => {
            :
            task.question ?
               <img alt='' src={QuestionImage} style={{width: 20, height: 20}}/> 
-            : task.videoUrl ? 
+            : task.link ? 
             <img alt='' src={VideoImage} style={{width: 20, height: 20}}/>
             : null
             
@@ -87,7 +90,7 @@ const Task = () => {
   
 </Card>
 </ScrollAnimation>
-   ))
+   
   )
 }
 

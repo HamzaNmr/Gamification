@@ -18,10 +18,14 @@ const Navbar = () => {
     const navigate = useNavigate();
 
       return (
+      <>
+       {
+        user && 
         <AppBar className={classes.appBar} position='sticky' color='inherit'>
-        <Toolbar className={classes.toolbar}>
+         <Toolbar className={classes.toolbar}>
           
         <Typography variant='h4' className={classes.logo}>small</Typography>
+        
           <div className={classes.midPart}>
           <Typography variant='h4' style={{marginRight: '25px'}}>LOGO</Typography>
             <p className={classes.item} onClick={()=>{navigate('/home', { replace: true })}}>Home</p>
@@ -30,6 +34,7 @@ const Navbar = () => {
             <p className={classes.item} onClick={()=>{navigate('/tasks', { replace: true })}}>Tasks</p>
             <p className={classes.item} onClick={()=>{navigate('/community', { replace: true })}}>Community</p>
           </div>
+        
           
           <div className={classes.rightPart}>
 
@@ -44,7 +49,9 @@ const Navbar = () => {
           </div>
 
         </Toolbar>
-      </AppBar>
+        </AppBar>
+       }
+      </>
       )
     };
    

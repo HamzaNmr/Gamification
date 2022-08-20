@@ -13,6 +13,7 @@ import Tasks from './components/Tasks/Tasks';
 
 
 import './App.css';
+import TaskDetail from './components/TaskDetail/TaskDetail';
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
                 <Route path="/leaderboard" exact element={<Leaderboard/>} />
                 <Route path="/rewards" exact element={<RewardsPage/>} />
                 <Route path="/tasks" exact element={<Tasks/>} />
-                <Route path="/tasks/task-detail" exact element={<Tasks/>} />
+                <Route path="/tasks/:id" exact element={<TaskDetail/>} />
 
                 <Route path="/community" exact element={<Community/>} />
               </Routes>
