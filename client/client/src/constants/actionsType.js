@@ -7,6 +7,7 @@ export const FETCH_TOP_USERS = 'FETCH_TOP_USERS';
 
 export const FETCH_TASKS = 'FETCH_TASKS';
 export const FETCH_TASK = 'FETCH_TASK';
+export const COMPLETE = 'COMPLETE';
 
 export const START_LOADING = 'START_LOADING';
 export const END_LOADING = 'END_LOADING';

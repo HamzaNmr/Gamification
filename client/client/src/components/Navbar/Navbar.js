@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect}from 'react';
 import { AppBar, Toolbar, Typography,} from '@material-ui/core';
 import useStyles from "./styles";
 
@@ -10,12 +10,23 @@ import Notfication from '../Notfication/Notification';
 
 
 import {useNavigate} from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 const Navbar = () => {
 
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('profile'));
     const navigate = useNavigate();
+    const currentId = user?.result?.id;
+    const userInfo = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
+  
+    const [coin, setCoin] = useState(0);
+
+
+  
+
+
 
       return (
       <>
@@ -40,7 +51,7 @@ const Navbar = () => {
 
             <div className={classes.coin}>
             <img src={Coin} alt="" style={{width: '30px',}}/>
-            <span>{user?.result?.coins}</span>
+            <span>{userInfo?.coins}</span>
             </div>
 
             <Notfication/>

@@ -1,4 +1,4 @@
-import { FETCH_TASKS, FETCH_TASK, START_LOADING, END_LOADING} from "../constants/actionsType";
+import { FETCH_TASKS, FETCH_TASK, START_LOADING, END_LOADING, COMPLETE } from "../constants/actionsType";
 
 export default (state = { isLoading: true, tasks: [] }, action) => {
     switch (action.type) {
@@ -16,6 +16,8 @@ export default (state = { isLoading: true, tasks: [] }, action) => {
                 ...state,
                 task: action.payload,
             };
+        case COMPLETE:
+            return {...state, tasks: state.tasks.map((task) => task._id === action.payload._id ? action.payload : task)};
         default:
             return state;
     }

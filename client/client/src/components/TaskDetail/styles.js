@@ -15,7 +15,7 @@ export default makeStyles((theme) => ({
         padding: '2rem'
       },
       descriptionPart:{
-         margin: '100px 0 0 30px',
+         margin: '70px 0 0 30px',
          height: 430,
       },
       coin:{
@@ -24,6 +24,17 @@ export default makeStyles((theme) => ({
       },
       paper:{
         display: 'flex', flexDirection:' column', alignItems: 'center', width: '80%', backgroundColor: '#EBEAEC', border: '1px solid #333', borderRadius: 15, padding: '1rem', gap: '30px', marginBlock: '30px', cursor: 'pointer',
+      },
+      paperMap:{
+        display: 'flex', flexDirection:' column', alignItems: 'center', width: '80%', backgroundColor: '#EBEAEC', border: '1px solid #333', borderRadius: 15, padding: '1rem', gap: '30px', marginBlock: '30px', cursor: 'pointer',
+        "&:hover": {
+          backgroundColor: '#CDC7E6',
+          transform: 'scale(1.05)',
+        },
+        "&:focus": {
+          backgroundColor: '#CDC7E6',
+          transform: 'scale(1.05)',
+        }
       }
 }));
 

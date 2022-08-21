@@ -32,7 +32,10 @@ const taskSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-
+    complete: {
+        type: [String],
+        default: []
+    },
 
 
   

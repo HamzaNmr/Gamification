@@ -20,6 +20,26 @@ const getTask = async (req, res) => {
     } catch (error) {
         res.status(404).json({ message: error.message});
     }
-}
+};
 
-module.exports = { getTasks, getTask };
+const completeTask = async (req, res) => {
+    const { id } = req.params;
+
+    if(!req.user._id) return json({message: "unauthenticated"});
+
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("This task is not exist");
+
+    const task = await TaskModel.findById(id);
+
+    const index = task.complete.findIndex((id) => id === String(req.user._id));
+    if(index === -1){
+        task.complete.push(req.user._id);
+    }else{
+        task.complete = task.complete.filter((id) => id !== String(req.user._id));
+    }
+    const updatedTask = await TaskModel.findByIdAndUpdate(id, task, { new: true });
+
+    res.json(updatedTask);
+};
+
+module.exports = { getTasks, getTask, completeTask };
