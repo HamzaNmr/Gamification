@@ -13,8 +13,11 @@ API.interceptors.request.use((req) => {
 export const getUsers = () => API.get('/home');
 export const updateProfile = (id, updatedProfile) => API.patch(`/home/${id}`, updatedProfile);
 
+
 export const getTasks = () => API.get('/tasks');
 export const getTask = (id) => API.get(`/tasks/${id}`);
+export const completeTask = (id) => API.patch(`/tasks/${id}/completeTask`);
+
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
