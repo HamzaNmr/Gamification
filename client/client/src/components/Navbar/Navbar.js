@@ -38,7 +38,9 @@ const Navbar = () => {
         <Typography variant='h4' className={classes.logo}>small</Typography>
         
           <div className={classes.midPart}>
-          <Typography variant='h4' style={{marginRight: '25px'}}>LOGO</Typography>
+          <Typography variant='h5' style={{marginRight: '25px', fontWeight: 900}}>
+            IT MAX
+          </Typography>
             <p className={classes.item} onClick={()=>{navigate('/home', { replace: true })}}>Home</p>
             <p className={classes.item} onClick={()=>{navigate('/Leaderboard', { replace: true })}}>LeaderBoard</p>
             <p className={classes.item} onClick={()=>{navigate('/rewards', { replace: true })}}>Rewards</p>

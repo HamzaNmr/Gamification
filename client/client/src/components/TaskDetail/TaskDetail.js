@@ -14,6 +14,8 @@ import Button from '@mui/material/Button';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import DoneImage from '../../images/done.png';
 
+import InfoModal from './InfoModal';
+
 
 import { completeTask } from '../../actions/tasks';
 import { updateprofile } from '../../actions/user';
@@ -95,11 +97,11 @@ const ButtonComplete = () => {
         </Box>
           
       ) : (
-        task?.question ? <Button variant='contained' onClick={checkAnswer} style={{width:'85%', borderRadius: 15, backgroundColor: '#0288D1'}} id='btnAnswer'>Answer</Button> :
+        task?.question ? <Button variant='contained' onClick={checkAnswer} style={{width:'85%',borderRadius: 15, backgroundColor: '#0288D1'}} id='btnAnswer'>Answer</Button> :
         <Button variant='contained' color="success" onClick={completeVideo}>Complete</Button>
       );
   }
-  return  task?.question ? <Button variant='contained' onClick={checkAnswer} style={{width:'85%', borderRadius: 15, backgroundColor: '#0288D1', marginBottom: '30px'}} id='btnAnswer'>Answer</Button> :
+  return  task?.question ? <Button variant='contained' onClick={checkAnswer} style={{ width:'85%',borderRadius: 15, backgroundColor: '#0288D1'}} id='btnAnswer'>Answer</Button> :
   <Button variant='contained' color="success" onClick={completeVideo}>Complete</Button>
 };
 
@@ -162,7 +164,9 @@ const ButtonComplete = () => {
                   </Paper>
                 ))
               }
-             <ButtonComplete/>
+              
+              <ButtonComplete/>
+             
             </div>
            </div>
            :
@@ -172,7 +176,7 @@ const ButtonComplete = () => {
         </Grid>
         <Grid item lg={6} sm={12}>
           <div style={{display:'flex',justifyContent: 'end', alignItems: 'center',marginRight: '30px'}}>
-            <HelpOutlineOutlinedIcon/>
+            <InfoModal task={task}/>
           </div>
           <div className={classes.descriptionPart}>
            <div>

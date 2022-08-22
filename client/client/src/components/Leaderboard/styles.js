@@ -68,7 +68,6 @@ export default makeStyles((theme) => ({
   
   },
   rightGrid: {
-    marginLeft:"20px",
     height: '90vh',
     overflow: 'auto',
   },

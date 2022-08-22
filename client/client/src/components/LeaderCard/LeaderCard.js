@@ -5,11 +5,6 @@ import { Paper, Typography, Avatar ,Grow} from '@material-ui/core';
 import Fire from '../../images/fire.png';
 import Clapping from '../../images/clapping.png';
 import Cool from '../../images/cool.png';
-import Emogi1 from "../../images/emogi1.png";
-import Emogi2 from "../../images/emogi2.png";
-import Emogi3 from "../../images/emogi3.png";
-import Emogi4 from "../../images/emogi4.png";
-import Emogi5 from "../../images/emogi5.png";
 import useStyles from './styles';
 
 
@@ -21,7 +16,7 @@ const LeaderCard = () => {
 
     const leaders = useSelector((state) => state.user.users.sort((a, b) => b.level - a.level ));
  
-    console.log(leaders, 'leaders');
+    console.log(leaders, 'leadersboard');
    
     const color = ['#FFBE5D', '#00CEC9', '#E17055'];
     const emoji = [`${Fire}`, `${Cool}`, `${Clapping}`];
