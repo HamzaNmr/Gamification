@@ -5,7 +5,7 @@ require("../passportJwt.js");
 
 const router = express.Router();
 
-router.get('/', getUsers);
+router.get('/',passport.authenticate("jwt", { session: false }), getUsers);
 router.patch('/:id', passport.authenticate("jwt", { session: false }), updateProfile);
 
 module.exports = router;

@@ -9,6 +9,7 @@ import Rewards from './components/Rewards/Rewards';
 import RewardsPage from './components/Rewards/RewardsPage';
 import Auth from './components/Auth/UserForm';
 import Community from './components/Community/Community';
+import CommunityDetail from './components/Community/CommunityDetail';
 import Tasks from './components/Tasks/Tasks';
 
 
@@ -29,8 +30,8 @@ function App() {
                 <Route path="/rewards" exact element={<RewardsPage/>} />
                 <Route path="/tasks" exact element={<Tasks/>} />
                 <Route path="/tasks/:id" exact element={<TaskDetail/>} />
-
                 <Route path="/community" exact element={<Community/>} />
+                <Route path="/community/:id" exact element={<CommunityDetail/>} />
               </Routes>
         </Container>
     </BrowserRouter>

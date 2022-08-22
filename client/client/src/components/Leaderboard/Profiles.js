@@ -1,12 +1,21 @@
 import React, { useState } from "react";
+import { useSelector } from 'react-redux';
+
+
 import useStyles from "./styles";
 import "./Style.css";
 import { Paper, Typography, Avatar, Grow } from "@material-ui/core";
 import Grid from "@mui/material/Grid";
 import ScrollAnimation from "react-animate-on-scroll";
 import meditatingAnime from '../../images/meditatingAnime.gif'
+import Fire from '../../images/fire.png';
+import Clapping from '../../images/clapping.png';
+import Cool from '../../images/cool.png';
 
 export default function profiles({ MYLeaderboard }) {
+
+ 
+
   return (
     <div id="profile">
       {console.log(MYLeaderboard)}
@@ -17,10 +26,16 @@ export default function profiles({ MYLeaderboard }) {
 
 function Item(data) {
   const classes = useStyles();
-
+ 
+  const leaders = useSelector((state) => state.user.users.sort((a, b) => b.level - a.level ));
+ 
+  console.log(leaders, 'leadersboard');
+ 
+  const color = ['#FFBE5D', '#00CEC9', '#E17055'];
+  const emoji = [`${Fire}`, `${Cool}`, `${Clapping}`]; 
 
   return (
-    <Grid container alignItems='stretch'>
+    <Grid container alignItems='stretch' spacing={1}>
       <Grid item lg={4} sm={12} className={classes.leftGrid}  style={{
         display: 'flex', flexDirection: 'column', alignItems: "end", paddingInline: '20px' 
       }}>
@@ -91,136 +106,26 @@ function Item(data) {
                 <Typography variant="body2"># Level</Typography>
               </div>
               </div>
-                {data.map((user, index) => (
-                  // <Paper className={classes.bar} key={index}>
-                  //   <div
-                  //     style={{
-                  //       display: "flex",
-                  //       alignItems: "center",
-                  //       gap: "30px",
-                  //     }}
-                  //   >
-                  //     <Grid item xs={1}>
-                  //       <div
-                  //         className={classes.number}
-                  //         style={{
-                  //           backgroundColor: `${user.bgcolor}`,
-                  //           color: `${user.color}`,
-                  //         }}
-                  //       >
-                  //         {user.rank}
-                  //       </div>
-                  //     </Grid>
-                  //     <Grid item xs={1}>
-                  //       <div
-                  //         style={{ color: "#333" }}
-                  //         className={classes.centered}
-                  //       >
-                  //         <Avatar
-                  //           alt=""
-                  //           //   src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360"
-                  //           src={user.img}
-                  //           style={{
-                  //             width: 50,
-                  //             height: 50,
-                  //             border: "1px solid #36205D",
-                  //           }}
-                  //         ></Avatar>
-                  //       </div>
-                  //     </Grid>
-
-                  //     {/* <Typography
-                  //   variant="subtitle1"
-                  //   className={classes.name}
-                  //   style={{ backgroundColor: `${user.nameColor}` }}
-                  // >
-                  //   {user.name}
-                  // </Typography> */}
-
-                  //     {/* //test start */}
-
-                  //     <Grid item xs={12}>
-                  //       <div>
-                  //         <Typography variant="subtitle1">
-                  //           {user.name}
-                  //         </Typography>
-                  //         <Popover
-                  //           id={id}
-                  //           open={open}
-                  //           anchorEl={anchorEl}
-                  //           onClose={handleClose}
-                  //           anchorOrigin={{
-                  //             vertical: "top",
-                  //             horizontal: "right",
-                  //           }}
-                  //         >
-                  //           <Typography className={classes.popover}>
-                  //             <h3>{user.date}</h3>
-                  //             <span>{user.location}</span>
-                  //           </Typography>
-                  //         </Popover>
-                  //       </div>
-
-                  //       {/* // test end */}
-
-                  //       <Typography
-                  //         variant="caption"
-                  //         style={{ color: "#36205D", fontWeight: "bold" }}
-                  //         className={classes.centeredd}
-                  //       >
-                  //         @{user.username}
-                  //       </Typography>
-
-                  //       <Typography
-                  //         variant="subtitle1"
-                  //         style={{ fontSize: "12px", color: "#36205D" }}
-                  //       >
-                  //         {user.date}
-                  //       </Typography>
-                  //       {/* </div>
-                  // </div> */}
-                  //     </Grid>
-                  //     <Grid item xs={6}></Grid>
-
-                  //     {/* // <div className={classes.space}></div> */}
-                  //     <Grid item xs={2}>
-                  //       <div className={classes.centered}>
-                  //         <span
-                  //           style={{
-                  //             color: `${user.levelColor}`,
-                  //             fontWeight: "900",
-                  //           }}
-                  //         >
-                  //           {user.level}
-                  //         </span>
-                  //         <img
-                  //           alt=""
-                  //           src={user.emoji}
-                  //           style={{ width: "20px", height: "20px" }}
-                  //         />
-                  //       </div>
-                  //     </Grid>
-                  //   </div>
-                  // </Paper>
-                  <Paper className={classes.bar} key={index}>
+                {leaders.map((user, i) => (
+                  <Paper className={classes.bar} key={i}>
                   <div style={{display: 'flex', alignItems:'center', justifyContent: 'space-between',}}>
                   
                       <div style={{color: '#333'}} className={classes.centered}>
-                       <div className={classes.number} style={{backgroundColor: `${user.bgcolor || '#333'}`}}>{user.rank}</div>
-                        <Avatar alt="" src='https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' style={{width: 50, height: 50, border: '1px solid #36205D'}}>
+                       <div className={classes.number} style={{backgroundColor: `${color[i] || '#333'}`}}>{i+1}</div>
+                        <Avatar alt="" src={user.imageUrl} style={{width: 50, height: 50, border: '1px solid #36205D'}}>
                         </Avatar>
                         <div>
                         <Typography variant='subtitle1' style={{fontWeight: 500}}>
                           {user.name}
                         </Typography>
                         <Typography variant='caption'  style={{color: '#36205D', fontWeight: 'bold'}} className={classes.centered}>
-                          @{user.username}
+                          @{user.userName}
                         </Typography>
                         </div>
                       </div>
                       <div className={classes.centered}>
-                          <span style={{color:`${user.bgcolor || '#333'}`, fontWeight: '900'}}>{user.level}</span>
-                          <img alt='' src={user.emoji} style={{width:'20px', height: '20px'}}/>
+                          <span style={{color:`${color[i] || '#333'}`, fontWeight: '900'}}>{user.level}</span>
+                          <img alt='' src={emoji[i]} style={{width:'20px', height: '20px'}}/>
                       </div>
                   </div>
               </Paper>
@@ -229,6 +134,7 @@ function Item(data) {
               </ScrollAnimation>
           </Grid>
        
+
        <Grid item lg={3} sm={12}>
        <ScrollAnimation animateIn="animate__bounceInRight" >
        <div>
@@ -251,22 +157,3 @@ function Item(data) {
   );
 }
 
-//comment for testing
-
-// <>
-//   {data.map((value, index) => (
-//     <div className="flex" key={index}>
-//       <div className="item">
-//         <img src={value.img} alt="" />
-
-//         <div className="info">
-//           <h3 className="name text-dark">{value.name}</h3>
-//           <span>{value.location}</span>
-//         </div>
-//       </div>
-//       <div className="item">
-//         <span>{value.score}</span>
-//       </div>
-//     </div>
-//   ))}
-// </>

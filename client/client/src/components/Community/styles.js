@@ -8,6 +8,13 @@ export default makeStyles((theme) => ({
     height: 'auto !important',
 },
  },
+ paperHero:{
+  backgroundColor: '#EBEAEC', height: '77vh', border: '3px solid #333', borderRadius: 15, padding: '2rem',
+  overflow: 'auto',
+  [theme.breakpoints.down('md')]: {
+    height: 'auto !important',
+},
+ },
   commentButton:{
     borderRadius: 15,
     marginBottom: '5px',
@@ -38,8 +45,8 @@ export default makeStyles((theme) => ({
   display:'flex',
   alignItems:'start',
   gap: '1rem',
+  width: '95%',
   marginBottom: '1rem',
-  width:' 90%',
   marginBottom: '14px'
   },
 
@@ -79,7 +86,19 @@ export default makeStyles((theme) => ({
     alignItems:'start',
     gap: '1rem',
     marginBottom: '1rem',
-    width:' 90%',
+    width:'90%',
    padding: '20px 0px 20px 10%',
     },
+
+    commentField:{
+      position: 'absolute',
+      top: '50%',
+      left: '59%',
+      width: '36%',
+      [theme.breakpoints.down('md')]: {
+        top: '120%',
+      left: '5%',
+      width: '90%',
+    },
+    }
 }));
