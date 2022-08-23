@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const AuthRoutes = require('./routes/users.js');
 const ControllUSerRoutes = require('./routes/user.js');
 const TasksRoutes = require('./routes/tasks.js');
+const rewardRoutes = require('./routes/rewards.js');
 const CommunityRoutes = require('./routes/community.js');
 const passport = require('passport');
 
@@ -25,6 +26,7 @@ dotenv.config();
  app.use('/tasks', TasksRoutes);
  app.use('/community', CommunityRoutes);
  app.use('/user', AuthRoutes);
+ app.use('/rewards' , rewardRoutes)
  app.use(passport.initialize());
 
  const PORT = process.env.PORT;
