@@ -1,6 +1,7 @@
+
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const UserModel = require('../models/userModel');
+const UserModel = require('../models/UserModel');
 require('../passportJwt');
 const { hashSync, compareSync } = require('bcrypt');
 
@@ -61,8 +62,17 @@ const { hashSync, compareSync } = require('bcrypt');
 
         const payload = {
             id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
             name: user.name,
             email :user.email,
+            userName: user.userName,
+            bio: user.bio,
+            level: user.level,
+            experience: user.experience,
+            coins: user.coins,
+            rewards: user.rewards,
+            badges: user.badges,
         }
 
         console.log(payload);
@@ -73,9 +83,18 @@ const { hashSync, compareSync } = require('bcrypt');
             success: true,
             message: "loged in successfuly",
             result: {
+                id: user._id,
+                firstName: user.firstName,
+                lastName: user.lastName,
                 name: user.name,
                 email :user.email,
-                id: user._id,
+                userName: user.userName,
+                bio: user.bio,
+                level: user.level,
+                experience: user.experience,
+                coins: user.coins,
+                rewards: user.rewards,
+                badges: user.badges,
             },
             token: "Bearer " + token,
         })
@@ -84,4 +103,30 @@ const { hashSync, compareSync } = require('bcrypt');
 };
 
 
-module.exports = { signup, signin };
+const getUsers = async (req, res) => {
+    try{
+        const users = await UserModel.find();
+        res.status(200).json(users);
+    } catch (error){
+        res.status(404).json({ message: error.message});
+    }
+};
+
+
+
+const updateProfile = async (req, res) => {
+    const { id: _id } = req.params;
+    const user = req.body;
+
+     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("This post is not exist");
+
+     const updatedProfile = await UserModel.findByIdAndUpdate(_id, user, { new: true });
+
+     res.json(updatedProfile);
+};
+
+
+
+
+
+module.exports = { signup, signin, updateProfile, getUsers };

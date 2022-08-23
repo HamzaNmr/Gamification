@@ -5,6 +5,9 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 const AuthRoutes = require('./routes/users.js');
+const ControllUSerRoutes = require('./routes/user.js');
+const TasksRoutes = require('./routes/tasks.js');
+const CommunityRoutes = require('./routes/community.js');
 const passport = require('passport');
 
 
@@ -16,6 +19,11 @@ dotenv.config();
  app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
  app.use(cors());
 
+
+ 
+ app.use('/home', ControllUSerRoutes);
+ app.use('/tasks', TasksRoutes);
+ app.use('/community', CommunityRoutes);
  app.use('/user', AuthRoutes);
  app.use(passport.initialize());
 

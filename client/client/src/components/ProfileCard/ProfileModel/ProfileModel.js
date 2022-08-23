@@ -1,27 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
-import { Paper, Typography, Grow, Avatar, LinearProgress,  Divider, Tooltip} from '@material-ui/core';
-
-
+import { Typography, Avatar, LinearProgress,  Divider, Tooltip} from '@material-ui/core';
 import useStyles from './styles';
-
 import HdrStrongIcon from '@mui/icons-material/HdrStrong';
 
 import LevelAvatar from '../../../images/swords.png';
 import Star from '../../../images/favourites.png';
-import SpeedBadge from '../../../images/running.png';
-import OrganizeBadge from '../../../images/morning-routine.png';
-import CommunityBadge from '../../../images/unity.png';
-import WinnerBadge from '../../../images/gamification.png';
-import TopBadge from '../../../images/award.png';
-import CompleteBadge from '../../../images/loading.png';
+// import SpeedBadge from '../../../images/running.png';
+// import OrganizeBadge from '../../../images/morning-routine.png';
+// import CommunityBadge from '../../../images/unity.png';
+// import WinnerBadge from '../../../images/gamification.png';
+// import TopBadge from '../../../images/award.png';
+// import CompleteBadge from '../../../images/loading.png';
 import Coin from '../../../images/dollar.png';
+import NoBadge from '../../../images/banned.png';
+
 
 import RewardsPart from './RewardsPart';
+import EditProfile from '../../EditProfile/EditProfile';
 
 
 import { styled } from '@mui/material/styles';
@@ -52,16 +55,49 @@ const style = {
   borderRadius: '15px',
 };
 
+const edit = {
+  position: 'absolute',
+  top: '50%',
+  left: '77%',
+  transform: 'translate(-50%, -50%)',
+  width: 550,
+  height: 589,
+  backgroundColor: '#ECEBED',
+  boxShadow: 24,
+  borderRadius: '15px',
+  padding: '2rem'
+};
 
 
-const ProfileModel = () => {
+const ProfileModel = ({ currentId }) => {
 
     const classes = useStyles();
-    const expereience = 20;
+
+    const user = JSON.parse(localStorage.getItem('profile'));
+    
+    
+   
 
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+      setOpen(true);
+    };
+    
     const handleClose = () => setOpen(false);
+
+    const [Editopen, setEditOpen] = React.useState(false);
+    const editOpen = () => {
+      setEditOpen(true);
+      document.getElementById('transition').style.left = '29%';
+    };
+
+    const editClose = () => {
+      setEditOpen(false);
+      document.getElementById('transition').style.left = '50%';
+    };
+
+    console.log(currentId, 'profileModel');
+    const userInfo = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
 
     const switchProfile = () => {
         document.getElementById('profilePart').style.display = 'flex';
@@ -83,12 +119,14 @@ const ProfileModel = () => {
      
     }
 
+  
+
 
   return (
     <div>
        <Tooltip title="Profile">
        <Typography variant='subtitle1' style={{fontWeight: 700, cursor: 'pointer',}}  onClick={handleOpen} >
-                    Hamza Nemer
+                    {userInfo?.name}
         </Typography>
        </Tooltip>
 
@@ -104,7 +142,7 @@ const ProfileModel = () => {
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>
+          <Box sx={style} id='transition'>
 
            
 
@@ -114,8 +152,9 @@ const ProfileModel = () => {
           
           <div  className={classes.gridDiv}>
                 <div>
-                  <Avatar variant="rounded"  alt="Remy Sharp" src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360" style={{width: '150px', height: '150px', border:"5px solid #9687DB"}}>
-                  </Avatar>
+                <Avatar variant="rounded"  alt={userInfo?.name} src={userInfo?.imageUrl} style={{width: '150px', height: '150px',borderRadius: 15, border:"5px solid #9687DB"}}>
+                     <Typography variant='h1'>{userInfo?.name.charAt(0)}</Typography>
+                </Avatar>
                 </div>
 
                 <div>
@@ -123,9 +162,12 @@ const ProfileModel = () => {
                   <Avatar variant="square" alt="Remy Sharp" src={LevelAvatar} style={{width: 30, height: 30,}}>
                   </Avatar>
                   <div>
-                  <ProfileModel/>
+                  <Typography variant='subtitle1' style={{fontWeight: 700, cursor: 'pointer',}}  onClick={handleOpen} >
+                    {userInfo?.name}
+                  </Typography>
                   <Typography variant='caption'  style={{color: '#CBC8FF'}} className={classes.centered}>
-                    @Hamza_Nemer <HdrStrongIcon/> Level 2
+                    {userInfo?.userName ? userInfo?.userName : 'no userName yet'}
+                     <HdrStrongIcon/> Level {userInfo?.level}
                   </Typography>
                   </div>
                 </div>
@@ -134,8 +176,8 @@ const ProfileModel = () => {
 
                 <div style={{display:'flex', alignItems:'center', justifyContent: 'center', gap: '10px', marginTop: '20px',}} >
                   <img alt='Experience' src={Star} style={{width: 20, height: 20,}} />
-                  <BorderLinearProgress variant="determinate" value={expereience * 2}/>
-                  <Typography variant='body2' style={{color:'#CBC8FF'}}>{expereience}/50</Typography>
+                  <BorderLinearProgress variant="determinate" value={userInfo?.experience * 2}/>
+                  <Typography variant='body2' style={{color:'#CBC8FF'}}>{userInfo?.experience}/50</Typography>
                 </div>
 
                 </div>
@@ -144,7 +186,7 @@ const ProfileModel = () => {
 
                <div className={classes.coin}>
                <img src={Coin} alt="" style={{width: '30px',}}/>
-               <span style={{color:'white'}}>5.2</span>
+               <span style={{color:'white'}}>{userInfo?.coins}</span>
                </div>
             </div>
 
@@ -156,30 +198,49 @@ const ProfileModel = () => {
               </div>
 
               <div>
-                <Button variant='contained'>Edit</Button>
+              <Button variant='contained' style={{backgroundColor: '#5B30A8', borderRadius: 15, fontSize: '.7rem', fontWeight: 700}} onClick={editOpen}>Edit profile</Button>
+
+                 <Modal
+                aria-labelledby="spring-modal-title"
+                aria-describedby="spring-modal-description"
+               open={Editopen}
+              onClose={editClose}
+              closeAfterTransition
+              BackdropComponent={Backdrop}
+              BackdropProps={{
+                timeout: 500,
+                 }}
+                >
+               <Fade in={Editopen}>
+                <Box sx={edit}>
+                  <EditProfile currentId={currentId} />
+                </Box>
+                </Fade>
+               </Modal>
               </div>
                
             </div>
 
             <div style={{padding: '0 50px', display: 'flex',}} id='profilePart'>
-            <div style={{width: '100%'}}>
+            <div style={{width: '100%',}}>
                 <div>
                 <Typography variant='h6' style={{fontWeight:'700', color: '#4E4A57',}}>Bio</Typography>
                 <Divider style={{width: '70%', marginBlock: '10px'}}/>
-                <Typography variant='body2'>no description from user</Typography>
+                <div style={{width: '80%', flexWrap: 'wrap', wordBreak: 'break-all',}}>
+                <Typography variant='body2'>{userInfo?.bio ? userInfo?.bio : 'Write a brief introduction about yourself'}</Typography>
+                </div>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
                 <Typography variant='h6' style={{fontWeight:'700', color: '#4E4A57',}}>General info</Typography>
                 <Divider style={{ width: '70%',marginBlock: '10px',}}/>
-                <div style={{color: '#36205D'}}>
-                <Typography variant='subtitle2' style={{fontWeight: 700}}>First Name : <span className={classes.span}> Hamza </span> </Typography>
+                <div style={{color: '#36205D', marginTop: '20px'}}>
+                <Typography variant='subtitle2' style={{fontWeight: 700, marginBottom: '7px'}}>First Name : <span className={classes.span}> {userInfo?.firstName} </span> </Typography>
 
-                <Typography variant='subtitle2' style={{fontWeight: 700}}>Last Name :  <span  className={classes.span}> Nemer </span> </Typography>
+                <Typography variant='subtitle2' style={{fontWeight: 700,  marginBottom: '7px'}}>Last Name :  <span  className={classes.span}> {userInfo?.lastName} </span> </Typography>
 
-                <Typography variant='subtitle2' style={{fontWeight: 700}}>Username :  <span  className={classes.span}> Hamza_Nemer </span> </Typography>
+                <Typography variant='subtitle2' style={{fontWeight: 700,  marginBottom: '7px'}}>Username :  <span  className={classes.span}>  {userInfo?.userName ? userInfo?.userName : 'no userName yet'} </span> </Typography>
 
-                <Typography variant='subtitle2' style={{fontWeight: 700}}>Password :  <span  className={classes.span}> 12345 </span></Typography>
                 </div>
                 </div>
 
@@ -189,12 +250,24 @@ const ProfileModel = () => {
              <Typography variant='h6' style={{fontWeight:'700', color: '#4E4A57',}}>Badges</Typography>
              <Divider style={{marginBlock: '10px',}}/>
              <div>
-              <Tooltip title='speed badge because you gained speedly 150 points.'><img alt='' src={SpeedBadge} className={classes.img}/></Tooltip>
+                {/* <img alt='' src={SpeedBadge} className={classes.img}/>
                 <img alt='' src={OrganizeBadge} className={classes.img}/>
                 <img alt='' src={CommunityBadge} className={classes.img}/>
                 <img alt='' src={WinnerBadge} className={classes.img}/>
                 <img alt='' src={TopBadge} className={classes.img}/>
-                <img alt='' src={CompleteBadge} className={classes.img}/>
+                <img alt='' src={CompleteBadge} className={classes.img}/> */}
+                
+                { 
+                 (userInfo?.badges.length === 0)
+                  ?
+                  <div style={{width: '100%', height: '200px', display:'flex', justifyContent: 'center',alignItems: 'center', flexDirection: 'column',}}>
+                    <img src={NoBadge} alt='' style={{width: 90, height: 90}}/>
+                    <Typography variant='body2' style={{marginTop: '20px', color: '#CBA9F3' }}>No Badges Yet</Typography>
+                  </div>
+                  : 
+                  userInfo?.badges.map((badge) => (
+                    <img alt='' src={badge} className={classes.img}/>))
+                }
              </div>
             </div>
 

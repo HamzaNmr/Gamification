@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useSelector } from 'react-redux';
 import useStyles from './styles';
 
 
@@ -13,7 +13,17 @@ import LevelAvatar from '../../images/swords.png';
 
 const ThreeDCard = () => {
 
+  
+
   const classes = useStyles();
+
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const currentId = (user?.result?.id || user?.result?._id);
+  console.log(currentId, 'threeDrank');
+  const usersInfo = useSelector((state) => state.user.users);
+
+  console.log(usersInfo)
+  
    
   const containerMove = (e) => {
       let xAxis = (window.innerWidth / 2 + e.pageX) / 10;
@@ -38,31 +48,36 @@ const ThreeDCard = () => {
   }; 
 
   return (
-    <Grow in>
-    <div className={classes.container} onMouseMove={containerMove} onMouseEnter={containerEnter} onMouseLeave={containerLeave}>
+    <>
+   {
+    usersInfo.map((user, i) => (
+      (user?._id === currentId) && 
+      <div className={classes.container} onMouseMove={containerMove} onMouseEnter={containerEnter} onMouseLeave={containerLeave} key={i}>
       
-     <div id="card" className={classes.card}>
-      
-      <div className={classes.header}>
-        <Typography variant='body1' component='p' style={{fontWeight: 700}}>YOUR RANK</Typography>
-        <Avatar variant="square" alt="Remy Sharp" src={LevelAvatar} style={{width: 25, height: 25,}}>
-        </Avatar>
+      <div id="card" className={classes.card}>
+       
+       <div className={classes.header}>
+         <Typography variant='body1' component='p' style={{fontWeight: 700}}>YOUR RANK</Typography>
+         <Avatar variant="square" alt="Remy Sharp" src={LevelAvatar} style={{width: 25, height: 25,}}>
+         </Avatar>
+       </div>
+      <div id="image">
+      <Avatar variant='rounded' alt="" src={user?.imageUrl} className={classes.image}>
+      </Avatar>
+        <Typography id="rank"  style={{fontWeight: 900, color: '#eee', marginTop: '10px'}}> RANK {i+1}</Typography>
       </div>
-     <div id="image">
-     <Avatar variant='rounded' alt="" src='https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360' className={classes.image}>
-     </Avatar>
-       <Typography id="rank"  style={{fontWeight: 900, color: '#eee', marginTop: '10px'}}> RANK 13</Typography>
+        <div className={classes.paragraph}>
+        <Typography variant='body2' style={{fontWeight: 700}}>
+         You can see here you rank,
+         beat all your freinds and be the best.
+        </Typography>
+      </div>
+ 
+      </div>
      </div>
-       <div className={classes.paragraph}>
-       <Typography variant='body2' style={{fontWeight: 700}}>
-        You can see here you rank,
-        beat all your freinds and be the best.
-       </Typography>
-     </div>
-
-     </div>
-    </div>
-    </Grow>
+    ))
+   }
+    </>
   )
 }
 

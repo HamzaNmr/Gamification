@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from "react-redux";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import useStyles from "./styles";
 import { Box } from '@material-ui/core';
@@ -25,6 +27,19 @@ import MeetingRoomOutlinedIcon from '@mui/icons-material/MeetingRoomOutlined';
 const MenuIcon = () => {
 
     const classes = useStyles();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    
+    const logout = () => {
+      dispatch({ type: 'LOGOUT' });
+
+      navigate('/auth', { replace: true });
+
+      setUser(null);
+  }
 
     const [state, setState] = React.useState({
         top: false,
@@ -90,6 +105,24 @@ const MenuIcon = () => {
                   <ListItemText>Rewards</ListItemText>
                 </ListItemButton>
               </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                   <EmojiEventsOutlinedIcon />
+                  </ListItemIcon>
+                  <ListItemText>Tasks</ListItemText>
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                   <EmojiEventsOutlinedIcon />
+                  </ListItemIcon>
+                  <ListItemText>Community</ListItemText>
+                </ListItemButton>
+              </ListItem>
   
               <ListItem disablePadding>
                 <ListItemButton>
@@ -101,7 +134,7 @@ const MenuIcon = () => {
               </ListItem>
   
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={logout}>
                   <ListItemIcon>
                    <MeetingRoomOutlinedIcon sx={{color:'red'}} />
                   </ListItemIcon>
