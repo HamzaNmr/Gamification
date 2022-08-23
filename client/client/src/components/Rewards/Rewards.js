@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -11,11 +10,16 @@ import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+
+// import handleRedeem from './ConfirmAction';
+
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RedeemIcon from '@mui/icons-material/Redeem';
-import ScrollAnimation from "react-animate-on-scroll";
+
 import Coin from '../../images/dollar.png';
+
+import ScrollAnimation from "react-animate-on-scroll";
 
 import "animate.css/animate.min.css";
 import "./styles.css";
@@ -32,96 +36,108 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+
 const Rewards = ({ reward }) => {
 
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  let points=400
+  let [balance, setBalance] = useState(points);
+
+  const [isOwnedColor, setIsOwnedColor] = useState(false);
+  let isOwnedCheck = isOwnedColor ? '#7B00FF' : '#a3a3a3';
+
+  const handleRedeem1 = (event) => {
+    if (window.confirm(`Are you sure you want to redeem ${reward.rewardName} from your balance?`)) {
+
+      setBalance(balance - reward.rewardCost)
+      setIsOwnedColor(isOwnedColor => !isOwnedColor)
+      event.currentTarget.disabled = true;
+      
+      console.log(`${reward.rewardName} added to db, your new blance ${balance}`)
+    }
+    else { console.log('canceled') }
   };
 
 
   return (
 
     <>
-      <Grid item p={3}>
-        <div className="layOutReward">
+      <ScrollAnimation animateIn="animate__bounceInLeft" >
 
-          <ScrollAnimation animateIn="animate__bounceInLeft" >
+        <Card className="CardReward">
 
-            <Card sx={{ maxWidth: 345 }} className="CardReward">
+          <CardHeader
+            m={4} p={3}
+            className="CardHeaderReward"
+            title={reward.rewardName}
+          />
 
-              <CardHeader
-                m={4} p={3}
-                className="CardHeaderReward"
-                title={reward.rewardName}
-              />
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <CardMedia
+              className="CardMediaReward"
+              component="img"
+              image={reward.rewardIcon}
+              alt="reward icon"
+            />
+          </div>
 
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <CardMedia
-                  className="CardMediaReward"
-                  component="img"
-                  image={reward.rewardIcon}
-                  alt="reward icon"
-                />
-              </div>
+          <CardActions disableSpacing className="CardActionsReward">
 
-              <CardActions disableSpacing className="CardActionsReward">
+            <span className="RewardDetails">
 
-                <span className="RewardDetails">
+              {/* emoji color changes if one of user rewards matches id of this reward
+                  also btn redeem is displayed 
+                  isOwned true state color #7B00FF */}
 
-                  {/* emoji color changes if one of user rewards matches id of this reward
-                      also btn redeem is displayed */}
-                  {/* owned color #8843f2 add shadow for effects */}
+              <EmojiEventsIcon
+                style={{ color: isOwnedCheck }}
+                fontSize='large' />
 
-                  <EmojiEventsIcon
-                    className="isOwned" id='isOwned'
-                    aria-label="isOwned"
-                    style={{ color: '#a3a3a3' }}
-                    fontSize='large' />
+              <img src={Coin} className='CoinIconReward' />
+              <span className='CoinAmountReward'> {reward.rewardCost} </span>
 
-                  <img src={Coin} className='CoinIconReward' />
-                  <span className='CoinAmountReward'> {reward.rewardCost} </span>
+            </span>
 
-                </span>
+            <ExpandMore
+              expand={expanded}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </ExpandMore>
 
-                <ExpandMore
-                  expand={expanded}
-                  onClick={handleExpandClick}
-                  aria-expanded={expanded}
-                  aria-label="show more"
-                >
-                  <ExpandMoreIcon />
-                </ExpandMore>
+          </CardActions>
 
-              </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent className="howToGetReward" >
 
-              <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent className="howToGetReward">
+              <Typography paragraph className="RewardDetails" >
+                {reward.rewardDetails}
+              </Typography>
 
-                  <Typography paragraph className="RewardDetails">
-                    {reward.rewardDetails}
-                  </Typography>
+              <br></br>
 
-                  <br></br>
+              <Button
+                className='RedeemBTN'
+                variant="contained"
+                startIcon={<RedeemIcon />}
+                onClick={handleRedeem1}
+              >
+                Redeem
+              </Button>
 
-                  <Button
-                    className='RedeemBTN'
-                    variant="contained"
-                    startIcon={<RedeemIcon />}
-                  >
-                    Redeem
-                  </Button>
+            </CardContent>
+          </Collapse>
 
-                </CardContent>
-              </Collapse>
+        </Card>
 
-            </Card>
-
-          </ScrollAnimation>
-
-        </div>
-      </Grid>
+      </ScrollAnimation>
     </>
 
   );

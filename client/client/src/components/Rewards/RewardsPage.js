@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import Rewards from './Rewards';
-import Stack from '@mui/material/Stack';
-import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
+
 import Typography from '@mui/material/Typography';
-import { Container, Col } from 'react-grid-system';
+import { Grow, Grid, Paper } from '@mui/material';
+
+import Coin from '../../images/dollar.png';
 import "./styles.css";
+
+
 
 const RewardsPage = () => {
 
@@ -28,7 +29,7 @@ const RewardsPage = () => {
   //   fetchPoints();
   // });
 
-  const [points, setPoints] = useState(0);
+  const [points, setPoints] = useState(400);
   const [loaded, setLoaded] = useState(false);
 
   //for data fetching
@@ -60,7 +61,7 @@ const RewardsPage = () => {
     },
     {
       rewardID: '3',
-      rewardName: 'Clean Code Cecil Book',
+      rewardName: 'Clean Code Book',
       rewardIcon: require('../../images/reward2.png'),
       rewardDetails: 'Start to clean your code for this month tasks',
       rewardCost: 80
@@ -127,51 +128,54 @@ const RewardsPage = () => {
   return (
     <>
 
-      <div style={{ marginTop: '100px', }} className="titleRewards" >
-        <h1 m={4} p={3}> Rewards </h1>
-      </div>
+      <Grow in>
+        <div style={{ margin: '77px 0 30px 0' }}>
+          <Grid container justifyContent='space-between' alignItems='stretch' spacing={3}>
 
-      {/* this box shows the pts that employee had gained */}
+            {/* this box shows the pts that employee had gained */}
+            <Grid item lg={12} xs={12}>
 
-      <Box m={4}>
-        <Card className='pointsCard' sx={{alignText:'center'}} >
-          <Stack p={2} >
+              <Paper style={{ backgroundColor: '#432874', padding: '20px 30px', borderRadius: 15, color: 'white' }}>
 
-              <CardGiftcardIcon className='CardGiftcardIconReward' />
+                <Typography variant='h4' style={{ display: 'flex', alignItems: 'center', }}>
+                  <img alt='' src={Coin} style={{ width: 70, heigth: 70, marginRight: '14px' }} />
+                  Your balance:
+                  <span style={{ fontSize: '2rem', marginLeft: '30px' }} className='balanceText'>
+                    {points}
+                  </span>
+                </Typography>
 
-              <Typography className="points">
+                <Typography fontSize="100px" color="green.400">
+                  {/* {loaded ? points : <CircularProgress color="secondary" />} */}
+                </Typography>
 
-                &nbsp; &nbsp;
-                You Have: <span> 5.2 </span> points
+              </Paper>
+            </Grid>
 
-              </Typography>
+            <Grid item lg={12} md={6} sm={12} xs={12} >
+              <Paper className="RewardsCardsContainer" >
 
-            <Typography fontSize="100px" color="green.400">
-              {/* {loaded ? points : <CircularProgress color="secondary" />} */}
-            </Typography>
+                {RewardsData &&
+                  RewardsData.map((reward) => (
 
-          </Stack>
-        </Card>
-      </Box>
+                    <div key={reward.rewardID}>
 
-      <Container className="RewardsCardsContainer">
+                      <Rewards
+                        reward={reward}
+                        rewardName={RewardsData.rewardName}
+                        rewardIcon={RewardsData.rewardIcon}
+                        rewardDetails={RewardsData.rewardDetails}/>
 
-        {RewardsData &&
-          RewardsData.map((reward) => (
+                    </div>
 
-            <Col key={reward.rewardID} xl={3} lg={6} md={6} sm={6}>
+                  ))}
 
-              <Rewards
-                reward={reward}
-                rewardName={RewardsData.rewardName}
-                rewardIcon={RewardsData.rewardIcon}
-                rewardDetails={RewardsData.rewardDetails} />
+              </Paper>
+            </Grid>
 
-            </Col>
-
-          ))}
-
-      </Container>
+          </Grid>
+        </div>
+      </Grow>
 
     </>
   );

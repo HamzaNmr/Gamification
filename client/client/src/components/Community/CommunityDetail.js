@@ -61,7 +61,7 @@ const CommunityDetail = () => {
           <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
           <Typography variant='h4' style={{fontWeight: 700, color: '#432874'}}>{group?.title}</Typography>
           <Typography variant='subtitle2'> <span style={{fontWeight: 700,}}> <EngineeringOutlinedIcon style={{color: '#432874', marginRight: '10px'}}/> Section : </span>{group?.type}</Typography>
-          <Typography variant='subtitle2'> <span style={{fontWeight: 700}}><FollowTheSignsOutlinedIcon style={{color: '#432874', marginRight: '10px'}}/>Bio : </span>this group for duscussing about code.</Typography>
+          <Typography variant='subtitle2'> <span style={{fontWeight: 700}}><FollowTheSignsOutlinedIcon style={{color: '#432874', marginRight: '10px'}}/>Bio : </span>{group?.description}</Typography>
           </div>
           </div>
           </div>

@@ -51,7 +51,7 @@ const InfoModal = ({ task }) => {
             Dear,
           </Typography>
             {
-              !task.link 
+              !task?.link 
               ?
               <div>
                 <Typography variant='body2' style={{fontSize:'.8rem', color: '#333', marginTop: '10px'}}>

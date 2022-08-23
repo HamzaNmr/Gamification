@@ -180,18 +180,18 @@ const ButtonComplete = () => {
           </div>
           <div className={classes.descriptionPart}>
            <div>
-           <Typography variant="h6">Description :</Typography>
+           <Typography variant="h6" style={{fontWeight: 900}}>Description :</Typography>
             <Typography variant="body1" style={{fontSize: '.8rem', marginBlock: '30px'}}>{task?.description}</Typography>
            </div>
            <div>
-           <Typography variant="h6">Coins :</Typography>
+           <Typography variant="h6" style={{fontWeight: 900}}>Coins :</Typography>
            <div className={classes.coin}>
             <img src={Coin} alt="" style={{width: '30px',}}/>
             <span>{task?.coin}</span>
            </div>
            </div>
            <div>
-           <Typography variant="h6">Who complete this task:</Typography>
+           <Typography variant="h6" style={{fontWeight: 900}}>Who complete this task:</Typography>
            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'start',marginBlock: '30px', width: '100%', }}>
           
            <AvatarGroup total={24}>
