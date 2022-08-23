@@ -11,7 +11,6 @@ import Notfication from '../Notfication/Notification';
 
 import {useNavigate} from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 
 const Navbar = () => {
 
@@ -21,13 +20,6 @@ const Navbar = () => {
     const currentId = user?.result?.id;
     const userInfo = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
   
-    const [coin, setCoin] = useState(0);
-
-
-  
-
-
-
       return (
       <>
        {

@@ -41,7 +41,7 @@ const Community = () => {
             <img src={CommunityImage} alt=''/>
        <Typography variant='body2'> Illustration by <a href="https://icons8.com/illustrations/author/625472">Ekaterina Rogova</a> from <a href="https://icons8.com/illustrations">Ouch!</a></Typography>
         </div>
-       <div style={{width: '100%', marginTop: '70px', display: 'flex', justifyContent:'center',alignItems: 'center', }}>
+       <div style={{width: '100%', marginBlock: '70px', display: 'flex', justifyContent:'center',alignItems: 'center', gap: '30px'}}>
          {
             groups.map((group,i) => (
                 <Card style={{ maxWidth: 300, borderRadius: 15 }} key={i}>
@@ -60,7 +60,7 @@ const Community = () => {
                      {group?.type}
                     </Typography>
                     <Typography variant="subtitle2" color="text.secondary">
-                     this group for duscussing about code.
+                    {group?.description}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
