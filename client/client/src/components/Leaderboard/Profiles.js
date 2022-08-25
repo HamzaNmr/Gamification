@@ -26,6 +26,11 @@ export default function profiles({ MYLeaderboard }) {
 
 function Item(data) {
   const classes = useStyles();
+
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const currentId = (user?.result?.id || user?.result?._id);
+  console.log(currentId, 'leaderboard');
+  const usersInfo = useSelector((state) => state.user.users);
  
   const leaders = useSelector((state) => state.user.users.sort((a, b) => b.level - a.level ));
  
@@ -42,23 +47,26 @@ function Item(data) {
 
         {/* card top */}
         <ScrollAnimation animateIn="animate__bounceInLeft" >
-        <div className={classes.cardTop}>
+        {usersInfo.map((user, i) => (
+      (user?._id === currentId) && 
+        <div className={classes.cardTop}  key={i}>
         
           <div>
           <Typography variant="subtitle1">My rank</Typography>
-          <Typography variant="h4"> 3rd place</Typography>
+          <Typography variant="h4"> {i+1}rd place</Typography>
           </div>
 
           <div>
           <Typography variant="subtitle1">Level</Typography>
-          <Typography variant="h4">120</Typography>
+          <Typography variant="h4">{user?.level}</Typography>
           </div>
 
         </div>
-        
+        ))}
       </ScrollAnimation>
       {/* card bottom */}
       <ScrollAnimation animateIn="animate__bounceInLeft" >
+     
         <div className={classes.cardBottom}>
     
               <Typography variant="h5" className={classes.mySecondCard}>
@@ -66,7 +74,7 @@ function Item(data) {
               </Typography>
               <Avatar
                 alt=""
-                src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=360"
+                src={leaders[0]?.imageUrl}
                 style={{
                   width: 100,
                   height: 100,
@@ -75,15 +83,16 @@ function Item(data) {
               />
             <div>
               <Typography variant="h5" className={classes.mySecondCard}>
-                HAMZA NEMER
+                {leaders[0]?.name}
               </Typography>
             
             <Typography className={classes.myCard}>
-              @Hamza_Nemer
+              @{leaders[0]?.userName}
             </Typography>
             </div>
          
         </div>
+   
         </ScrollAnimation>
 
       </Grid>

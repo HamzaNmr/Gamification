@@ -2,12 +2,13 @@ import React, { useState, useEffect }  from 'react';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import BadgeIcon from '@mui/icons-material/Badge';
-import Logo from '../../images/gamification.png';
+
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signin, signup } from '../../actions/auth';
 
+import { TextField } from '@mui/material';
 import './style.css';
 
 const initialState = { firstName: '', lastName: '', email: '', password: ''};
@@ -47,7 +48,7 @@ const handleSubmit = (e) => {
               <div className="...">
                 <div className="...">
                   <div className="...">
-                    <h4 className="..."><span style={{marginRight :'30px'}} >Sign In</span><span>Sign Up</span></h4>
+                    <h2 className="..."><span style={{marginRight :'30px'}} >SIGN IN</span><span>SIGN UP</span></h2>
                     <input className="checkbox" type="checkbox" id="reg-log" name="reg-log" onClick={switchMode}/>
                     <label htmlFor="reg-log" />
                     <div className="card-3d-wrap mx-auto">
@@ -55,7 +56,7 @@ const handleSubmit = (e) => {
                         <div className="card-front">
                           <div className="center-wrap">
                             <div className="section text-center">
-                              <h4 className="...">Sign In</h4>
+                              <h3 className="...">Sign In</h3>
                               <form onSubmit={handleSubmit}>
                               <div className="form-group">
                                 <input type="email" name="email" className="form-style" placeholder="Email" id="logemail" autoComplete="off"  onChange={handleChange}/>
@@ -68,16 +69,16 @@ const handleSubmit = (e) => {
                                 <VpnKeyIcon className='input-icon'/>
                               </div>
                              
-                              <button className="btn mt-4">submit</button>
+                              <button className="btn">submit</button>
                               </form>
-                              <p className="mb-0 mt-4 text-center letterSpacing"><a href="#0" className="link">Don't have an account? sign up</a></p>
+                              <p className="letterSpacing"><a href="#0" className="link">Don't have an account? sign up</a></p>
                             </div>
                           </div>
                         </div>
                         <div className="card-back">
                           <div className="center-wrap">
                             <div className="section text-center">
-                              <h4 className="mb-4 pb-3">Sign Up</h4>
+                              <h3 className="mb-4 pb-3">Sign Up</h3>
                               <form onSubmit={handleSubmit}>
                               <div className="form-group">
                                 <input type="text" name="firstName" className="form-style" placeholder="First Name" id="logname" autoComplete="off" onChange={handleChange} />
@@ -108,10 +109,6 @@ const handleSubmit = (e) => {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div style={{ marginTop: '140px'}}>
-                <img src={Logo} alt='' style={{width: 300, height: 300}}/>
               </div>
             </div>
           </div>

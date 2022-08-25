@@ -135,12 +135,12 @@ const RewardsPage = () => {
             {/* this box shows the pts that employee had gained */}
             <Grid item lg={12} xs={12}>
 
-              <Paper style={{ backgroundColor: '#432874', padding: '20px 30px', borderRadius: 15, color: 'white' }}>
+            <Paper style={{backgroundColor: '#432874', padding: '7px 30px', borderRadius: 15, color: 'white',}}>
 
-                <Typography variant='h4' style={{ display: 'flex', alignItems: 'center', }}>
-                  <img alt='' src={Coin} style={{ width: 70, heigth: 70, marginRight: '14px' }} />
+                <Typography variant='h6' style={{ display: 'flex', alignItems: 'center', }}>
+                  <img alt='' src={Coin} style={{width: 40, heigth: 40, marginRight: '14px'}}/>
                   Your balance:
-                  <span style={{ fontSize: '2rem', marginLeft: '30px' }} className='balanceText'>
+                  <span style={{fontSize: '1rem', marginLeft: '30px'}} className='balanceText'>
                     {points}
                   </span>
                 </Typography>
