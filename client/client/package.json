@@ -20,6 +20,7 @@
     "animate.css": "^4.1.1",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
+    "formik": "^2.2.9",
     "gapi-script": "^1.2.0",
     "jwt-decode": "^3.1.2",
     "material-ui-chip-input": "^1.1.0",
@@ -45,7 +46,8 @@
     "socket.io-client": "^4.5.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",
-    "words-to-numbers": "^1.5.1"
+    "words-to-numbers": "^1.5.1",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
