@@ -50,7 +50,7 @@ const Rewards = ({ reward }) => {
   const user = JSON.parse(localStorage.getItem('profile'));
   const currentId = user?.result?.id
   const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
-  const [rewardsArray, setRewardsArray] = useState(Myuser?.rewards);
+  const [rewardsArray, setRewardsArray] = useState(Myuser?.rewards || []);
   
   console.log(rewardsArray);
 

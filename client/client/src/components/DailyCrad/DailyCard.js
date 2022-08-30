@@ -91,9 +91,6 @@ missions.map((mission, i) => (
   <Button className={classes.addButton} onClick={addBtn}>
     <DoneOutlineIcon style={{fontSize: '1.2rem'}}/>
   </Button>
-  <Button className={classes.deleteButton} onClick={() => dispatch(deleteMission(mission._id))} >
-    <DeleteForeverIcon style={{fontSize: '1.2rem'}}/>
-  </Button>
   </div>
 </Paper> 
 ))

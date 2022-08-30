@@ -18,9 +18,9 @@ const RewardsPart = () => {
     // const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
-    const rewardsArray = user?.result?.rewards;
-
-  console.log(rewardsArray[0]);
+    const currentId = user?.result?.id;
+    const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
+    const rewardsArray = Myuser?.rewards || ['nothing'];
   
     const { rewards } = useSelector((state) => state.rewards);
     console.log(rewards, 'rewards');
@@ -30,7 +30,7 @@ const RewardsPart = () => {
   return (
     <div style={{display: 'flex', width: '100%', height: 270, flexWrap: 'wrap', overflow: 'auto',}}>
         {
-           ( rewardsArray?.length === 0 ) 
+           ( rewardsArray[0] === 'nothing' ) 
            ?
            <div style={{width: '100%', height: '200px', display:'flex', justifyContent: 'center',alignItems: 'center', flexDirection: 'column',}}>
             <img src={CoinsAnime} alt='' style={{width: 170, height: 170}}/>

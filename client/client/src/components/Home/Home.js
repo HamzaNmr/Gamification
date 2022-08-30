@@ -28,23 +28,23 @@ console.log( currentId , 'home')
   const { users, isLoading } = useSelector((state) => state.user);
   console.log(users, isLoading);
 
-  const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
-  console.log(Myuser , 'app');
+//   const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
+//   console.log(Myuser , 'app');
  
-  const notify = () => {
-    toast(`congratulation ${Myuser?.name}, you have reached new level.`)
-  }
+//   const notify = () => {
+//     toast(`congratulation ${Myuser?.name}, you have reached new level.`)
+//   }
   
-  useEffect(() => {
-    if(Myuser?.experience === 50){
-      dispatch(updateprofile(currentId,{experience: 0, level: Myuser?.level + 1}));
-      notify();
-     }
-  }, [Myuser?.experience])
+//   useEffect(() => {
+//     if(Myuser?.experience === 50){
+//       dispatch(updateprofile(currentId,{experience: 0, level: Myuser?.level + 1}));
+//       notify();
+//      }
+//   }, [Myuser?.experience])
 
-  useEffect(() => {
-    dispatch(getRewards());
-}, [dispatch]);
+//   useEffect(() => {
+//     dispatch(getRewards());
+// }, [dispatch]);
 
   
   return (
