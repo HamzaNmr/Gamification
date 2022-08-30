@@ -20,13 +20,11 @@ const Home = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
   const currentId = (user?.result?.id || user?.result?._id);
 
-console.log( currentId , 'home')
    useEffect(() => {
     dispatch(getusers());
 }, [currentId, dispatch]);
 
   const { users, isLoading } = useSelector((state) => state.user);
-  console.log(users, isLoading);
 
 //   const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
 //   console.log(Myuser , 'app');

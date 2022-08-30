@@ -1,4 +1,4 @@
-import { AUTH, LOGOUT, UPDATEDPROFILE } from '../constants/actionsType';
+import { AUTH, LOGOUT } from '../constants/actionsType';
 
 export default (state = { authData: null }, action) => {
     switch (action.type) {

@@ -19,7 +19,6 @@ const Tasks = () => {
 }, [currentPostId, dispatch]);
 
 const {tasks, isLoading } = useSelector((state) => state.tasks);
-console.log(tasks , isLoading);
 
   return (
     <Grow in>

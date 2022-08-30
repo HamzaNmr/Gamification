@@ -11,6 +11,7 @@ const TasksRoutes = require('./routes/tasks.js');
 const CommunityRoutes = require('./routes/community.js');
 const RewardsRoutes = require('./routes/rewards.js');
 const DailyMissionRoutes = require('./routes/dailyMission');
+const BadgesRoutes = require('./routes/badges');
 const passport = require('passport');
 
 
@@ -26,6 +27,7 @@ dotenv.config();
  
  app.use('/daily', DailyMissionRoutes);
  app.use('/home', ControllUSerRoutes);
+ app.use('/badges', BadgesRoutes);
  app.use('/tasks', TasksRoutes);
  app.use('/community', CommunityRoutes);
  app.use('/rewards', RewardsRoutes);

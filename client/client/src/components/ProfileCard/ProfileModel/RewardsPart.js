@@ -4,8 +4,8 @@ import { getRewards } from '../../../actions/rewards';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Card,CardContent,Typography} from "@material-ui/core";
+import Tooltip from '@mui/material/Tooltip';
 import './reward.css';
-// import RewardImage from '../../../images/reward1.png';
 import CoinsAnime from '../../../images/coinsAnime.gif';
 
 // import useStyles from './styles';
@@ -21,10 +21,7 @@ const RewardsPart = () => {
     const currentId = user?.result?.id;
     const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
     const rewardsArray = Myuser?.rewards || ['nothing'];
-  
     const { rewards } = useSelector((state) => state.rewards);
-    console.log(rewards, 'rewards');
-
     let finalRewards = rewards.filter(reward => rewardsArray.indexOf(reward._id) !== -1);
 
   return (
@@ -43,7 +40,8 @@ const RewardsPart = () => {
             finalRewards.map((reward, i) => (
 
 
-                <Card className="card" style={{borderRadius: 10, height: '10rem',}} key={i}>
+                <Tooltip title={reward.description} key={i}>
+                <Card className="card" style={{borderRadius: 10, height: '10rem', cursor: 'pointer',}} key={i}>
 
                 <div className='card-header'>
                    <img alt='' src={reward.photo} style={{width: 40, height: 40, marginTop: '9px'}}/>
@@ -54,7 +52,7 @@ const RewardsPart = () => {
                 </CardContent>
                 
                 </Card>
-               
+                </Tooltip>
             
             ))
         }
