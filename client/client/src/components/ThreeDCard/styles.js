@@ -32,6 +32,10 @@ import { makeStyles } from "@material-ui/core/styles";
         position: 'relative',
         border: '5px solid #333',
         borderRadius: 15,
+        [theme.breakpoints.down('md')]: {
+            width: '170px',
+           height: '150px',
+        },
     },
 
     paragraph:{

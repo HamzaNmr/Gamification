@@ -8,14 +8,28 @@ import { makeStyles } from "@material-ui/core/styles";
         marginBottom: '14px',
         borderRadius: 7,
         boxShadow: '0px 0px 64px -38px rgba(0,0,0,0.75)',
-        // border: '3px solid gray',
         transition: '.5s ease-out',
         '&:hover':{
             transform: 'scale(1.05)',
-        }
+        },
+        [theme.breakpoints.down('sm')]: {
+           width: '250px'
+         },    
+    },
+
+    spaces:{
+        display: 'flex', alignItems:'center', justifyContent: 'space-between',
+        [theme.breakpoints.down('md')]: {
+           flexDirection: 'column',
+           justifyContent:'center',
+        },
     },
     centered:{
         display: 'flex', justifyContent: 'start', alignItems:'center', gap: '20px',
+        [theme.breakpoints.down('md')]: {
+            flexDirection: 'column',
+            justifyContent:'center',
+         },
        },
     number:{
         padding: '10px',

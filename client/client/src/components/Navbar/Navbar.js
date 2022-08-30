@@ -7,10 +7,12 @@ import { VscAccount} from "react-icons/vsc";
 import Coin from '../../images/dollar.png';
 
 import Notfication from '../Notfication/Notification';
+import Setting from '../Setting/Setting';
 
 
 import {useNavigate} from "react-router-dom";
 import { useSelector } from 'react-redux';
+
 
 const Navbar = () => {
 
@@ -38,6 +40,7 @@ const Navbar = () => {
             <p className={classes.item} onClick={()=>{navigate('/rewards', { replace: true })}}>Rewards</p>
             <p className={classes.item} onClick={()=>{navigate('/tasks', { replace: true })}}>Tasks</p>
             <p className={classes.item} onClick={()=>{navigate('/community', { replace: true })}}>Community</p>
+            <p className={classes.item} onClick={()=>{navigate('/daily', { replace: true })}}>Daily Missons</p>
           </div>
         
           
@@ -49,7 +52,7 @@ const Navbar = () => {
             </div>
 
             <Notfication/>
-            <VscAccount className={classes.icons}/>
+            <Setting/>
             <MenuIcon />
           </div>
 

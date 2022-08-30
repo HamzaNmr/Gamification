@@ -1,10 +1,14 @@
 import { Button, Paper, Typography } from '@material-ui/core';
 import React from 'react';
+
+import { useNavigate } from 'react-router-dom';
 import useStyles from './styles.js';
+
 
 
 const ThreeDEarth = () => {
     const classes = useStyles();
+    const navigate = useNavigate();
 
   return (
     <div style={{textAlign: 'center', marginRight:' 14rem'}} className={classes.container}>
@@ -19,7 +23,7 @@ const ThreeDEarth = () => {
             backgroundColor: '#9687DB',
             color: 'white',
             marginTop: '2rem',
-        }}>
+        }} onClick={() => navigate('/community', {replae: true})}>
             community
         </Button>
     </div>

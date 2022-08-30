@@ -7,6 +7,7 @@ import moment from 'moment';
 import useStyles from './styles';
 import './styles.css';
 import Coin from '../../images/dollar.png';
+import Star from '../../images/favourites.png';
 import { Paper, Typography, Divider, CircularProgress, CardMedia, Grid, Box } from '@material-ui/core';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
@@ -19,6 +20,9 @@ import InfoModal from './InfoModal';
 
 import { completeTask } from '../../actions/tasks';
 import { updateprofile } from '../../actions/user';
+import { toast } from 'react-toastify';
+
+
 
 const TaskDetail = () => {
 
@@ -50,7 +54,24 @@ const userId = user?.result?.id
 const hasCompletedTask = task?.complete.find((completeId) => completeId === userId);
 
 
+const CustomToast = () => {
+  return(
+    <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap', wordBreak: 'break-all'}}>
+       <Typography variant='subtitle2'>you have gained + {task?.coin}</Typography>
+       <img src={Coin} alt="" style={{width: '17px', height: '17px',  marginInline: '9px'}}/>
+       <Typography variant='subtitle2'>coins and +10 expereince</Typography>
+       <img src={Star} alt="" style={{width: '17px', height: '17px', marginInline: '9px'}}/>
+    </div>
+  )
+}
+
+const notify = () => {
+  toast(<CustomToast/>)
+}
 const checkAnswer = () => {
+
+  
+
   if(task?.trueChoice === trueAnswer){
     console.log('correct');
     dispatch(completeTask(task._id));
@@ -59,6 +80,7 @@ const checkAnswer = () => {
     }else{
       setCompletes([...task.complete, userId]);
       dispatch(updateprofile(currentId,{coins: userInfo?.coins + task?.coin, experience: userInfo?.experience + 10}));
+      notify();
     }
     navigate('/tasks', {replace: true});
     setTrueAnswer('');
@@ -78,6 +100,7 @@ const completeVideo = () => {
     setCompletes([...task.complete, userId]);
     dispatch(updateprofile(currentId,{coins: userInfo?.coins + task?.coin, experience: userInfo?.experience + 10}));
     navigate('/tasks', {replace: true});
+    notify();
   }
 }
 
@@ -131,7 +154,7 @@ const ButtonComplete = () => {
   
   return (
     <div style={{marginTop: '77px'}}>
-      <Paper style={{backgroundColor: '#EBEAEC', border: '3px solid #333', borderRadius: 15, padding: '2rem', height: '77vh', color: '#432874'}}elevation={6}>
+      <Paper className={classes.bigPaper} elevation={6}>
       <Grid container spacing={3}>
         <Grid item lg={6} sm={12}>
         <div>
@@ -143,7 +166,7 @@ const ButtonComplete = () => {
           task?.link
            ?
           <iframe width="700" height="450" src={task?.link} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
-          style={{border:'none', borderRadius: 15, marginTop: '30px'}}></iframe>
+          className={classes.video}></iframe>
            :
            task?.question
            ?
@@ -179,7 +202,7 @@ const ButtonComplete = () => {
             <InfoModal task={task}/>
           </div>
           <div className={classes.descriptionPart}>
-           <div>
+           <div style={{width: '100%', wordBreak: 'break-all'}}>
            <Typography variant="h6" style={{fontWeight: 900}}>Description :</Typography>
             <Typography variant="body1" style={{fontSize: '.8rem', marginBlock: '30px'}}>{task?.description}</Typography>
            </div>

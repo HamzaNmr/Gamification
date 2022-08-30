@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useDispatch } from "react-redux";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import useStyles from "./styles";
 import { Box } from '@material-ui/core';
@@ -19,6 +19,8 @@ import LeaderboardOutlinedIcon from '@mui/icons-material/LeaderboardOutlined';
 import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import MeetingRoomOutlinedIcon from '@mui/icons-material/MeetingRoomOutlined';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import ForumIcon from '@mui/icons-material/Forum';
 
 
 
@@ -80,7 +82,7 @@ const MenuIcon = () => {
           <List>
   
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => navigate('/home', {replace: true})}>
                   <ListItemIcon>
                   <OtherHousesOutlinedIcon />
                   </ListItemIcon>
@@ -89,7 +91,7 @@ const MenuIcon = () => {
               </ListItem>
   
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => navigate('/leaderboard', {replace: true})}>
                   <ListItemIcon>
                    <LeaderboardOutlinedIcon />
                   </ListItemIcon>
@@ -98,7 +100,7 @@ const MenuIcon = () => {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => navigate('/rewards', {replace: true})}>
                   <ListItemIcon>
                    <EmojiEventsOutlinedIcon />
                   </ListItemIcon>
@@ -107,18 +109,18 @@ const MenuIcon = () => {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => navigate('/tasks', {replace: true})}>
                   <ListItemIcon>
-                   <EmojiEventsOutlinedIcon />
+                   <FormatListBulletedIcon/>
                   </ListItemIcon>
                   <ListItemText>Tasks</ListItemText>
                 </ListItemButton>
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => navigate('/community', {replace: true})}>
                   <ListItemIcon>
-                   <EmojiEventsOutlinedIcon />
+                   <ForumIcon />
                   </ListItemIcon>
                   <ListItemText>Community</ListItemText>
                 </ListItemButton>

@@ -53,7 +53,7 @@ function Item(data) {
         
           <div>
           <Typography variant="subtitle1">My rank</Typography>
-          <Typography variant="h4"> {i+1}rd place</Typography>
+          <Typography variant="h4"> {i+1}th place</Typography>
           </div>
 
           <div>
@@ -117,7 +117,7 @@ function Item(data) {
               </div>
                 {leaders.map((user, i) => (
                   <Paper className={classes.bar} key={i}>
-                  <div style={{display: 'flex', alignItems:'center', justifyContent: 'space-between',}}>
+                  <div className={classes.spaces}>
                   
                       <div style={{color: '#333'}} className={classes.centered}>
                        <div className={classes.number} style={{backgroundColor: `${color[i] || '#333'}`}}>{i+1}</div>

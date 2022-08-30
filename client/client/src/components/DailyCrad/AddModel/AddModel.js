@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { createMission } from '../../../actions/dailyMission';
+import { useDispatch, useSelector } from "react-redux";
+
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -26,10 +29,32 @@ const style = {
 const AddModel = () => {
 
   const classes = useStyles();
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const dispatch = useDispatch();
+ 
 
+  const currentId = user?.result?.id;
   const [open, setOpen] = React.useState(false);
+  const [missionData, setMissionData] = useState({title: '', motivation:''});
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+ 
+    console.log(currentId);
+    const mission = useSelector((state) => currentId ? state.dailyMission.missions.find((p) => p._id === currentId) : null);
+   
+
+    useEffect(() => {
+        if(mission) setMissionData(mission);
+    }, [mission])
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+            dispatch(createMission({ ...missionData, name: user?.result?.name }));
+        
+    }
 
   return (
     <div>
@@ -42,7 +67,7 @@ const AddModel = () => {
                transform: 'scale(1.03)',
            }
         }}>
-          Add task
+          Add mission
         </Button>
 
         <Modal
@@ -61,22 +86,27 @@ const AddModel = () => {
            <div className={classes.header}>
              <Typography variant='subtitle1' style={{fontWeight: 700, display: 'flex', alignItems: 'center',gap: 5, marginBottom: '10px',}}>
               <img alt='' src={Note} style={{width: 30, height: 30}}/>
-              Create Task</Typography>
+              Create Mission</Typography>
 
              <Typography variant='body2' style={{color:'#9687DB'}}>
               Create your own daily task and gain more experience for reach the next level and be the best.
             </Typography>
            </div>
           
+           <form noValidate autoComplete='off' onSubmit={handleSubmit}>
            <div style={{marginTop: '20px', padding: '10px 30px'}}>
-             <TextField name="title" label="Title" variant="filled" fullWidth required style={{marginBottom:'20px'}}/>
-             <TextField name="motivation" label="Motivation" variant="filled"  helperText="Motivate yourself by writing small letter." fullWidth/>
+             <TextField name="title" label="Title" variant="filled" fullWidth required style={{marginBottom:'20px'}} value={missionData.title} 
+                onChange={(e) => setMissionData({ ...missionData, title: e.target.value})}/>
+             <TextField name="motivation" label="Motivation" variant="filled"  helperText="Motivate yourself by writing small letter." fullWidth  value={missionData.motivation} 
+                onChange={(e) => setMissionData({ ...missionData, motivation: e.target.value})}/>
            </div>
+       
            <div style={{width: '100%', display: 'flex',justifyContent: 'end',}}>
-            <Button variant='contained' sx={{marginRight: '30px', backgroundColor: '#6133B4', fontWeight: 500,'&:hover':{backgroundColor: '#6133B4'}}}>
+            <Button variant='contained' type="submit" sx={{marginRight: '30px', backgroundColor: '#6133B4', fontWeight: 500,'&:hover':{backgroundColor: '#6133B4'}}}>
               Create
             </Button>
            </div>
+           </form>
           </Box>
         </Fade>
         </Modal>

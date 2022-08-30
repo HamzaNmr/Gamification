@@ -9,7 +9,7 @@ import Tooltip from '@mui/material/Tooltip';
 
 import MachineAnime from '../../images/machineAnime.gif'
 
-const style = {
+const style = (theme) => ({
   position: 'absolute',
   top: '40%',
   left: '50%',
@@ -23,7 +23,10 @@ const style = {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
-};
+  [theme.breakpoints.down('md')]: {
+    width: 330
+  },
+});
 
 const InfoModal = ({ task }) => {
   const [open, setOpen] = React.useState(false);
