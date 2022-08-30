@@ -68,7 +68,6 @@ import { makeStyles } from "@material-ui/core/styles";
       [theme.breakpoints.down('sm')]: {
         display:'flex',
       },
-    }
+    },
 
-     
  }));

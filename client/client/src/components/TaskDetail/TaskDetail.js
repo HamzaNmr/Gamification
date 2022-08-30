@@ -41,15 +41,12 @@ const TaskDetail = () => {
     dispatch(getTask(id));
   },[id]);
 
-  console.log(task, isLoading);
-
 let answers;
 if(task){
   answers = task?.falseChoice.split(',').concat(task?.trueChoice);
 }
 
 const [completes,setCompletes] = useState(task?.complete);
-console.log(completes);
 const userId = user?.result?.id 
 const hasCompletedTask = task?.complete.find((completeId) => completeId === userId);
 
