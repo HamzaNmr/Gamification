@@ -5,6 +5,8 @@ import useStyles from "./styles";
 import MenuIcon from '../MenuIcon/MenuIcon';
 import { VscAccount} from "react-icons/vsc";
 import Coin from '../../images/dollar.png';
+import Logo from '../../images/logoITMAX.png';
+import LogoSmall from '../../images/logoITMAXsmall.png';
 
 import Notfication from '../Notfication/Notification';
 import Setting from '../Setting/Setting';
@@ -29,12 +31,13 @@ const Navbar = () => {
         <AppBar className={classes.appBar} position='sticky' color='inherit'>
          <Toolbar className={classes.toolbar}>
           
-        <Typography variant='h4' className={classes.logo}>small</Typography>
+         <img src={LogoSmall} alt='' style={{width: '50px'}} className={classes.logo}/>
         
           <div className={classes.midPart}>
-          <Typography variant='h5' style={{marginRight: '25px', fontWeight: 900}}>
-            IT MAX
-          </Typography>
+          <div style={{display: 'flex', alignItems: 'center',}}>
+          <img src={LogoSmall} alt='' style={{width: '50px', marginRight: '10px'}}/>
+          </div>
+            <p className={classes.item} onClick={()=>{navigate('/home', { replace: true })}}>IT MAX</p>
             <p className={classes.item} onClick={()=>{navigate('/home', { replace: true })}}>Home</p>
             <p className={classes.item} onClick={()=>{navigate('/Leaderboard', { replace: true })}}>LeaderBoard</p>
             <p className={classes.item} onClick={()=>{navigate('/rewards', { replace: true })}}>Rewards</p>
