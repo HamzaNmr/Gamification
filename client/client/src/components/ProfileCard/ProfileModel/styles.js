@@ -38,5 +38,12 @@ import { makeStyles } from "@material-ui/core/styles";
   description: {
     color: "#333",
   },
+
+  spaces:{
+    padding: '0 50px', display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
+  }
   
  }));

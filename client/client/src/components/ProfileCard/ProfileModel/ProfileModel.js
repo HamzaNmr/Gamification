@@ -43,7 +43,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 
-const style = {
+const style = (theme) => ( {
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -53,9 +53,15 @@ const style = {
   backgroundColor: '#ECEBED',
   boxShadow: 24,
   borderRadius: '15px',
-};
+  [theme.breakpoints.down('md')]: {
+    height: 800,
+    width: 410,
+    left: '50%',
+    overflow: 'auto',
+},
+});
 
-const edit = {
+const edit = (theme) => ( {
   position: 'absolute',
   top: '50%',
   left: '77%',
@@ -65,8 +71,14 @@ const edit = {
   backgroundColor: '#ECEBED',
   boxShadow: 24,
   borderRadius: '15px',
-  padding: '2rem'
-};
+  padding: '2rem',
+  [theme.breakpoints.down('md')]: {
+    height: 'auto',
+    width: 350,
+    left: '50%'
+},
+
+});
 
 
 const ProfileModel = ({ currentId }) => {
@@ -221,7 +233,7 @@ const ProfileModel = ({ currentId }) => {
                
             </div>
 
-            <div style={{padding: '0 50px', display: 'flex',}} id='profilePart'>
+            <div className={classes.spaces} id='profilePart'>
             <div style={{width: '100%',}}>
                 <div>
                 <Typography variant='h6' style={{fontWeight:'700', color: '#4E4A57',}}>Bio</Typography>

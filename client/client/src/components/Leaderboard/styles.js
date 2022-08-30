@@ -29,8 +29,7 @@ export default makeStyles((theme) => ({
     border: '3px solid #36205D',
     background: 'linear-gradient(to bottom, #eee, #ddd ,white, #888987, gray)',
     [theme.breakpoints.down('sm')]: {
-      width: '87%',
-      marginRight: '25px'
+      width: '240px',
     },
   },
   myFirstCard: {
@@ -49,7 +48,7 @@ export default makeStyles((theme) => ({
     marginBottom: '30px',
     width: '357px',
     [theme.breakpoints.down('sm')]: {
-      width: '90%'
+      width: '250px'
     },
   },
   mySecondCard: {
@@ -64,7 +63,6 @@ export default makeStyles((theme) => ({
     // marginLeft:"50px"
   },
   leftGrid: {
-  
   
   },
   rightGrid: {
@@ -93,7 +91,8 @@ leaderboardCard: {
   width: '500px !important',
   marginLeft: '30px',
   [theme.breakpoints.down('sm')]: {
-    width: '90% !important'
+    width: '330px !important',
+    marginLeft: '7px',
   },
 },
 
@@ -106,11 +105,23 @@ bar:{
   transition: '.5s ease-out',
   '&:hover':{
       transform: 'scale(1.05) !important',
-  }
+  },
 },
 centered:{
   display: 'flex', justifyContent: 'start', alignItems:'center', gap: '20px',
+  [theme.breakpoints.down('md')]: {
+    flexDirection: 'column',
+    justifyContent:'center',
  },
+ },
+ 
+  spaces:{
+    display: 'flex', alignItems:'center', justifyContent: 'space-between',
+    [theme.breakpoints.down('md')]: {
+       flexDirection: 'column',
+       justifyContent:'center',
+    },
+},
 number:{
   padding: '10px',
   width: '20px',

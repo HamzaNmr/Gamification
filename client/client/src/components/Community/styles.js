@@ -100,5 +100,23 @@ export default makeStyles((theme) => ({
       left: '5%',
       width: '90%',
     },
+    },
+
+    imageChat:{
+      [theme.breakpoints.down('md')]: {
+       width:' 80%'
+    },
+    },
+    title:{
+      fontWeight: '900 !important', color: '#333',
+      [theme.breakpoints.down('md')]: {
+        fontSize: '3rem !important'
+     },
+    },
+    grid:{
+      width: '100%', marginBlock: '70px', display: 'flex', justifyContent:'center',alignItems: 'center', gap: '30px',
+      [theme.breakpoints.down('md')]: {
+        flexDirection: 'column',
+     },
     }
 }));

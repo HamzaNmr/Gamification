@@ -1,3 +1,4 @@
+const MongoClient = require('mongodb').MongoClient
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -8,6 +9,8 @@ const AuthRoutes = require('./routes/users.js');
 const ControllUSerRoutes = require('./routes/user.js');
 const TasksRoutes = require('./routes/tasks.js');
 const CommunityRoutes = require('./routes/community.js');
+const RewardsRoutes = require('./routes/rewards.js');
+const DailyMissionRoutes = require('./routes/dailyMission');
 const passport = require('passport');
 
 
@@ -21,9 +24,11 @@ dotenv.config();
 
 
  
+ app.use('/daily', DailyMissionRoutes);
  app.use('/home', ControllUSerRoutes);
  app.use('/tasks', TasksRoutes);
  app.use('/community', CommunityRoutes);
+ app.use('/rewards', RewardsRoutes);
  app.use('/user', AuthRoutes);
  app.use(passport.initialize());
 
@@ -32,3 +37,4 @@ dotenv.config();
  mongoose.connect(process.env.CONNECTION_URL)
          .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
          .catch((error) => console.log(error.message));
+    

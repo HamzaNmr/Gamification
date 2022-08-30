@@ -36,12 +36,12 @@ const Community = () => {
     <div style={{margin: '77px 0 30px 0'}}>
      <Paper elevation={12} className={classes.paperHero}>
         <div style={{wisth: '100%', textAlign: 'center',}}>
-            <Typography variant='h1' style={{fontWeight: 900, color: '#333',}}>Community</Typography>
+            <Typography variant="h1"  className={classes.title}>Community</Typography>
             <Typography variant='subtitle2' style={{ color: '#333', marginTop: '20px'}}>In this section you can find your group and connect with other employees.</Typography>
-            <img src={CommunityImage} alt=''/>
+            <img src={CommunityImage} alt='' className={classes.imageChat}/>
        <Typography variant='body2'> Illustration by <a href="https://icons8.com/illustrations/author/625472">Ekaterina Rogova</a> from <a href="https://icons8.com/illustrations">Ouch!</a></Typography>
         </div>
-       <div style={{width: '100%', marginBlock: '70px', display: 'flex', justifyContent:'center',alignItems: 'center', gap: '30px'}}>
+       <div className={classes.grid}>
          {
             groups.map((group,i) => (
                 <Card style={{ maxWidth: 300, borderRadius: 15 }} key={i}>

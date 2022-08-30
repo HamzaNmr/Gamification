@@ -40,3 +40,5 @@ export const updateprofile = (id, user) => async (dispatch) => {
         console.log(error.message);
     }
  }
+
+ 

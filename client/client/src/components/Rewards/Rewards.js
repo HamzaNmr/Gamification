@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { updateprofile } from '../../actions/user';
+
+
+
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -25,6 +31,7 @@ import "animate.css/animate.min.css";
 import "./styles.css";
 
 
+
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -39,6 +46,17 @@ const ExpandMore = styled((props) => {
 
 const Rewards = ({ reward }) => {
 
+  const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const currentId = user?.result?.id
+  const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
+  const [rewardsArray, setRewardsArray] = useState(Myuser?.rewards);
+  
+  console.log(rewardsArray);
+
+  let tempRewards = rewardsArray;
+
+
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -51,18 +69,22 @@ const Rewards = ({ reward }) => {
   const [isOwnedColor, setIsOwnedColor] = useState(false);
   let isOwnedCheck = isOwnedColor ? '#7B00FF' : '#a3a3a3';
 
-  const handleRedeem1 = (event) => {
+  const handleRedeem1 = async (event) => {
     if (window.confirm(`Are you sure you want to redeem ${reward.rewardName} from your balance?`)) {
 
-      setBalance(balance - reward.rewardCost)
+
+     tempRewards.push(reward._id);
+      console.log(tempRewards, 'final');
+      
+      dispatch(updateprofile(currentId,{rewards: [...tempRewards] , email: user?.result?.email}));
+
+      setBalance(balance - reward.coin)
       setIsOwnedColor(isOwnedColor => !isOwnedColor)
       event.currentTarget.disabled = true;
-      
       console.log(`${reward.rewardName} added to db, your new blance ${balance}`)
     }
     else { console.log('canceled') }
   };
-
 
   return (
 
@@ -74,14 +96,14 @@ const Rewards = ({ reward }) => {
           <CardHeader
             m={4} p={3}
             className="CardHeaderReward"
-            title={reward.rewardName}
+            title={reward.title}
           />
 
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <CardMedia
               className="CardMediaReward"
               component="img"
-              image={reward.rewardIcon}
+              image={reward.photo}
               alt="reward icon"
             />
           </div>
@@ -98,8 +120,11 @@ const Rewards = ({ reward }) => {
                 style={{ color: isOwnedCheck }}
                 fontSize='large' />
 
+                
+
+
               <img src={Coin} className='CoinIconReward' />
-              <span className='CoinAmountReward'> {reward.rewardCost} </span>
+              <span className='CoinAmountReward'> {reward.coin} </span>
 
             </span>
 
@@ -118,7 +143,7 @@ const Rewards = ({ reward }) => {
             <CardContent className="howToGetReward" >
 
               <Typography paragraph className="RewardDetails" >
-                {reward.rewardDetails}
+                {reward.description}
               </Typography>
 
               <br></br>

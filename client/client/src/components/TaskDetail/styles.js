@@ -35,6 +35,22 @@ export default makeStyles((theme) => ({
           backgroundColor: '#CDC7E6',
           transform: 'scale(1.05)',
         }
+      },
+
+      bigPaper:{
+        backgroundColor: '#EBEAEC', border: '3px solid #333', borderRadius: 15, padding: '2rem', height: '77vh', color: '#432874',
+        [theme.breakpoints.down('md')]: {
+          flexDirection: "column",
+          height: 'auto',
+        },
+      },
+      video:{
+        border:'none', borderRadius: 15, marginTop: '30px',
+        [theme.breakpoints.down('md')]: {
+          width: '100%',
+          height: 300
+        },
       }
+
 }));
 

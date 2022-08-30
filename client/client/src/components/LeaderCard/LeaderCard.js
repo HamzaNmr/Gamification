@@ -28,7 +28,7 @@ const LeaderCard = () => {
         leaders.map((user, i) => (
           (i < 3) &&
           <Paper className={classes.bar} key={i}>
-          <div style={{display: 'flex', alignItems:'center', justifyContent: 'space-between',}}>
+          <div className={classes.spaces}>
               
               <div style={{color: '#333'}} className={classes.centered}>
                <div className={classes.number} style={{backgroundColor: `${color[i] || '#333'}`}}>{i+1}</div>

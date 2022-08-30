@@ -13,7 +13,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 
 
 
-// const arr = [{question: '?', description: 'x'}, {description: 'x', videoUrl: 'v'}, {question: '?', description: 'x',videoUrl: 'v'}, {}, {},{}, {},{},{},{}]
+
 const Task = ({ task }) => {
 
     const classes = useStyles();
@@ -32,7 +32,7 @@ const Task = ({ task }) => {
     <Card raised elevation={6} className={classes.card} sx={{ borderRadius: 5}} >
     <CardMedia
     component="img"
-    sx={{ width: 151 }}
+    className={classes.cardMedia}
     image={task?.image || "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"}
     alt="Live from space album cover"
   />

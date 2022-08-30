@@ -12,6 +12,14 @@ import { makeStyles } from "@material-ui/core/styles";
       display: 'flex', height: '150px', backgroundColor: '#EBEAEC', width: '670px',
       [theme.breakpoints.down('md')]: {
         width: '100%',
+        flexDirection: "column",
+        height: 'auto',
+      },
+    },
+    cardMedia:{
+      width: '200px !important',
+      [theme.breakpoints.down('md')]: {
+        width:'100% !important'
       },
     }
    
