@@ -37,9 +37,6 @@ const ProfileCard = ({ currentId }) => {
     const classes = useStyles();
     // const user = JSON.parse(localStorage.getItem('profile'));
     // const experience = user?.result?.experience;
-
-
-    console.log(currentId , 'profileCard');
     const userInfo = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
   
   return (

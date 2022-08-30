@@ -18,8 +18,7 @@ const Task = ({ task }) => {
 
     const classes = useStyles();
     const navigate = useNavigate();
-
-    console.log(task._id);
+    
     const openTask = () => {
       navigate(`/tasks/${task._id}`);
   };

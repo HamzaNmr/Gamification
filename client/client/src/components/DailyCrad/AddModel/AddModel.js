@@ -38,10 +38,8 @@ const AddModel = () => {
   const [missionData, setMissionData] = useState({title: '', motivation:''});
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
- 
-    console.log(currentId);
-    const mission = useSelector((state) => currentId ? state.dailyMission.missions.find((p) => p._id === currentId) : null);
+  
+  const mission = useSelector((state) => currentId ? state.dailyMission.missions.find((p) => p._id === currentId) : null);
    
 
     useEffect(() => {

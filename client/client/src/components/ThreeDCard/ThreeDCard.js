@@ -19,10 +19,7 @@ const ThreeDCard = () => {
 
   const user = JSON.parse(localStorage.getItem('profile'));
   const currentId = (user?.result?.id || user?.result?._id);
-  console.log(currentId, 'threeDrank');
   const usersInfo = useSelector((state) => state.user.users);
-
-  console.log(usersInfo)
   
    
   const containerMove = (e) => {

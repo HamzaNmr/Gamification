@@ -26,9 +26,7 @@ const Community = () => {
         dispatch(getGroups());
     }, [dispatch]);
     
-      const { groups, isLoading } = useSelector((state) => state.community);
-      console.log(groups, isLoading);
-
+    const { groups, isLoading } = useSelector((state) => state.community);
 
      
   return (

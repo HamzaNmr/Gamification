@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getusers } from './actions/user';
 import { updateprofile } from './actions/user';
 import { getRewards } from './actions/rewards';
+import { getBadges } from './actions/badges';
 
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import Home from './components/Home/Home';
@@ -26,23 +27,21 @@ import About from './components/About/About';
 import './App.css';
 import TaskDetail from './components/TaskDetail/TaskDetail';
 
-
+import { getMissions } from './actions/dailyMission';
 
 function App() {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
   const currentId = (user?.result?.id || user?.result?._id);
 
-console.log( currentId , 'home')
    useEffect(() => {
     dispatch(getusers());
 }, [currentId, dispatch]);
 
-  const { users, isLoading } = useSelector((state) => state.user);
-  console.log(users, isLoading);
+  
 
   const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
-  console.log(Myuser , 'app');
+ 
  
   const notify = () => {
     toast(`congratulation ${Myuser?.name}, you have reached new level.`)
@@ -58,6 +57,16 @@ console.log( currentId , 'home')
   useEffect(() => {
     dispatch(getRewards());
 }, [dispatch]);
+
+useEffect(() => {
+  dispatch(getBadges());
+}, [dispatch]);
+
+   useEffect(() => {
+    dispatch(getMissions());
+}, [currentId, dispatch]);
+
+
 
   return (
     <BrowserRouter>

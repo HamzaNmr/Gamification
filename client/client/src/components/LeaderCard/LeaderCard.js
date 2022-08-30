@@ -12,11 +12,7 @@ import useStyles from './styles';
 const LeaderCard = () => {
 
     const classes = useStyles();
-
-
     const leaders = useSelector((state) => state.user.users.sort((a, b) => b.level - a.level ));
- 
-    console.log(leaders, 'leadersboard');
    
     const color = ['#FFBE5D', '#00CEC9', '#E17055'];
     const emoji = [`${Fire}`, `${Cool}`, `${Clapping}`];

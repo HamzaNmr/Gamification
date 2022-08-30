@@ -22,13 +22,11 @@ const Page = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
   const currentId = (user?.result?.id || user?.result?._id);
 
-console.log( currentId , 'home')
    useEffect(() => {
     dispatch(getMissions());
 }, [currentId, dispatch]);
 
 const { missions, isLoading } = useSelector((state) => state.dailyMission);
-  console.log(missions, isLoading);
 
 
 

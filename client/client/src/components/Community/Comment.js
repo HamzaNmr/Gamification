@@ -19,7 +19,6 @@ const Comment = ({ group }) => {
  
 
     const [comments,setComments] = useState(group?.comments);
-    console.log(comments)
     const [comment,setComment] = useState('');
     const user = JSON.parse(localStorage.getItem('profile'));
 
@@ -27,9 +26,7 @@ const Comment = ({ group }) => {
    
     const handleClick = async () => {
       const finalComment = `${user.result.name}: ${comment}`;
-      console.log('send')
       const newComments = await dispatch(commentGroup(finalComment, group._id));
-    console.log('sent')
       setComments(newComments);
       setComment('');
 

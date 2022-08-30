@@ -51,11 +51,8 @@ const Rewards = ({ reward }) => {
   const currentId = user?.result?.id
   const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
   const [rewardsArray, setRewardsArray] = useState(Myuser?.rewards || []);
-  
-  console.log(rewardsArray);
 
   let tempRewards = rewardsArray;
-
 
   const [expanded, setExpanded] = useState(false);
 
@@ -73,15 +70,13 @@ const Rewards = ({ reward }) => {
     if (window.confirm(`Are you sure you want to redeem ${reward.rewardName} from your balance?`)) {
 
 
-     tempRewards.push(reward._id);
-      console.log(tempRewards, 'final');
-      
+     tempRewards.push(reward._id);  
       dispatch(updateprofile(currentId,{rewards: [...tempRewards] , email: user?.result?.email}));
 
       setBalance(balance - reward.coin)
       setIsOwnedColor(isOwnedColor => !isOwnedColor)
       event.currentTarget.disabled = true;
-      console.log(`${reward.rewardName} added to db, your new blance ${balance}`)
+      // console.log(`${reward.rewardName} added to db, your new blance ${balance}`)
     }
     else { console.log('canceled') }
   };

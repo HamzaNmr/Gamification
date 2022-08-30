@@ -22,7 +22,7 @@ const { hashSync, compareSync } = require('bcrypt');
         lastName: req.body.lastName,
         name: `${firstName} ${lastName}`,
         email: req.body.email,
-        password: hashSync(req.body.password, 14)
+        password: hashSync(req.body.password, 14),
     })
 
     const payload = {
@@ -33,6 +33,7 @@ const { hashSync, compareSync } = require('bcrypt');
     console.log(payload);
 
     const token = jwt.sign(payload, "secretOrPrivateKey", {expiresIn: "1d"}); 
+
 
     res.status(200).json({result: result, token: token});
 

@@ -25,9 +25,7 @@ const EditProfile = ({ currentId }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    console.log(currentId);
     const userInfo = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
-    console.log(userInfo);
 
     const [formData, setFormData] = useState({imageUrl: '',firstName: '', lastName: '', userName: '', bio: ''});
     

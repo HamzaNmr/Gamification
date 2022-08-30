@@ -21,6 +21,7 @@ export const completeTask = (id) => API.patch(`/tasks/${id}/completeTask`);
 export const getRewards = () => API.get('/rewards');
 export const addReward = (value, id) => API.post(`/rewards`, { value, id });
 
+export const getBadges = () => API.get('/badges');
 
 export const createMission = (newMission) => API.post('/home', newMission);
 export const deleteMission = (id) => API.delete(`/daily/${id}`);

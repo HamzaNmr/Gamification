@@ -18,7 +18,6 @@ export default function profiles({ MYLeaderboard }) {
 
   return (
     <div id="profile">
-      {console.log(MYLeaderboard)}
       {Item(MYLeaderboard)}
     </div>
   );
@@ -29,13 +28,10 @@ function Item(data) {
 
   const user = JSON.parse(localStorage.getItem('profile'));
   const currentId = (user?.result?.id || user?.result?._id);
-  console.log(currentId, 'leaderboard');
   const usersInfo = useSelector((state) => state.user.users);
  
   const leaders = useSelector((state) => state.user.users.sort((a, b) => b.level - a.level ));
- 
-  console.log(leaders, 'leadersboard');
- 
+
   const color = ['#FFBE5D', '#00CEC9', '#E17055'];
   const emoji = [`${Fire}`, `${Cool}`, `${Clapping}`]; 
 

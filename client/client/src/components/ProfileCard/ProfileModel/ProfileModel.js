@@ -87,9 +87,12 @@ const ProfileModel = ({ currentId }) => {
 
     const user = JSON.parse(localStorage.getItem('profile'));
     
-    
+    const userInfo = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
+    const badgesArray = userInfo?.badges || ['nothing'];
+    const {badges}= useSelector((state) => state?.badges);
+    let finalBadges = badges.filter(badge => badgesArray.indexOf(badge._id) !== -1);
    
-
+    
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
       setOpen(true);
@@ -108,8 +111,7 @@ const ProfileModel = ({ currentId }) => {
       document.getElementById('transition').style.left = '50%';
     };
 
-    console.log(currentId, 'profileModel');
-    const userInfo = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
+   
 
     const switchProfile = () => {
         document.getElementById('profilePart').style.display = 'flex';
@@ -131,6 +133,7 @@ const ProfileModel = ({ currentId }) => {
      
     }
 
+    
   
 
 
@@ -270,15 +273,18 @@ const ProfileModel = ({ currentId }) => {
                 <img alt='' src={CompleteBadge} className={classes.img}/> */}
                 
                 { 
-                 (userInfo?.badges.length === 0)
+                 (finalBadges.length === 0)
                   ?
                   <div style={{width: '100%', height: '200px', display:'flex', justifyContent: 'center',alignItems: 'center', flexDirection: 'column',}}>
                     <img src={NoBadge} alt='' style={{width: 90, height: 90}}/>
                     <Typography variant='body2' style={{marginTop: '20px', color: '#CBA9F3' }}>No Badges Yet</Typography>
                   </div>
                   : 
-                  userInfo?.badges.map((badge) => (
-                    <img alt='' src={badge} className={classes.img}/>))
+                  finalBadges.map((badge, i) => (
+                    <Tooltip title={badge.description} key={i}>
+                    <img alt='' src={badge.imageUrl} className={classes.img}/>
+                    </Tooltip>
+                    ))
                 }
              </div>
             </div>

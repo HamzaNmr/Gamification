@@ -27,7 +27,6 @@ const DailyCard = () => {
   const currentId = (user?.result?.id || user?.result?._id);
 
   const { missions, isLoading } = useSelector((state) => state.dailyMission);
-  console.log(missions, isLoading);
   
 
   const CustomToast = () => {
@@ -90,6 +89,9 @@ missions.map((mission, i) => (
   <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
   <Button className={classes.addButton} onClick={addBtn}>
     <DoneOutlineIcon style={{fontSize: '1.2rem'}}/>
+  </Button>
+  <Button className={classes.deleteButton} onClick={() => dispatch(deleteMission(mission._id))} >
+    <DeleteForeverIcon style={{fontSize: '1.2rem'}}/>
   </Button>
   </div>
 </Paper> 
