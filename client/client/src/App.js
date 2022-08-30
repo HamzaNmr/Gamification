@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Container } from '@material-ui/core';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { getusers } from './actions/user';
+import { updateprofile } from './actions/user';
+import { getRewards } from './actions/rewards';
 
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import Home from './components/Home/Home';
@@ -24,6 +29,35 @@ import TaskDetail from './components/TaskDetail/TaskDetail';
 
 
 function App() {
+  const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const currentId = (user?.result?.id || user?.result?._id);
+
+console.log( currentId , 'home')
+   useEffect(() => {
+    dispatch(getusers());
+}, [currentId, dispatch]);
+
+  const { users, isLoading } = useSelector((state) => state.user);
+  console.log(users, isLoading);
+
+  const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
+  console.log(Myuser , 'app');
+ 
+  const notify = () => {
+    toast(`congratulation ${Myuser?.name}, you have reached new level.`)
+  }
+  
+  useEffect(() => {
+    if(Myuser?.experience === 50){
+      dispatch(updateprofile(currentId,{experience: 0, level: Myuser?.level + 1}));
+      notify();
+     }
+  }, [Myuser?.experience])
+
+  useEffect(() => {
+    dispatch(getRewards());
+}, [dispatch]);
 
   return (
     <BrowserRouter>
