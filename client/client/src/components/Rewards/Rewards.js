@@ -60,9 +60,6 @@ const Rewards = ({ reward }) => {
     setExpanded(!expanded);
   };
 
-  let points=400
-  let [balance, setBalance] = useState(points);
-
   const [isOwnedColor, setIsOwnedColor] = useState(false);
   let isOwnedCheck = isOwnedColor ? '#7B00FF' : '#a3a3a3';
 
@@ -70,10 +67,10 @@ const Rewards = ({ reward }) => {
     if (window.confirm(`Are you sure you want to redeem ${reward.rewardName} from your balance?`)) {
 
 
-     tempRewards.push(reward._id);  
-      dispatch(updateprofile(currentId,{rewards: [...tempRewards] , email: user?.result?.email}));
+      tempRewards.push(reward._id);  
+      dispatch(updateprofile(currentId,{rewards: [...tempRewards] , coins: Myuser?.coins - reward?.coin ,  email: user?.result?.email}));
 
-      setBalance(balance - reward.coin)
+      
       setIsOwnedColor(isOwnedColor => !isOwnedColor)
       event.currentTarget.disabled = true;
       // console.log(`${reward.rewardName} added to db, your new blance ${balance}`)
