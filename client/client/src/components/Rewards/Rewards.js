@@ -30,7 +30,8 @@ import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.min.css";
 import "./styles.css";
 
-
+import Star from '../../images/favourites.png';
+import { toast } from 'react-toastify';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -60,6 +61,8 @@ const Rewards = ({ reward }) => {
     setExpanded(!expanded);
   };
 
+  
+
   const [isOwnedColor, setIsOwnedColor] = useState(false);
   let isOwnedCheck = isOwnedColor ? '#7B00FF' : '#a3a3a3';
 
@@ -68,9 +71,26 @@ const Rewards = ({ reward }) => {
 
 
       tempRewards.push(reward._id);  
-      dispatch(updateprofile(currentId,{rewards: [...tempRewards] , coins: Myuser?.coins - reward?.coin ,  email: user?.result?.email}));
+      dispatch(updateprofile(currentId,{rewards: [...tempRewards] , coins: Myuser?.coins - reward?.coin , experience: Myuser?.experience + 10,  email: user?.result?.email}));
 
-      
+      const CustomToast = () => {
+        return(
+          <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap', wordBreak: 'break-all'}}>
+            <Typography variant='subtitle2'>You have payed {reward?.title}</Typography>
+             <Typography variant='subtitle2'>+10 expereince
+             <img src={Star} alt="" style={{width: '17px', height: '17px', marginInline: '9px'}}/>
+             </Typography>
+             <Typography variant='subtitle2'> -{reward?.coin} coins
+             <img src={Coin} alt="" style={{width: '17px', height: '17px', marginInline: '9px'}}/>
+             </Typography>
+          </div>
+        )
+      }
+    
+      const notify = () => {
+        toast(<CustomToast/>)
+      }
+      notify();
       setIsOwnedColor(isOwnedColor => !isOwnedColor)
       event.currentTarget.disabled = true;
       // console.log(`${reward.rewardName} added to db, your new blance ${balance}`)

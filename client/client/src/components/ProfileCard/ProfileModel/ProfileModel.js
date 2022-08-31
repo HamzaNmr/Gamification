@@ -53,12 +53,14 @@ const style = (theme) => ( {
   backgroundColor: '#ECEBED',
   boxShadow: 24,
   borderRadius: '15px',
-  [theme.breakpoints.down('md')]: {
+  
+  [theme.breakpoints.down('sm')]: {
     height: 800,
     width: 410,
     left: '50%',
     overflow: 'auto',
 },
+
 });
 
 const edit = (theme) => ( {
@@ -72,11 +74,16 @@ const edit = (theme) => ( {
   boxShadow: 24,
   borderRadius: '15px',
   padding: '2rem',
-  [theme.breakpoints.down('md')]: {
+  [theme.breakpoints.down('lg')]: {
+    height: 'auto',
+    left: '50%'
+  },
+  [theme.breakpoints.down('sm')]: {
     height: 'auto',
     width: 350,
     left: '50%'
 },
+
 
 });
 
