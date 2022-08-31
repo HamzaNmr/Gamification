@@ -96,7 +96,7 @@ export default makeStyles((theme) => ({
       left: '59%',
       width: '36%',
       [theme.breakpoints.down('md')]: {
-        top: '120%',
+      top: '120%',
       left: '5%',
       width: '90%',
     },
@@ -115,7 +115,7 @@ export default makeStyles((theme) => ({
     },
     grid:{
       width: '100%', marginBlock: '70px', display: 'flex', justifyContent:'center',alignItems: 'center', gap: '30px',
-      [theme.breakpoints.down('md')]: {
+      [theme.breakpoints.down('sm')]: {
         flexDirection: 'column',
      },
     }

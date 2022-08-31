@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Container } from '@material-ui/core';
@@ -67,14 +68,56 @@ useEffect(() => {
 }, [currentId, dispatch]);
 
 
+const [mousePosition, setMousePosition] = useState({
+  x: 0,
+  y: 0
+});
+
+const [cursorVariant, setCursorVariant] = useState("default");
+
+useEffect(() => {
+  const mouseMove = e => {
+    setMousePosition({
+      x: e.clientX,
+      y: e.clientY
+    })
+  }
+
+  window.addEventListener("mousemove", mouseMove);
+
+  return () => {
+    window.removeEventListener("mousemove", mouseMove);
+  }
+}, []);
+
+const variants = {
+  default: {
+    x: mousePosition.x - 16,
+    y: mousePosition.y - 16,
+  },
+  text: {
+    height: 30,
+    width: 30,
+    x: mousePosition.x - 5,
+    y: mousePosition.y - 5,
+  }
+}
+
+const textEnter = () => setCursorVariant("text");
+const textLeave = () => setCursorVariant("default");
 
   return (
     <BrowserRouter>
-        <Container maxWidth="xl" className='body'>
+        <Container maxWidth="xl" className='body' onMouseEnter={textEnter} onMouseLeave={textLeave}>
+        <motion.div
+        className='cursor'
+        variants={variants}
+        animate={cursorVariant}
+        />
               <Navbar />
               <ToastContainer style={{marginTop: '50px'}}/>
               <Routes>
-                <Route path="/" exact element={<Navigate to="/Auth"/>} />
+                <Route path="/" exact element={<Navigate to={user ? "/home" : "/Auth"}/>} />
                 <Route path="/Auth" exact element={<Auth/>} />
                 <Route path="/home" exact element={<Home/>} />
                 <Route path="/leaderboard" exact element={<Leaderboard/>} />

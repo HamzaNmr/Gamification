@@ -27,7 +27,7 @@ const RewardsPart = () => {
   return (
     <div style={{display: 'flex', width: '100%', height: 270, flexWrap: 'wrap', overflow: 'auto',}}>
         {
-           ( rewardsArray[0] === 'nothing' ) 
+           ( !rewardsArray.length) 
            ?
            <div style={{width: '100%', height: '200px', display:'flex', justifyContent: 'center',alignItems: 'center', flexDirection: 'column',}}>
             <img src={CoinsAnime} alt='' style={{width: 170, height: 170}}/>

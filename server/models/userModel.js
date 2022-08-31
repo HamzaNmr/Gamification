@@ -3,12 +3,10 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema({
     firstName: {
         type: String,
-        match: /[a-z]/,
         required: true,
     },
     lastName:{
         type: String,
-        match: /[a-z]/,
         required: true,
     },
     name: String,

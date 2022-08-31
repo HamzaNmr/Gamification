@@ -28,6 +28,9 @@ export default makeStyles((theme) => ({
     marginBottom: '30px',
     border: '3px solid #36205D',
     background: 'linear-gradient(to bottom, #eee, #ddd ,white, #888987, gray)',
+    [theme.breakpoints.down('md')]: {
+      width: '830px',
+    },
     [theme.breakpoints.down('sm')]: {
       width: '240px',
     },
@@ -47,6 +50,9 @@ export default makeStyles((theme) => ({
     gap: "14px",
     marginBottom: '30px',
     width: '357px',
+    [theme.breakpoints.down('md')]: {
+      width: '830px',
+    },
     [theme.breakpoints.down('sm')]: {
       width: '250px'
     },
@@ -90,10 +96,15 @@ leaderboardCard: {
   padding: "20px !important",
   width: '500px !important',
   marginLeft: '30px',
+  [theme.breakpoints.down('md')]: {
+    width: '90% !important',
+    marginLeft: '30px',
+  },
   [theme.breakpoints.down('sm')]: {
     width: '330px !important',
     marginLeft: '7px',
   },
+ 
 },
 
 bar:{
@@ -109,7 +120,7 @@ bar:{
 },
 centered:{
   display: 'flex', justifyContent: 'start', alignItems:'center', gap: '20px',
-  [theme.breakpoints.down('md')]: {
+  [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
     justifyContent:'center',
  },
@@ -117,7 +128,7 @@ centered:{
  
   spaces:{
     display: 'flex', alignItems:'center', justifyContent: 'space-between',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
        flexDirection: 'column',
        justifyContent:'center',
     },

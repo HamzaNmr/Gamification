@@ -8,7 +8,7 @@ import useStyles from './styles';
 import './styles.css';
 import Coin from '../../images/dollar.png';
 import Star from '../../images/favourites.png';
-import { Paper, Typography, Divider, CircularProgress, CardMedia, Grid, Box } from '@material-ui/core';
+import { Paper, Typography, Divider, CircularProgress, CardMedia, Grid, Box, Tooltip } from '@material-ui/core';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Button from '@mui/material/Button';
@@ -49,6 +49,11 @@ if(task){
 const [completes,setCompletes] = useState(task?.complete);
 const userId = user?.result?.id 
 const hasCompletedTask = task?.complete.find((completeId) => completeId === userId);
+
+const userArray = task?.complete || ['nothing'];
+const allUsers = useSelector((state) => state.user.users);
+let userComplete = allUsers.filter(user => userArray.indexOf(user._id) !== -1);
+
 
 
 const CustomToast = () => {
@@ -214,11 +219,14 @@ const ButtonComplete = () => {
            <Typography variant="h6" style={{fontWeight: 900}}>Who complete this task:</Typography>
            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'start',marginBlock: '30px', width: '100%', }}>
           
-           <AvatarGroup total={24}>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-            <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
-            <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
+           <AvatarGroup total={allUsers.length}>
+            {
+              userComplete.map((user, i) => (
+                <Tooltip title={user?.name} key={i}>
+                  <Avatar alt={user?.name} src={user?.imageUrl} />
+                </Tooltip>
+              ))
+            }
            </AvatarGroup>
         
            </div>
