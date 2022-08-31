@@ -20,7 +20,7 @@ import { toast } from 'react-toastify';
 
 const DailyCard = () => {
  
-  const [noMission, setNoMission] = useState([]);
+  const [Missions, setMissions] = useState(false);
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -49,12 +49,11 @@ const DailyCard = () => {
       notify();
   }
 
-  // useEffect(() => {
-  //   missions.map((mission) => (
-  //     (mission.creator === currentId) ? setNoMission([]) : setNoMission('nothing')
-  //   ), [])
-  // })
-  // console.log(noMission)
+  useEffect(() => {
+    missions.map((mission) => (
+      (mission.creator === currentId) ? setMissions(true) : setMissions(false)
+    ), [])
+  })
 
   return (
     <div>
@@ -69,7 +68,7 @@ const DailyCard = () => {
   
 {
 
-( !missions.length) ?
+(!Missions) ?
 <div>
   <img src={emptyImage} alt="" style={{width:'90px', height: '90px'}}/>
 </div>
