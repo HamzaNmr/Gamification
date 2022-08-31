@@ -112,7 +112,10 @@ const Notfication = () => {
         <Avatar alt={userInfo?.name} src={userInfo?.imageUrl} style={{width: '30px', height: '30px',borderRadius: 15, border:"1px solid #9687DB", marginRight: '5px'}} className={classes.avatar}>
                      <Typography variant='h1'>{userInfo?.name.charAt(0)}</Typography>
         </Avatar>
-         <Typography variant='subtitle1'>{userInfo?.name}</Typography>
+         <Typography variant='subtitle1'>
+         <span>{userInfo?.firstName}</span>
+         <span style={{marginLeft: '5px'}}>{userInfo?.lastName}</span>
+         </Typography>
         </MenuItem>
 
         <Divider sx={{ my: 0.5 }} />

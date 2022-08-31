@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
     card:{
       display: 'flex', height: '150px', backgroundColor: '#EBEAEC', width: '670px',
-      [theme.breakpoints.down('md')]: {
+      [theme.breakpoints.down('sm')]: {
         width: '100%',
         flexDirection: "column",
         height: 'auto',
@@ -18,7 +18,7 @@ import { makeStyles } from "@material-ui/core/styles";
     },
     cardMedia:{
       width: '200px !important',
-      [theme.breakpoints.down('md')]: {
+      [theme.breakpoints.down('sm')]: {
         width:'100% !important'
       },
     }

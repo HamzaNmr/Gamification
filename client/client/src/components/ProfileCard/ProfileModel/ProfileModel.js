@@ -141,7 +141,8 @@ const ProfileModel = ({ currentId }) => {
     <div>
        <Tooltip title="Profile">
        <Typography variant='subtitle1' style={{fontWeight: 700, cursor: 'pointer',}}  onClick={handleOpen} >
-                    {userInfo?.name}
+                    <span>{userInfo?.firstName}</span>
+                    <span style={{marginLeft: '5px'}}>{userInfo?.lastName}</span>
         </Typography>
        </Tooltip>
 
@@ -178,7 +179,8 @@ const ProfileModel = ({ currentId }) => {
                   </Avatar>
                   <div>
                   <Typography variant='subtitle1' style={{fontWeight: 700, cursor: 'pointer',}}  onClick={handleOpen} >
-                    {userInfo?.name}
+                    <span>{userInfo?.firstName}</span>
+                    <span style={{marginLeft: '5px'}}>{userInfo?.lastName}</span>
                   </Typography>
                   <Typography variant='caption'  style={{color: '#CBC8FF'}} className={classes.centered}>
                     {userInfo?.userName ? userInfo?.userName : 'no userName yet'}

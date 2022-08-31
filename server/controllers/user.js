@@ -26,6 +26,9 @@ const { hashSync, compareSync } = require('bcrypt');
     })
 
     const payload = {
+        firstName: result.firstName,
+        lastName: result.lastName,
+        name: result.name,
         email :result.email,
         id: result._id,
     }
@@ -35,7 +38,7 @@ const { hashSync, compareSync } = require('bcrypt');
     const token = jwt.sign(payload, "secretOrPrivateKey", {expiresIn: "1d"}); 
 
 
-    res.status(200).json({result: result, token: token});
+    res.status(200).json({result: result, token: "Bearer " + token,});
 
     } catch (error) {
         console.log(error);

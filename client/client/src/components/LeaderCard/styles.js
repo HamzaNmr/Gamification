@@ -19,14 +19,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
     spaces:{
         display: 'flex', alignItems:'center', justifyContent: 'space-between',
-        [theme.breakpoints.down('md')]: {
+        [theme.breakpoints.down('sm')]: {
            flexDirection: 'column',
            justifyContent:'center',
         },
     },
     centered:{
         display: 'flex', justifyContent: 'start', alignItems:'center', gap: '20px',
-        [theme.breakpoints.down('md')]: {
+        [theme.breakpoints.down('sm')]: {
             flexDirection: 'column',
             justifyContent:'center',
          },
