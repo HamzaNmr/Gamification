@@ -26,9 +26,6 @@ const { hashSync, compareSync } = require('bcrypt');
     })
 
     const payload = {
-        firstName: result.firstName,
-        lastName: result.lastName,
-        name: result.name,
         email :result.email,
         id: result._id,
     }
