@@ -19,7 +19,7 @@ const LeaderCard = () => {
 
   return (
     <Grow in>
-    <Paper style={{borderRadius: 15, backgroundColor: '#EDECEE',padding: '20px',}}>
+    <Paper style={{borderRadius: 15, backgroundColor: '#EDECEE',padding: '20px',}} className={classes.heroPaper}>
        {
         leaders.map((user, i) => (
           (i < 3) &&

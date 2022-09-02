@@ -3,6 +3,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 
  export default makeStyles((theme) => ({
+    heroPaper: {
+        [theme.breakpoints.down('md')]: {
+            width: '75vw' ,
+          },  
+    },
     bar:{
         padding: '20px 30px',
         marginBottom: '14px',
@@ -12,9 +17,6 @@ import { makeStyles } from "@material-ui/core/styles";
         '&:hover':{
             transform: 'scale(1.05)',
         },
-        [theme.breakpoints.down('sm')]: {
-           width: '250px'
-         },    
     },
 
     spaces:{

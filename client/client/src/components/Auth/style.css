@@ -297,3 +297,32 @@ h6 span{
 .letterSpacing:hover {
     transform: scale(1.1)
 }
+.signInUpSubDesign{
+  color:#333;
+}
+#sihnInText{
+  margin-top: -2.5rem !important;
+}
+.title1{
+  margin-top: -1.5rem;
+  margin-left: 44.4%;
+  margin-bottom: 1.5rem;
+  content: '';
+  height: 2.5px;
+  width: 16px;
+  background-image: linear-gradient(to right, #432874 , #9c27b0);
+  border-radius: 25px;
+}
+.title2{
+  margin-top: -24px;
+  margin-left: 43.6%;
+  margin-bottom: 0.5rem;
+  content: '';
+  height: 2px;
+  width: 16px;
+  background-image: linear-gradient(to right, #432874 , #9c27b0);
+  border-radius: 25px;
+}
+.signInUpDesign{
+  font-weight: lighter;
+}

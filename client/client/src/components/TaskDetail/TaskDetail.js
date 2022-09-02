@@ -42,7 +42,7 @@ const TaskDetail = () => {
   },[id]);
 
 let answers;
-if(task){
+if(task?.falseChoice){
   answers = task?.falseChoice.split(',').concat(task?.trueChoice);
 }
 
@@ -219,7 +219,10 @@ const ButtonComplete = () => {
            <Typography variant="h6" style={{fontWeight: 900}}>Who complete this task:</Typography>
            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'start',marginBlock: '30px', width: '100%', }}>
           
-           <AvatarGroup total={allUsers.length}>
+           {
+            !userComplete.length ?
+            'NO USERS' :
+            <AvatarGroup total={userComplete?.length}>
             {
               userComplete.map((user, i) => (
                 <Tooltip title={user?.name} key={i}>
@@ -228,6 +231,7 @@ const ButtonComplete = () => {
               ))
             }
            </AvatarGroup>
+           }
         
            </div>
            </div>
