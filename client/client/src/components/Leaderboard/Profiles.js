@@ -11,6 +11,7 @@ import meditatingAnime from '../../images/meditatingAnime.gif'
 import Fire from '../../images/fire.png';
 import Clapping from '../../images/clapping.png';
 import Cool from '../../images/cool.png';
+import mushroom from '../../images/mushroom.png';
 
 export default function profiles({ MYLeaderboard }) {
 
@@ -130,7 +131,7 @@ function Item(data) {
                       </div>
                       <div className={classes.centered}>
                           <span style={{color:`${color[i] || '#333'}`, fontWeight: '900'}}>{user.level}</span>
-                          <img alt='' src={emoji[i]} style={{width:'20px', height: '20px'}}/>
+                          <img alt='' src={`${emoji[i] || mushroom}`} style={{width:'20px', height: '20px'}}/>
                       </div>
                   </div>
               </Paper>
