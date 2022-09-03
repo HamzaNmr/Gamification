@@ -46,8 +46,7 @@ const RewardsPage = () => {
 
   // //data test
  
-
-  const { rewards, isLoading } = useSelector((state) => state.rewards);
+   const { rewards, isLoading } = useSelector((state) => state.rewards);
 
   return (
     <>

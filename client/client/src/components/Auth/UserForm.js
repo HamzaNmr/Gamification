@@ -3,6 +3,9 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import BadgeIcon from '@mui/icons-material/Badge';
 
+import PermIdentityIcon from '@mui/icons-material/PermIdentity'
+import LockIcon from '@mui/icons-material/Lock'
+
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -49,7 +52,7 @@ const handleSubmit = (e) => {
               <div className="...">
                 <div className="...">
                   <div className="...">
-                    <h2 className="..."><span style={{marginRight :'30px'}} >SIGN IN</span><span>SIGN UP</span></h2>
+                    <h2 className="signInUpDesign"><span style={{marginRight :'30px'}} >SIGN IN</span><span>SIGN UP</span></h2>
                     <input className="checkbox" type="checkbox" id="reg-log" name="reg-log" onClick={switchMode}/>
                     <label htmlFor="reg-log" />
                     <div className="card-3d-wrap mx-auto">
@@ -57,7 +60,8 @@ const handleSubmit = (e) => {
                         <div className="card-front">
                           <div className="center-wrap">
                             <div className="section text-center">
-                              <h3 className="...">Sign In</h3>
+                              <h3 id='signInText' className="signInUpSubDesign">Sign In</h3>
+                              <div className='title1'></div>
                               <form onSubmit={handleSubmit}>
                               <div className="form-group">
                                 <input type="email" name="email" className="form-style" placeholder="Email" id="logemail" autoComplete="off"  onChange={handleChange}/>
@@ -67,7 +71,7 @@ const handleSubmit = (e) => {
                               <div className="form-group">
                                 <input type="password" name="password" className="form-style" placeholder="Password" id="logpass" autoComplete="off"  onChange={handleChange}/>
                                 {/* <i className="input-icon uil uil-lock-alt" /> */}
-                                <VpnKeyIcon className='input-icon'/>
+                                <LockIcon className='input-icon'/>
                               </div>
                              
                               <button className="btn">submit</button>
@@ -79,12 +83,13 @@ const handleSubmit = (e) => {
                         <div className="card-back">
                           <div className="center-wrap">
                             <div className="section text-center">
-                              <h3 className="mb-4 pb-3">Sign Up</h3>
+                              <h3 className="mb-4 pb-3 signInUpSubDesign">Sign Up</h3>
+                              <div className='title2'></div>
                               <form onSubmit={handleSubmit}>
                               <div className="form-group">
                                 <input type="text" name="firstName" className="form-style" placeholder="First Name" id="logname" autoComplete="off" onChange={handleChange} />
                                 {/* <i className="input-icon uil uil-user" /> */}
-                                <BadgeIcon className='input-icon'/>
+                                <PermIdentityIcon className='input-icon'/>
                               </div>
                               <div className="form-group">
                                 <input type="text" name="lastName" className="form-style" placeholder="Last Name " id="logname" autoComplete="off"  onChange={handleChange} />
@@ -99,7 +104,7 @@ const handleSubmit = (e) => {
                               <div className="form-group mt-2">
                                 <input type="password" name="password" className="form-style" placeholder="Password" id="logpass" autoComplete="off"  onChange={handleChange}/>
                                 {/* <i className="input-icon uil uil-lock-alt" /> */}
-                                <VpnKeyIcon className='input-icon'/>
+                                <LockIcon className='input-icon'/>
                               </div>
                               <button className="btn" type='submit'>submit</button>
                               </form>
