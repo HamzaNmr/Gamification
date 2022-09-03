@@ -52,6 +52,7 @@ const Rewards = ({ reward }) => {
   const currentId = user?.result?.id
   const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
   const [rewardsArray, setRewardsArray] = useState(Myuser?.rewards || []);
+  const [isOwnedColor, setIsOwnedColor] = useState(false);
 
   let tempRewards = rewardsArray;
 
@@ -63,8 +64,8 @@ const Rewards = ({ reward }) => {
 
   
 
-  const [isOwnedColor, setIsOwnedColor] = useState(false);
-  let isOwnedCheck = isOwnedColor ? '#7B00FF' : '#a3a3a3';
+
+ 
 
   const handleRedeem1 = async (event) => {
     if (window.confirm(`Are you sure you want to redeem ${reward.rewardName} from your balance?`)) {
@@ -91,12 +92,51 @@ const Rewards = ({ reward }) => {
         toast(<CustomToast/>)
       }
       notify();
-      setIsOwnedColor(isOwnedColor => !isOwnedColor)
-      event.currentTarget.disabled = true;
+      // setIsOwnedColor(isOwnedColor => !isOwnedColor)
+      // event.currentTarget.disabled = true;
       // console.log(`${reward.rewardName} added to db, your new blance ${balance}`)
     }
     else { console.log('canceled') }
   };
+
+
+  
+  
+ 
+  
+  let checkReward = Myuser?.rewards.filter(rewardArray => reward?._id === rewardArray);
+ 
+const Ka2es = () => {
+  if(checkReward?.length > 0 && checkReward[0] === reward?._id){
+   return (
+    <EmojiEventsIcon
+    style={{ color: '#7B00FF' }}
+    fontSize='large' />
+   )
+  }else{
+    return(<EmojiEventsIcon
+    style={{ color: '#a3a3a3' }}
+    fontSize='large' />)
+  }
+}
+
+const RedeemButton = () => {
+  if(checkReward.length > 0 && checkReward[0] === reward._id){
+    return (
+     'owned'
+    )
+   }else{
+     return(
+      <Button
+        className='RedeemBTN'
+        variant="contained"
+        startIcon={<RedeemIcon />}
+        onClick={handleRedeem1}>
+            Redeem
+      </Button>
+     )
+   }
+}
 
   return (
 
@@ -128,10 +168,7 @@ const Rewards = ({ reward }) => {
                   also btn redeem is displayed 
                   isOwned true state color #7B00FF */}
 
-              <EmojiEventsIcon
-                style={{ color: isOwnedCheck }}
-                fontSize='large' />
-
+              <Ka2es/>
                 
 
 
@@ -160,14 +197,7 @@ const Rewards = ({ reward }) => {
 
               <br></br>
 
-              <Button
-                className='RedeemBTN'
-                variant="contained"
-                startIcon={<RedeemIcon />}
-                onClick={handleRedeem1}
-              >
-                Redeem
-              </Button>
+              <RedeemButton/>
 
             </CardContent>
           </Collapse>
