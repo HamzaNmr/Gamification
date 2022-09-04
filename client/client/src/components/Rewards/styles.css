@@ -35,7 +35,7 @@
     min-width: 100px !important;
 }
 
-.RedeemBTN:disabled{
+.RedeemBTN:disabled {
     background-color: #818181 !important;
 }
 
@@ -116,6 +116,19 @@
 
 .rewardWarnningTitle {
     color: #36205d !important;
+}
+
+.OwnedDetails {
+    font-weight: 800 !important;
+    font-size: 1.2rem !important;
+    color: #32bd8a !important;
+    position: relative !important;
+    top: 12px !important;
+}
+
+.OwnedDetails span {
+    position: relative !important;
+    bottom: 12px !important;
 }
 
 .balanceText {

@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { updateprofile } from '../../actions/user';
-
-
+import { toast } from 'react-toastify';
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -17,21 +14,19 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-// import handleRedeem from './ConfirmAction';
-
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RedeemIcon from '@mui/icons-material/Redeem';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 
+import Star from '../../images/favourites.png';
 import Coin from '../../images/dollar.png';
-
 import ScrollAnimation from "react-animate-on-scroll";
-
 import "animate.css/animate.min.css";
 import "./styles.css";
 
 
-
+//expand card function
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -46,37 +41,129 @@ const ExpandMore = styled((props) => {
 
 const Rewards = ({ reward }) => {
 
-  const dispatch = useDispatch();
-  const user = JSON.parse(localStorage.getItem('profile'));
-  const currentId = user?.result?.id
-  const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
-  const [rewardsArray, setRewardsArray] = useState(Myuser?.rewards || []);
 
-  let tempRewards = rewardsArray;
-
+  //expand and collapse
   const [expanded, setExpanded] = useState(false);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  //use state for icon "owned" color
   const [isOwnedColor, setIsOwnedColor] = useState(false);
   let isOwnedCheck = isOwnedColor ? '#7B00FF' : '#a3a3a3';
 
-  const handleRedeem1 = async (event) => {
-    if (window.confirm(`Are you sure you want to redeem ${reward.rewardName} from your balance?`)) {
+  const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const currentId = user?.result?.id
+  const userInfo = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
+  const AllRewards = useSelector((state) => state.rewards);
+
+  const [rewardsArray, setRewardsArray] = useState(userInfo?.rewards || []);
+  let tempRewards = rewardsArray;
 
 
-      tempRewards.push(reward._id);  
-      dispatch(updateprofile(currentId,{rewards: [...tempRewards] , coins: Myuser?.coins - reward?.coin ,  email: user?.result?.email}));
 
-      
-      setIsOwnedColor(isOwnedColor => !isOwnedColor)
-      event.currentTarget.disabled = true;
-      // console.log(`${reward.rewardName} added to db, your new blance ${balance}`)
+  //handle redeem for adding a reward to current user
+  const handleRedeem = async (event) => {
+
+    if (userInfo?.coins >= reward?.coin && userInfo?.coins > 0) {
+      if (userInfo?.level >= reward?.permissionLevel) {
+        if (window.confirm(`Are you sure you want to redeem ${reward.title} from your balance?`)) {
+
+          tempRewards.push(reward._id);
+          dispatch(updateprofile(currentId,
+            {
+              rewards: [...tempRewards],
+              coins: userInfo?.coins - reward?.coin,
+              experience: userInfo?.experience + 10,
+              email: user?.result?.email
+            }));
+
+          setIsOwnedColor(isOwnedColor => !isOwnedColor)
+          event.currentTarget.disabled = true;
+
+
+          const CustomToast = () => {
+
+            return (
+
+              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', wordBreak: 'break-all' }}>
+
+                <Typography variant='subtitle2'> You have payed {reward?.title} </Typography>
+
+                <Typography variant='subtitle2'> +10 expereince
+                  <img src={Star} alt="" style={{ width: '17px', height: '17px', marginInline: '9px' }} />
+                </Typography>
+
+                <Typography variant='subtitle2'> -{reward?.coin} coins
+                  <img src={Coin} alt="" style={{ width: '17px', height: '17px', marginInline: '9px' }} />
+                </Typography>
+
+              </div>
+
+            )
+          }
+
+          const notify = () => { toast(<CustomToast />) }
+
+          notify();
+
+        }
+        else { console.log('canceled') }
+      }
+      else {
+
+        alert(`${reward.title} is not available in your level! Maybe after more experience!`);
+        event.currentTarget.disabled = true;
+      }
     }
-    else { console.log('canceled') }
+    else {
+
+      alert('You do not have enough coins! Maybe after you work litle harder!');
+      event.currentTarget.disabled = true;
+    }
   };
+
+
+
+  //chech if already owned and disable exchange functions
+
+  let checkReward = userInfo?.rewards.filter(rewardArray => reward?._id === rewardArray);
+
+  const Ka2es = () => {
+    if (checkReward?.length > 0 && checkReward[0] === reward?._id) {
+      return (
+        <EmojiEventsIcon
+          style={{ color: '#7B00FF' }}
+          fontSize='large' />
+      )
+    } else {
+      return (<EmojiEventsIcon
+        style={{ color: '#a3a3a3' }}
+        fontSize='large' />)
+    }
+  }
+
+
+  const RedeemButton = () => {
+    if (checkReward.length > 0 && checkReward[0] === reward._id) {
+      return (
+        <Typography paragraph className="OwnedDetails">
+          <MilitaryTechIcon style={{ color: "#32bd8a" }} fontSize='large' /> <span>OWNED</span>
+        </Typography>
+      )
+    } else {
+      return (
+        <Button
+          className='RedeemBTN'
+          variant="contained"
+          startIcon={<RedeemIcon />}
+          onClick={handleRedeem}>
+          Redeem
+        </Button>
+      )
+    }
+  }
 
   return (
 
@@ -85,9 +172,7 @@ const Rewards = ({ reward }) => {
 
         <Card className="CardReward">
 
-          <CardHeader
-            m={4} p={3}
-            className="CardHeaderReward"
+          <CardHeader m={4} p={3} className="CardHeaderReward"
             title={reward.title}
           />
 
@@ -104,16 +189,7 @@ const Rewards = ({ reward }) => {
 
             <span className="RewardDetails">
 
-              {/* emoji color changes if one of user rewards matches id of this reward
-                  also btn redeem is displayed 
-                  isOwned true state color #7B00FF */}
-
-              <EmojiEventsIcon
-                style={{ color: isOwnedCheck }}
-                fontSize='large' />
-
-                
-
+              <Ka2es />
 
               <img src={Coin} className='CoinIconReward' />
               <span className='CoinAmountReward'> {reward.coin} </span>
@@ -138,16 +214,11 @@ const Rewards = ({ reward }) => {
                 {reward.description}
               </Typography>
 
-              <br></br>
+              <Typography paragraph className="RewardDetails" style={{ fontWeight: '700' }}>
+                Level {reward.permissionLevel}
+              </Typography>
 
-              <Button
-                className='RedeemBTN'
-                variant="contained"
-                startIcon={<RedeemIcon />}
-                onClick={handleRedeem1}
-              >
-                Redeem
-              </Button>
+              <RedeemButton />
 
             </CardContent>
           </Collapse>
