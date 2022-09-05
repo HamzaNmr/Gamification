@@ -222,6 +222,10 @@ const RedeemButton = () => {
                 {reward.description}
               </Typography>
 
+              <Typography paragraph className="RewardDetails" style={{ fontWeight: '700' }}>
+                Level {reward.permissionLevel}
+              </Typography>
+
               <br></br>
 
               <RedeemButton/>
