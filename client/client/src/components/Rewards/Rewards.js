@@ -22,6 +22,7 @@ import Button from '@mui/material/Button';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RedeemIcon from '@mui/icons-material/Redeem';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 
 import Coin from '../../images/dollar.png';
 
@@ -147,7 +148,9 @@ const Ka2es = () => {
 const RedeemButton = () => {
   if(checkReward.length > 0 && checkReward[0] === reward._id){
     return (
-     'owned'
+      <Typography paragraph className="OwnedDetails">
+      <MilitaryTechIcon style={{ color: "#32bd8a" }} fontSize='large' /> <span>OWNED</span>
+     </Typography>
     )
    }else{
      return(
