@@ -51,10 +51,8 @@ const Rewards = ({ reward }) => {
   const user = JSON.parse(localStorage.getItem('profile'));
   const currentId = user?.result?.id
   const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
-  const [rewardsArray, setRewardsArray] = useState(Myuser?.rewards || []);
-  const [isOwnedColor, setIsOwnedColor] = useState(false);
 
-  let tempRewards = rewardsArray;
+  let tempRewards = Myuser?.rewards || [];
 
   const [expanded, setExpanded] = useState(false);
 
@@ -67,36 +65,62 @@ const Rewards = ({ reward }) => {
 
  
 
-  const handleRedeem1 = async (event) => {
-    if (window.confirm(`Are you sure you want to redeem ${reward.rewardName} from your balance?`)) {
+  const handleRedeem = async (event) => {
+
+    if (Myuser?.coins >= reward?.coin && Myuser?.coins > 0) {
+      if (Myuser?.level >= reward?.permissionLevel) {
+        if (window.confirm(`Are you sure you want to redeem ${reward.title} from your balance?`)) {
+
+          tempRewards.push(reward._id);
+          dispatch(updateprofile(currentId,
+            {
+              rewards: [...tempRewards],
+              coins: Myuser?.coins - reward?.coin,
+              experience: Myuser?.experience + 10,
+              email: user?.result?.email
+            }));
 
 
-      tempRewards.push(reward._id);  
-      dispatch(updateprofile(currentId,{rewards: [...tempRewards] , coins: Myuser?.coins - reward?.coin , experience: Myuser?.experience + 10,  email: user?.result?.email}));
 
-      const CustomToast = () => {
-        return(
-          <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap', wordBreak: 'break-all'}}>
-            <Typography variant='subtitle2'>You have payed {reward?.title}</Typography>
-             <Typography variant='subtitle2'>+10 expereince
-             <img src={Star} alt="" style={{width: '17px', height: '17px', marginInline: '9px'}}/>
-             </Typography>
-             <Typography variant='subtitle2'> -{reward?.coin} coins
-             <img src={Coin} alt="" style={{width: '17px', height: '17px', marginInline: '9px'}}/>
-             </Typography>
-          </div>
-        )
+          const CustomToast = () => {
+
+            return (
+
+              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', wordBreak: 'break-all' }}>
+
+                <Typography variant='subtitle2'> You have payed {reward?.title} </Typography>
+
+                <Typography variant='subtitle2'> +10 expereince
+                  <img src={Star} alt="" style={{ width: '17px', height: '17px', marginInline: '9px' }} />
+                </Typography>
+
+                <Typography variant='subtitle2'> -{reward?.coin} coins
+                  <img src={Coin} alt="" style={{ width: '17px', height: '17px', marginInline: '9px' }} />
+                </Typography>
+
+              </div>
+
+            )
+          }
+
+          const notify = () => { toast(<CustomToast />) }
+
+          notify();
+
+        }
+        else { console.log('canceled') }
       }
-    
-      const notify = () => {
-        toast(<CustomToast/>)
+      else {
+
+        alert(`${reward.title} is not available in your level! Maybe after more experience!`);
+        event.currentTarget.disabled = true;
       }
-      notify();
-      // setIsOwnedColor(isOwnedColor => !isOwnedColor)
-      // event.currentTarget.disabled = true;
-      // console.log(`${reward.rewardName} added to db, your new blance ${balance}`)
     }
-    else { console.log('canceled') }
+    else {
+
+      alert('You do not have enough coins! Maybe after you work litle harder!');
+      event.currentTarget.disabled = true;
+    }
   };
 
 
@@ -131,7 +155,7 @@ const RedeemButton = () => {
         className='RedeemBTN'
         variant="contained"
         startIcon={<RedeemIcon />}
-        onClick={handleRedeem1}>
+        onClick={handleRedeem}>
             Redeem
       </Button>
      )
