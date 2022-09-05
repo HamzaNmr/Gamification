@@ -15,38 +15,13 @@ import { useSelector } from "react-redux";
 
 const RewardsPage = () => {
 
-  // //for points box
-  // // const fetchPoints = async () => {
-  // //   if (auth.currentUser) {
-  // //     const userProfile = await getUserProfile(auth.currentUser.uid);
-  // //     if (userProfile) {
-  // //       setLoaded(true);
-  // //       setPoints(userProfile.points);
-  // //     }
-  // //   }
-  // // };
-
-  // // useEffect(() => {
-  // //   fetchPoints();
-  // // });
-
-  // const [points, setPoints] = useState(400);
-  // const [loaded, setLoaded] = useState(false);
-
-  // //for data fetching
-  // // const [Rewards, setRewards] = useState([]);
-  // // let {id} = useParams();
-  // // useEffect(() => {
-  // //   const fetchReward = async () => {
-  // //     const { data } = await axios.get("http://localhost:5000/userReward")
-  // //     setRewardsAll(data);
-  // //   };
-  // //   fetchReward();
-  // // }, []);
-
-  // //data test
+ 
  
    const { rewards, isLoading } = useSelector((state) => state.rewards);
+
+   const user = JSON.parse(localStorage.getItem('profile'));
+   const currentId = user?.result?.id
+   const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
 
   return (
     <>
@@ -64,7 +39,7 @@ const RewardsPage = () => {
                   <img alt='' src={Coin} style={{width: 40, heigth: 40, marginRight: '14px'}}/>
                   Your balance:
                   <span style={{fontSize: '1rem', marginLeft: '30px'}} className='balanceText'>
-                  400
+                  {Myuser?.coins}
                   </span>
                 </Typography>
 
