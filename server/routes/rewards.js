@@ -5,7 +5,7 @@ require("../passportJwt.js");
 
 const router = express.Router();
 
-router.get('/', passport.authenticate("jwt", { session: false }), getRewards);
+router.get('/', getRewards);
 
 
 module.exports = router;
