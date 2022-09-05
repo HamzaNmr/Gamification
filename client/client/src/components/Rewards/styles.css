@@ -1,0 +1,155 @@
+.titleRewards {
+    font-size: clamp(15px, 1.25vw, 22px);
+    margin: 1rem;
+    text-shadow: #36205d49 !important;
+    color: #36205d !important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.CardReward {
+    border-radius: 1.25rem !important;
+    background-color: #ffffff !important;
+    box-shadow: 2px 4px 10px #36205d3b !important;
+    max-width: 275px !important;
+    width: 235px !important;
+    min-width: 200px !important;
+    padding-left: 10px;
+    padding: 3px;
+}
+
+.CardReward:hover {
+    background-color: #fffaffee !important;
+    transition: ease-in 0.5s !important;
+    transform: scale(1.05);
+}
+
+.CardHeaderReward {
+    color: #36205d !important;
+    font-size: clamp(8px, 0.25vw, 12px) !important;
+    max-height: 30px !important;
+}
+
+.RedeemBTN {
+    background-color: #32bd8a !important;
+    margin: 0.05rem !important;
+    min-width: 100px !important;
+}
+
+.RedeemBTN:disabled{
+    background-color: #818181 !important;
+}
+
+.CardActionsReward {
+    margin-top: 10px !important;
+    margin-bottom: 6px !important;
+}
+
+.CardMediaReward {
+    height: 128px !important;
+    max-height: 128px !important;
+    width: 128px !important;
+    margin: 4px !important;
+    background-position-x: center !important;
+}
+
+.hoverRewardCardBtn {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    text-align: initial !important;
+    border-radius: 20px !important;
+}
+
+.howToGetReward {
+    color: #36205d;
+    margin-top: 1rem !important;
+}
+
+.howToGetReward .RewardDetails {
+    font-size: clamp(15px, 1vw, 20px) !important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.RewardsCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #EBEAEC !important;
+    border: 3px solid #432874 !important;
+    border-radius: 15px !important;
+    padding: 2.5rem !important;
+}
+
+.CoinIconReward {
+    margin-top: 0.5rem !important;
+    margin-left: 1.5rem !important;
+    width: 30px !important;
+    position: relative;
+    top: 4x;
+}
+
+.CoinAmountReward {
+    font-weight: 600 !important;
+    font-size: 1.5rem;
+    margin-bottom: 1rem !important;
+    color: #36205d !important;
+    position: relative;
+    bottom: 6px;
+}
+
+.react-confirm-alert-body {
+    padding: 1rem !important;
+    min-width: 14rem !important;
+}
+
+.btn-confirm-redeem {
+    background-color: #32bd8a !important;
+    font-weight: 700 !important;
+}
+
+.btn-dismiss-redeem {
+    background-color: #36205d !important;
+    font-weight: 600 !important;
+}
+
+.rewardWarnningTitle {
+    color: #36205d !important;
+}
+
+.balanceText {
+    position: relative;
+    width: max-content;
+    font-weight: lighter;
+}
+
+.balanceText::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #432874;
+    animation: balancetyper 2s steps(50) forwards;
+}
+
+@keyframes balancetyper {
+    to {
+        left: 100%;
+    }
+}
+
+.OwnedDetails {
+    font-weight: 800 !important;
+    font-size: 1.2rem !important;
+    color: #32bd8a !important;
+    position: relative !important;
+    top: 12px !important;
+}
+
+.OwnedDetails span {
+    position: relative !important;
+    bottom: 12px !important;
+}
