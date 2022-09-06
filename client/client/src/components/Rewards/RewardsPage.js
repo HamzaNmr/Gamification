@@ -38,7 +38,7 @@ const RewardsPage = () => {
                 <Typography variant='h6' style={{ display: 'flex', alignItems: 'center', }}>
                   <img alt='' src={Coin} style={{width: 40, heigth: 40, marginRight: '14px'}}/>
                   Your balance:
-                  <span style={{fontSize: '1rem', marginLeft: '30px'}} className='balanceText'>
+                  <span style={{fontSize: '1.4rem', marginLeft: '30px'}} className='balanceText'>
                   {Myuser?.coins}
                   </span>
                 </Typography>
