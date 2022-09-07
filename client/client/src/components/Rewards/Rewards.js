@@ -123,12 +123,11 @@ const Rewards = ({ reward }) => {
   };
 
 
-
   let checkReward = Myuser?.rewards.filter(rewardArray => reward?._id === rewardArray);
 
   const Ka2es = () => {
 
-    if (checkReward?.length > 0 && checkReward[0] === reward?._id) {
+    if (checkReward && checkReward?.length > 0 && checkReward[0] === reward?._id) {
 
       return (
         <EmojiEventsIcon
@@ -148,7 +147,7 @@ const Rewards = ({ reward }) => {
 
   const RedeemButton = () => {
 
-    if (checkReward.length > 0 && checkReward[0] === reward._id) {
+    if (checkReward && checkReward.length > 0 && checkReward[0] === reward._id) {
 
       return (
         <Typography paragraph className="OwnedDetails">
