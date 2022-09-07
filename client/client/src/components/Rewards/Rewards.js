@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
+import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from "react-redux";
 
 import { updateprofile } from '../../actions/user';
 
-
+import ScrollAnimation from "react-animate-on-scroll";
+import "animate.css/animate.min.css";
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -17,22 +19,16 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-// import handleRedeem from './ConfirmAction';
-
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RedeemIcon from '@mui/icons-material/Redeem';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 
+import Star from '../../images/favourites.png';
 import Coin from '../../images/dollar.png';
-
-import ScrollAnimation from "react-animate-on-scroll";
-
-import "animate.css/animate.min.css";
 import "./styles.css";
 
-import Star from '../../images/favourites.png';
-import { toast } from 'react-toastify';
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -46,25 +42,25 @@ const ExpandMore = styled((props) => {
 }));
 
 
+
+
 const Rewards = ({ reward }) => {
+
 
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
   const currentId = user?.result?.id
-  const Myuser= useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
+  const Myuser = useSelector((state) => currentId ? state.user.users.find((user) => user._id === currentId) : null);
 
   let tempRewards = Myuser?.rewards || [];
 
   const [expanded, setExpanded] = useState(false);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  
 
 
- 
 
   const handleRedeem = async (event) => {
 
@@ -92,11 +88,11 @@ const Rewards = ({ reward }) => {
                 <Typography variant='subtitle2'> You have payed {reward?.title} </Typography>
 
                 <Typography variant='subtitle2'> +10 expereince
-                  <img src={Star} alt="" style={{ width: '17px', height: '17px', marginInline: '9px' }} />
+                  <img src={Star} style={{ width: '17px', height: '17px', marginInline: '9px' }} />
                 </Typography>
 
                 <Typography variant='subtitle2'> -{reward?.coin} coins
-                  <img src={Coin} alt="" style={{ width: '17px', height: '17px', marginInline: '9px' }} />
+                  <img src={Coin} style={{ width: '17px', height: '17px', marginInline: '9px' }} />
                 </Typography>
 
               </div>
@@ -105,18 +101,20 @@ const Rewards = ({ reward }) => {
           }
 
           const notify = () => { toast(<CustomToast />) }
-
           notify();
 
         }
+
         else { console.log('canceled') }
       }
+
       else {
 
         alert(`${reward.title} is not available in your level! Maybe after more experience!`);
         event.currentTarget.disabled = true;
       }
     }
+
     else {
 
       alert('You do not have enough coins! Maybe after you work litle harder!');
@@ -125,45 +123,54 @@ const Rewards = ({ reward }) => {
   };
 
 
-  
-  
- 
-  
-  let checkReward = Myuser?.rewards.filter(rewardArray => reward?._id === rewardArray);
- 
-const Ka2es = () => {
-  if(checkReward?.length > 0 && checkReward[0] === reward?._id){
-   return (
-    <EmojiEventsIcon
-    style={{ color: '#7B00FF' }}
-    fontSize='large' />
-   )
-  }else{
-    return(<EmojiEventsIcon
-    style={{ color: '#a3a3a3' }}
-    fontSize='large' />)
-  }
-}
 
-const RedeemButton = () => {
-  if(checkReward.length > 0 && checkReward[0] === reward._id){
-    return (
-      <Typography paragraph className="OwnedDetails">
-      <MilitaryTechIcon style={{ color: "#32bd8a" }} fontSize='large' /> <span>OWNED</span>
-     </Typography>
-    )
-   }else{
-     return(
-      <Button
-        className='RedeemBTN'
-        variant="contained"
-        startIcon={<RedeemIcon />}
-        onClick={handleRedeem}>
-            Redeem
-      </Button>
-     )
-   }
-}
+  let checkReward = Myuser?.rewards.filter(rewardArray => reward?._id === rewardArray);
+
+  const Ka2es = () => {
+
+    if (checkReward?.length > 0 && checkReward[0] === reward?._id) {
+
+      return (
+        <EmojiEventsIcon
+          style={{ color: '#7B00FF' }}
+          fontSize='large' />
+      )
+    }
+
+    else {
+      return (
+        <EmojiEventsIcon
+          style={{ color: '#a3a3a3' }}
+          fontSize='large' />
+      )
+    }
+  }
+
+  const RedeemButton = () => {
+
+    if (checkReward.length > 0 && checkReward[0] === reward._id) {
+
+      return (
+        <Typography paragraph className="OwnedDetails">
+          <MilitaryTechIcon style={{ color: "#32bd8a" }} fontSize='large' /> <span>OWNED</span>
+        </Typography>
+      )
+    }
+    else {
+      return (
+        <Button
+          className='RedeemBTN'
+          variant="contained"
+          startIcon={<RedeemIcon />}
+          onClick={handleRedeem}>
+          Redeem
+        </Button>
+      )
+    }
+  }
+
+
+
 
   return (
 
@@ -191,13 +198,7 @@ const RedeemButton = () => {
 
             <span className="RewardDetails">
 
-              {/* emoji color changes if one of user rewards matches id of this reward
-                  also btn redeem is displayed 
-                  isOwned true state color #7B00FF */}
-
-              <Ka2es/>
-                
-
+              <Ka2es />
 
               <img src={Coin} className='CoinIconReward' />
               <span className='CoinAmountReward'> {reward.coin} </span>
@@ -226,9 +227,7 @@ const RedeemButton = () => {
                 Level {reward.permissionLevel}
               </Typography>
 
-              <br></br>
-
-              <RedeemButton/>
+              <RedeemButton />
 
             </CardContent>
           </Collapse>
