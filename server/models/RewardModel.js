@@ -9,24 +9,24 @@ const rewardSchema = new mongoose.Schema({
 
     description: {
         type: String,
-       required:true
+        required: true
     },
 
     photo: {
-        type: String    
+        type: String
     },
 
-    coin:{
+    coin: {
         type: Number,
         required: true
     },
 
-    permissionLevel:{
+    permissionLevel: {
         type: Number
     }
 
-     
-},  {timestamps:true}
+
+}, { timestamps: true }
 )
 
-module.exports = mongoose.model('rewardModel' , rewardSchema)
+module.exports = mongoose.model('rewardModel', rewardSchema)
